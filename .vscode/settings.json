@@ -1,0 +1,9 @@
+{
+    "workbench.preferredDarkColorTheme": "Eva Dark",
+    "workbench.preferredLightColorTheme": "Eva Light",
+    "workbench.colorTheme": "Eva Dark",
+    "window.autoDetectColorScheme": true,
+    "material-icon-theme.activeIconPack": "nest",
+    "workbench.iconTheme": "material-icon-theme",
+    "material-icon-theme.folders.color": "#6DD2F7"
+}

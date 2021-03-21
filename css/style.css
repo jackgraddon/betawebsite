@@ -1,0 +1,222 @@
+/* Root Colours */
+/* :root {
+  --blue: #007bff !important;
+  --indigo: #6610f2 !important;
+  --purple: #6f42c1 !important;
+  --pink: #e83e8c !important;
+  --red: #ff0015 !important;
+  --orange: #fd7e14 !important;
+  --yellow: #ffc107 !important;
+  --green: #28a745 !important;
+  --teal: #20c997 !important;
+  --cyan: #17a2b8 !important;
+  --white: #fff !important;
+  --gray: #6c757d !important;
+  --gray-dark: #343a40 !important;
+  --primary: #007bff !important;
+  --secondary: #6c757d !important;
+  --success: #28a745 !important;
+  --info: #17a2b8 !important;
+  --warning: #ffc107 !important;
+  --danger: #dc3545 !important;
+  --light: #f8f9fa !important;
+  --dark: #343a40 !important;
+} */
+
+/* Fonts */
+@font-face {
+  font-family: "ModernSans";
+  src: url("./fonts/ModernSans-Light.woff") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Mont";
+  src: url("./fonts/Mont-HeavyDEMO.woff") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Body */
+body {
+  background-color: #dddddd !important;
+  color: black !important;
+
+  /* Disable Text Selection */
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+/* @media (prefers-color-scheme: light) {
+  body {
+    background-color: #dddddd !important;
+    color: black !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #2e2e2e !important;
+    color: white !important;
+  }
+} */
+
+/* Buttons */
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  overflow: hidden;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  color: #4d4d4d;
+  border-color: #4d4d4d;
+  border-style: solid;
+  border-width: 5px;
+  background-color: #eceaea;
+  cursor: pointer;
+  transition: 150ms ease;
+}
+.button p {
+  margin: 0px;
+}
+.button:hover {
+  transform: scale(1.05);
+  background-color: white !important;
+  color: black !important;
+  border-color: black !important;
+  /* border-radius: 15px; */
+  box-shadow: 0px 15px 15px 0px rgba(0, 0, 0, 0.2);
+}
+.button:active {
+  transform: scale(0.95);
+  background-color: #eceaea !important;
+  color: #4d4d4d;
+  border-color: #4d4d4d;
+  /* border-radius: 15px; */
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+  transition: 100ms ease !important;
+}
+
+/* Text */
+.title {
+  font-size: 120px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Mont", sans-serif;
+}
+h4,
+h5,
+h6 {
+  font-family: "ModernSans", sans-serif;
+}
+
+/* Text Examples */
+#fonts {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Display */
+.hidden {
+  display: none !important;
+  height: 0px;
+}
+
+/* Testing Classes */
+.easter-egg:focus {
+  outline: 0;
+}
+
+.easter-egg:before,
+.easter-egg:after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 140%;
+  height: 100%;
+  left: -20%;
+  z-index: -1000;
+  transition: all ease-in-out 0.5s;
+  background-repeat: no-repeat;
+}
+
+.easter-egg:before {
+  display: none;
+  top: -75%;
+  background-image: radial-gradient(circle, #000000 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #000000 20%, transparent 30%),
+    radial-gradient(circle, #000000 20%, transparent 20%),
+    radial-gradient(circle, #000000 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #000000 15%, transparent 20%),
+    radial-gradient(circle, #000000 20%, transparent 20%),
+    radial-gradient(circle, #000000 20%, transparent 20%),
+    radial-gradient(circle, #000000 20%, transparent 20%),
+    radial-gradient(circle, #000000 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+    10% 10%, 18% 18%;
+}
+
+.easter-egg:after {
+  display: none;
+  bottom: -75%;
+  background-image: radial-gradient(circle, #000000 20%, transparent 20%),
+    radial-gradient(circle, #000000 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #000000 15%, transparent 20%),
+    radial-gradient(circle, #000000 20%, transparent 20%),
+    radial-gradient(circle, #000000 20%, transparent 20%),
+    radial-gradient(circle, #000000 20%, transparent 20%),
+    radial-gradient(circle, #000000 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+}
+
+.easter-egg.animate:before {
+  display: block;
+  animation: topBubbles ease-in-out 0.75s forwards;
+}
+
+.easter-egg.animate:after {
+  display: block;
+  animation: bottomBubbles ease-in-out 0.75s forwards;
+}
+@keyframes topBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+      40% 90%, 55% 90%, 70% 90%;
+  }
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+      50% 50%, 65% 20%, 90% 30%;
+  }
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+      50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+@keyframes bottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+      70% -10%, 70% 0%;
+  }
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+      105% 0%;
+  }
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+      110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
