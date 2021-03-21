@@ -55,7 +55,7 @@
 
     <!-- Font Test -->
     <div id="fontTest" class="d-flex flex-column justify-content-center align-items-center">
-        <span onclick="showHide()" class="button">
+        <span onclick="showHide()" class="button" id="button">
             <p>Toggle Font Test</p>
         </span>
         <div style="overflow: hidden;" id="fonts" hidden>
@@ -74,6 +74,10 @@
         // let open = false;
         function showHide() {
             document.getElementById('fonts').toggleAttribute('hidden')
+            $('#button').addClass('clicked');
+            setTimeout(() => {
+                $('#button').removeClass('clicked');
+            }, 250)
             // if (!open) {
             //     open = true;
             // } else {
