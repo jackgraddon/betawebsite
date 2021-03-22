@@ -164,18 +164,6 @@ h6 {
 }
 
 /* Testing Classes */
-/* .easter-egg {
-  height: 25px !important;
-  width: 25px !important;
-  top: 85px;
-  background: black;
-  display: inline-block;
-  position: relative;
-} */
-.easter-egg:focus {
-  outline: 0;
-}
-
 .easter-egg:before,
 .easter-egg:after {
   position: absolute;
