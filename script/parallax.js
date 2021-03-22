@@ -3,8 +3,8 @@ if (
     navigator.userAgent
   )
 ) {
-  const title = document.querySelectorAll(".title");
-  const body = document.querySelectorAll(".body");
+  var title = document.querySelectorAll(".title");
+  var body = document.querySelectorAll(".body");
   // const buttons = document.querySelectorAll(".btn");
 
   function handleOrientation(event) {
