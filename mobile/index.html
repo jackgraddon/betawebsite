@@ -44,36 +44,35 @@
 
         <!-- Font Test -->
         <div id="fontTest" class="d-flex flex-column justify-content-center align-items-center">
-            <span onclick="showHide()" class="button" id="button">
+            <span onclick="showHide('fontToggle')" class="button" id="fontToggle">
                 <p>Toggle Font Test</p>
             </span>
             <div style="overflow: hidden;" id="fonts" hidden>
-                <h1>The quick, brown fox jumps over the laxy dog.</h1>
-                <h2>The quick, brown fox jumps over the laxy dog.</h2>
-                <h3>The quick, brown fox jumps over the laxy dog.</h3>
-                <h4>The quick, brown fox jumps over the laxy dog.</h4>
-                <h5>The quick, brown fox jumps over the laxy dog.</h5>
-                <h6>The quick, brown fox jumps over the laxy dog.</h6>
-                <p>The quick, brown fox jumps over the laxy dog.</p>
+                <h1>The quick, brown fox jumps over the lazy dog.</h1>
+                <h2>The quick, brown fox jumps over the lazy dog.</h2>
+                <h3>The quick, brown fox jumps over the lazy dog.</h3>
+                <h4>The quick, brown fox jumps over the lazy dog.</h4>
+                <h5>The quick, brown fox jumps over the lazy dog.</h5>
+                <h6>The quick, brown fox jumps over the lazy dog.</h6>
+                <p>The quick, brown fox jumps over the lazy dog.</p>
             </div>
         </div>
 
     </main>
 
     <!-- Sctipt -->
-    <!-- Button Toggle -->
+    <!-- Button Click Effect -->
+    <script type="text/javascript" src="../script/btnClick.js"></script>
+    <!-- Button Toggle Fonts -->
     <script type="text/javascript">
         // let open = false;
-        function showHide() {
+        function showHide(id) {
             document.getElementById('fonts').toggleAttribute('hidden')
-            $('#button').addClass('clicked');
-            setTimeout(() => {
-                $('#button').removeClass('clicked');
-            }, 250)
+            click(id);
         }
     </script>
     <div class="version">
-        <h6>0.1.9</h6>
+        <h6>0.1.10</h6>
     </div>
 </body>
 
