@@ -53,20 +53,48 @@
     <!-- Button Click Effect -->
     <script type="text/javascript" src="./script/btnClick.js"></script>
 
+    <!-- If Window Too Small -->
+    <div style="background-color: #ddd9d9; width: 100vw; height: 100vh; z-index: 100; opacity: 0; position: absolute; transition: 300ms ease;"
+        class="d-flex flex-column justify-content-center align-items-center" id="windowSizeAlert">
+        <h2>This window is too small!</h2>
+        <p><i>Please make the window larger.</i></p>
+    </div>
+    <script type="text/javascript">
+        if ((window.innerWidth < 600) || (window.innerHeight < 600)) {
+            $('#windowSizeAlert').css('opacity', '1');
+        } else {
+            $('#windowSizeAlert').css('opacity', '0');
+        }
+        window.addEventListener("resize", () => {
+            if ((window.innerWidth < 600) || (window.innerHeight < 600)) {
+                $('#windowSizeAlert').css('opacity', '1');
+            } else {
+                $('#windowSizeAlert').css('opacity', '0');
+            }
+        });
+    </script>
     <!-- Begin Page -->
-    <div style="background-image: url(./images/png/background.png);background-size: cover; height: 100vh; width: 50vw; z-index: 0; position: absolute;"
+    <div style="background-image: url(./images/png/background.png);background-size: cover; height: 117vh; width: 50vw; z-index: 0; position: absolute;"
         id="background">
     </div>
+    <div style="height: 100vh; width: 50vw; z-index: 0; position: absolute; right: 0;" id="backgroundInfo">
+        <div class="d-flex flex-column justify-content-center align-items-end">
+            <h4>// Jack Graddon</h4>
+            <h4>// Web Designer</h4>
+            <h4>// Graphic Artist</h4>
+            <h4>// Jack Graddon</h4>
+        </div>
+    </div>
     <main class="body">
-        <div class="d-lg-flex flex-column justify-content-center align-items-center fullPage"
+        <div class="d-flex flex-column justify-content-center align-items-center fullPage"
             style="height: 100vh; width: 100vw;" id="titleContainer">
             <h1 class="title">HELLO<span class="easter-egg">.</span></h1>
             <a onclick="javascript:scrollDown('about', 'titleGo')" class="button" id="titleGo">
                 <p>Continue <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></p>
             </a>
         </div>
-        <div class="d-lg-flex justify-content-center alignt-items-center fullPage" id="about">
-            <h1 class="title">ABOUT.</h1>
+        <div class="d-lg-flex justify-content-left alignt-items-center fullPage" id="about">
+            <h1 class="title text-white pl-2">ABOUT.</h1>
         </div>
 
 
@@ -148,7 +176,7 @@
     <script src="./script/parallax.js"></script>
 
     <div class="version">
-        <h6>0.1.10</h6>
+        <h6>0.1.11</h6>
     </div>
 </body>
 
