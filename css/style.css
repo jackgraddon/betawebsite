@@ -140,9 +140,11 @@ h6 {
 
 .version {
   position: fixed;
-  bottom: -10px;
+  bottom: 10px;
   right: 0;
 
+  width: 50px;
+  height: 19px;
   padding: 10px;
 }
 
