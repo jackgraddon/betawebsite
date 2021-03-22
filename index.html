@@ -40,7 +40,7 @@
 
 <body>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS, then custom JS loaded at the top. -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -50,18 +50,31 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <!-- Button Click Effect -->
+    <script type="text/javascript" src="./script/btnClick.js"></script>
 
     <!-- Begin Page -->
+    <div style="background-image: url(./images/png/background.png);background-size: cover; height: 100vh; width: 50vw; z-index: 0; position: absolute;"
+        id="background">
+    </div>
     <main class="body">
-        <div class="d-lg-flex justify-content-center">
+        <div class="d-lg-flex flex-column justify-content-center align-items-center fullPage"
+            style="height: 100vh; width: 100vw;" id="titleContainer">
             <h1 class="title">HELLO<span class="easter-egg">.</span></h1>
-
+            <a onclick="javascript:scrollDown('about', 'titleGo')" class="button" id="titleGo">
+                <p>Continue <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></p>
+            </a>
+        </div>
+        <div class="d-lg-flex justify-content-center alignt-items-center fullPage" id="about">
+            <h1 class="title">ABOUT.</h1>
         </div>
 
+
         <!-- Font Test -->
-        <div id="fontTest" class="d-flex flex-column justify-content-center align-items-center">
+        <div id="fontTest" class="d-flex flex-column justify-content-center align-items-center mt-5">
             <span onclick="showHide('fontToggle')" class="button" id="fontToggle">
-                <p>Toggle Font Test</p>
+                <p>Toggle Font Test <i class="fa fa-plus-circle" aria-hidden="true" id="fontIcon"
+                        style="transform:rotateZ(0deg);"></i></p>
             </span>
             <div style="overflow: hidden;" id="fonts" hidden>
                 <h1>The quick, brown fox jumps over the lazy dog.</h1>
@@ -77,13 +90,36 @@
     </main>
 
     <!-- Sctipt -->
-    <!-- Button Click Effect -->
-    <script type="text/javascript" src="./script/btnClick.js"></script>
+    <!-- Scrollign -->
+    <script type="text/javascript">
+        function scrollDown(id, btn) {
+            let multiplier;
+            switch (id) {
+                case 'about':
+                    multiplier = 1;
+                    break;
+            }
+            let y = window.innerHeight * multiplier;
+            window.scrollTo({
+                top: y,
+                left: 0,
+                behavior: 'smooth'
+            });
+            click(btn);
+        }
+    </script>
     <!-- Button Toggle -->
     <script type="text/javascript">
-        // let open = false;
+        let open = false;
         function showHide(id) {
             document.getElementById('fonts').toggleAttribute('hidden')
+            if (!open) {
+                document.getElementById('fontIcon').style['transform'] = 'rotate(45deg)';
+                open = true;
+            } else {
+                document.getElementById('fontIcon').style['transform'] = 'rotate(0deg)';
+                open = false;
+            }
             click(id);
         }
     </script>

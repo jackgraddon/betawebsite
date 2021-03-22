@@ -22,9 +22,10 @@ if (
   // }
   // window.addEventListener("deviceorientation", handleOrientation, true);
 } else {
-  const title = document.querySelectorAll(".title");
+  const title = document.querySelectorAll("#titleContainer");
   const body = document.querySelectorAll(".body");
   // const buttons = document.querySelectorAll(".btn");
+  const background = document.querySelectorAll("#background");
   const range = 20;
 
   const calcValue = (a, b) => ((a / b) * range - range / 2).toFixed(1);
@@ -54,11 +55,11 @@ if (
           // input.style.transform = `translateX(0) translateY(0)`;
         });
 
-        // [].forEach.call(backgrounds, (input) => {
-        //   input.style.backgroundPosition = `${-xValue * 0.1 - 5}vw ${
-        //     -yValue * 0.1 - 5
-        //   }vh`;
-        // });
+        [].forEach.call(background, (input) => {
+          input.style.backgroundPosition = `${xValue * 0.02}vw ${
+            yValue * 0.02
+          }vh`;
+        });
       });
     },
     false
