@@ -3,10 +3,32 @@ if (
     navigator.userAgent
   )
 ) {
+  const title = document.querySelectorAll(".title");
+  const body = document.querySelectorAll(".body");
+  // const buttons = document.querySelectorAll(".btn");
+
+  function handleOrientation(event) {
+    var y = event.beta - 90; // In degree in the range [-180,180]
+    var x = event.gamma; // In degree in the range [-90,90]
+
+    // To make computation easier we shift the range of
+    // x and y to [0,180]
+    x += 90;
+    y += 90;
+
+    title.style.transform = `translateX(${-xValue * 0.5}px) translateY(${
+      -yValue * 0.5
+    }px)`;
+    body.style.transform = `translateX(${-xValue * 0.3}px) translateY(${
+      -yValue * 0.3
+    }px)`;
+  }
+
+  window.addEventListener("deviceorientation", handleOrientation, true);
 } else {
   const title = document.querySelectorAll(".title");
   const body = document.querySelectorAll(".body");
-  const buttons = document.querySelectorAll(".btn");
+  // const buttons = document.querySelectorAll(".btn");
   const range = 20;
 
   const calcValue = (a, b) => ((a / b) * range - range / 2).toFixed(1);
