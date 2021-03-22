@@ -41,7 +41,7 @@
 body {
   background-color: #dddddd !important;
   color: black !important;
-  overflow: hidden;
+  overflow-x: hidden;
 
   /* Disable Text Selection */
   user-select: none; /* supported by Chrome and Opera */

@@ -8,34 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Site Icon -->
-    <link rel="icon" href="./images/png/favicon.png">
+    <link rel="icon" href="../images/png/favicon.png">
 
     <!-- Personal CSS -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Fontawesome Script -->
     <script src="https://kit.fontawesome.com/e80db28d62.js" crossorigin="anonymous"></script>
 
-    <!-- Mobile Detection -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
-    <script>
-        window.addEventListener("load", function () {
-            var md = new MobileDetect(window.navigator.userAgent);
-            console.log(md.mobile()); // null if not mobile device
-            console.log(md.phone()); // null if not smartphone
-            console.log(md.tablet()); // null if not tablet
-            console.log(md.userAgent()); // Browser used
-            console.log(md.os()); // Operating System
-            console.log(md.version('Webkit')); // Webkit version
-            console.log(md.versionStr('Build')); // Build
-
-            if (md.mobile() != null) {
-                window.location.href = "./mobile/"
-            }
-        });
-    </script>
 </head>
 
 <body>
@@ -54,7 +36,7 @@
     <!-- Begin Page -->
     <main class="body">
         <div class="d-lg-flex justify-content-center">
-            <h1 class="title">HELLO<span class="easter-egg">.</span></h1>
+            <h1 class="title">HELLO.</h1>
 
         </div>
 
@@ -88,30 +70,6 @@
             }, 250)
         }
     </script>
-    <!-- Easter Egg Script -->
-    <script>
-        var animateButton = function (e) {
-            var audio = new Audio('./media/mp3/honk.mp3');
-            audio.volume = 0.2;
-            e.preventDefault;
-            //reset animation
-            e.target.classList.remove('animate');
-            e.target.classList.add('animate');
-            audio.play();
-            setTimeout(function () {
-                e.target.classList.remove('animate');
-            }, 500);
-        };
-
-        var classname = document.getElementsByClassName("easter-egg");
-
-        for (var i = 0; i < classname.length; i++) {
-            classname[i].addEventListener('click', animateButton, false);
-        }
-    </script>
-    <!-- Parallax -->
-    <script src="./script/parallax.js"></script>
-
     <div class="version">
         <h6>0.1.8</h6>
     </div>
