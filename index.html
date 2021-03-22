@@ -34,19 +34,22 @@
 
     <!-- Begin Page -->
     <div class="d-lg-flex justify-content-center">
-        <h1 class="title">HELLO<span class="easter-egg">.</span></h1>
+        <h1 class="title">HELLO</h1>
+        <div class="title easter-egg"></div>
+
     </div>
     <script>
         var animateButton = function (e) {
-
+            var audio = new Audio('./media/mp3/honk.mp3');
+            audio.volume = 0.2;
             e.preventDefault;
             //reset animation
             e.target.classList.remove('animate');
-
             e.target.classList.add('animate');
+            audio.play();
             setTimeout(function () {
                 e.target.classList.remove('animate');
-            }, 700);
+            }, 500);
         };
 
         var classname = document.getElementsByClassName("easter-egg");
@@ -71,7 +74,6 @@
             <p>The quick, brown fox jumps over the laxy dog.</p>
         </div>
     </div>
-
     <!-- Button Toggle -->
     <script type="text/javascript">
         // let open = false;
@@ -81,11 +83,6 @@
             setTimeout(() => {
                 $('#button').removeClass('clicked');
             }, 250)
-            // if (!open) {
-            //     open = true;
-            // } else {
-            //     open = false;
-            // }
         }
     </script>
 

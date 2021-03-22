@@ -41,6 +41,7 @@
 body {
   background-color: #dddddd !important;
   color: black !important;
+  overflow: hidden;
 
   /* Disable Text Selection */
   user-select: none; /* supported by Chrome and Opera */
@@ -92,14 +93,6 @@ body {
   border-color: black !important;
   box-shadow: 0px 15px 15px 0px rgba(0, 0, 0, 0.2);
 }
-/* .button:active {
-  transform: scale(0.95);
-  background-color: #eceaea !important;
-  color: #4d4d4d;
-  border-color: #4d4d4d;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
-  transition: 100ms ease !important;
-} */
 
 .clicked {
   animation: btnClicked 250ms ease-in-out;
@@ -161,6 +154,14 @@ h6 {
 }
 
 /* Testing Classes */
+.easter-egg {
+  height: 25px;
+  width: 25px;
+  margin-top: 85px;
+  background: black;
+  display: inline-block;
+  position: relative;
+}
 .easter-egg:focus {
   outline: 0;
 }
@@ -190,8 +191,8 @@ h6 {
     radial-gradient(circle, #000000 20%, transparent 20%),
     radial-gradient(circle, #000000 20%, transparent 20%),
     radial-gradient(circle, #000000 20%, transparent 20%);
-  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
-    10% 10%, 18% 18%;
+  background-size: 30% 30%, 40% 40%, 35% 35%, 40% 40%, 38% 38%, 30% 30%, 35% 35%,
+    30% 30%, 38% 38%;
 }
 
 .easter-egg:after {
@@ -204,7 +205,8 @@ h6 {
     radial-gradient(circle, #000000 20%, transparent 20%),
     radial-gradient(circle, #000000 20%, transparent 20%),
     radial-gradient(circle, #000000 20%, transparent 20%);
-  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+  background-size: 30% 30%, 40% 40%, 35% 35%, 40% 40%, 38% 38%, 30% 30%, 35% 35%,
+    30% 30%, 38% 38%;
 }
 
 .easter-egg.animate:before {
