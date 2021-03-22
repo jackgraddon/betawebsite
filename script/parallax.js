@@ -1,5 +1,5 @@
 const title = document.querySelectorAll(".title");
-const body = document.querySelectorAll("body");
+const body = document.querySelectorAll(".body");
 const buttons = document.querySelectorAll(".btn");
 const range = 20;
 
@@ -30,11 +30,11 @@ document.addEventListener(
         // input.style.transform = `translateX(0) translateY(0)`;
       });
 
-      [].forEach.call(backgrounds, (input) => {
-        input.style.backgroundPosition = `${-xValue * 0.1 - 5}vw ${
-          -yValue * 0.1 - 5
-        }vh`;
-      });
+      // [].forEach.call(backgrounds, (input) => {
+      //   input.style.backgroundPosition = `${-xValue * 0.1 - 5}vw ${
+      //     -yValue * 0.1 - 5
+      //   }vh`;
+      // });
     });
   },
   false

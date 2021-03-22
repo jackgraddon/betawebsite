@@ -21,6 +21,7 @@
 </head>
 
 <body>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -33,11 +34,44 @@
         crossorigin="anonymous"></script>
 
     <!-- Begin Page -->
-    <div class="d-lg-flex justify-content-center">
-        <h1 class="title">HELLO</h1>
-        <div class="title easter-egg"></div>
+    <main class="body">
+        <div class="d-lg-flex justify-content-center">
+            <h1 class="title">HELLO</h1>
+            <div class="title easter-egg"></div>
 
-    </div>
+        </div>
+
+        <!-- Font Test -->
+        <div id="fontTest" class="d-flex flex-column justify-content-center align-items-center">
+            <span onclick="showHide()" class="button" id="button">
+                <p>Toggle Font Test</p>
+            </span>
+            <div style="overflow: hidden;" id="fonts" hidden>
+                <h1>The quick, brown fox jumps over the laxy dog.</h1>
+                <h2>The quick, brown fox jumps over the laxy dog.</h2>
+                <h3>The quick, brown fox jumps over the laxy dog.</h3>
+                <h4>The quick, brown fox jumps over the laxy dog.</h4>
+                <h5>The quick, brown fox jumps over the laxy dog.</h5>
+                <h6>The quick, brown fox jumps over the laxy dog.</h6>
+                <p>The quick, brown fox jumps over the laxy dog.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Sctipt -->
+    <!-- Button Toggle -->
+    <script type="text/javascript">
+        // let open = false;
+        function showHide() {
+            document.getElementById('fonts').toggleAttribute('hidden')
+            $('#button').addClass('clicked');
+            setTimeout(() => {
+                $('#button').removeClass('clicked');
+            }, 250)
+        }
+    </script>
+    <!-- Easter Egg Script -->
     <script>
         var animateButton = function (e) {
             var audio = new Audio('./media/mp3/honk.mp3');
@@ -58,36 +92,11 @@
             classname[i].addEventListener('click', animateButton, false);
         }
     </script>
-
-    <!-- Font Test -->
-    <div id="fontTest" class="d-flex flex-column justify-content-center align-items-center">
-        <span onclick="showHide()" class="button" id="button">
-            <p>Toggle Font Test</p>
-        </span>
-        <div style="overflow: hidden;" id="fonts" hidden>
-            <h1>The quick, brown fox jumps over the laxy dog.</h1>
-            <h2>The quick, brown fox jumps over the laxy dog.</h2>
-            <h3>The quick, brown fox jumps over the laxy dog.</h3>
-            <h4>The quick, brown fox jumps over the laxy dog.</h4>
-            <h5>The quick, brown fox jumps over the laxy dog.</h5>
-            <h6>The quick, brown fox jumps over the laxy dog.</h6>
-            <p>The quick, brown fox jumps over the laxy dog.</p>
-        </div>
-    </div>
-    <!-- Button Toggle -->
-    <script type="text/javascript">
-        // let open = false;
-        function showHide() {
-            document.getElementById('fonts').toggleAttribute('hidden')
-            $('#button').addClass('clicked');
-            setTimeout(() => {
-                $('#button').removeClass('clicked');
-            }, 250)
-        }
-    </script>
-
     <!-- Parallax -->
     <script src="./script/parallax.js"></script>
 </body>
+<div class="version">
+    <h6>0.1.3</h6>
+</div>
 
 </html>

@@ -138,6 +138,14 @@ h6 {
   font-family: "ModernSans", sans-serif;
 }
 
+.version {
+  position: fixed;
+  bottom: -10px;
+  right: 0;
+
+  padding: 10px;
+}
+
 /* Text Examples */
 #fonts {
   padding: 10px;
@@ -155,9 +163,9 @@ h6 {
 
 /* Testing Classes */
 .easter-egg {
-  height: 25px;
-  width: 25px;
-  margin-top: 85px;
+  height: 25px !important;
+  width: 25px !important;
+  top: 85px;
   background: black;
   display: inline-block;
   position: relative;
