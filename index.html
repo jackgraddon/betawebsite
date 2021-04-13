@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Site Icon -->
-    <link rel="icon" href="./images/png/favicon.png">
+    <link rel="icon" id="favicon">
 
     <!-- Personal CSS -->
     <link rel="stylesheet" href="./css/style.css">
@@ -36,6 +36,7 @@
             }
         });
     </script>
+
 </head>
 
 <body>
@@ -54,52 +55,83 @@
     <script type="text/javascript" src="./script/btnClick.js"></script>
 
     <!-- If Window Too Small -->
-    <div style="background-color: #ddd9d9; width: 100vw; height: 100vh; z-index: 100; opacity: 0; position: absolute; transition: 300ms ease;"
+    <div style="background-color: #ddd9d9; width: 100vw; height: 100vh; z-index: -100; opacity: 0; position: absolute; transition: 300ms ease;"
         class="d-flex flex-column justify-content-center align-items-center" id="windowSizeAlert">
         <h2>This window is too small!</h2>
         <p><i>Please make the window larger.</i></p>
     </div>
     <script type="text/javascript">
-        if ((window.innerWidth < 600) || (window.innerHeight < 600)) {
+        if ((window.innerWidth < 750) || (window.innerHeight < 600)) {
+            $('#windowSizeAlert').css('z-index', '100');
             $('#windowSizeAlert').css('opacity', '1');
         } else {
             $('#windowSizeAlert').css('opacity', '0');
+            setTimeout(() => {
+                $('#windowSizeAlert').css('z-index', '-100')
+            }, 300)
         }
         window.addEventListener("resize", () => {
-            if ((window.innerWidth < 600) || (window.innerHeight < 600)) {
+            if ((window.innerWidth < 750) || (window.innerHeight < 600)) {
+                $('#windowSizeAlert').css('z-index', '100');
                 $('#windowSizeAlert').css('opacity', '1');
             } else {
                 $('#windowSizeAlert').css('opacity', '0');
+                setTimeout(() => {
+                    $('#windowSizeAlert').css('z-index', '-100')
+                }, 300)
             }
         });
     </script>
+
     <!-- Begin Page -->
-    <div style="background-image: url(./images/png/background.png);background-size: cover; height: 117vh; width: 50vw; z-index: 0; position: absolute;"
-        id="background">
+    <div id="backgroundTitle">
     </div>
-    <div style="height: 100vh; width: 50vw; z-index: 0; position: absolute; right: 0;" id="backgroundInfo">
-        <div class="d-flex flex-column justify-content-center align-items-end">
-            <h4>// Jack Graddon</h4>
-            <h4>// Web Designer</h4>
-            <h4>// Graphic Artist</h4>
-            <h4>// Jack Graddon</h4>
+    <div class="sticky-top" style="z-index: 5; right: 0; top: 35vh; position: fixed;">
+        <div class="d-flex flex-column justify-content-center align-items-end" id="backgroundInfo">
+            <span>
+                <h4 class="subtitle" onclick="javascript:scrollDown('about', 'bgInfo1')" id="bgInfo1">// Jack Graddon
+                </h4>
+                <h4 class="subtitle" id="bgInfo2">// Web Designer</h4>
+                <h4 class="subtitle" id="bgInfo3">// Graphic Artist</h4>
+                <h4 class="subtitle" id="bgInfo4">// Text...</h4>
+            </span>
         </div>
     </div>
     <main class="body">
-        <div class="d-flex flex-column justify-content-center align-items-center fullPage"
-            style="height: 100vh; width: 100vw;" id="titleContainer">
-            <h1 class="title">HELLO<span class="easter-egg">.</span></h1>
-            <a onclick="javascript:scrollDown('about', 'titleGo')" class="button" id="titleGo">
-                <p>Continue <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></p>
-            </a>
+        <!-- <div class=""> -->
+        <div class="rellax" data-rellax-speed="-2">
+            <div class="d-flex flex-column justify-content-center align-items-center fullPage"
+                style="height: 100vh; width: 100vw;" id="titleContainer">
+                <h1 class="title">HELLO<span class="easter-egg">.</span></h1>
+                <a onclick="javascript:scrollDown('about', 'titleGo')" class="button btn-vertical" id="titleGo">
+                    <p>Continue <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></p>
+                </a>
+            </div>
         </div>
-        <div class="d-lg-flex justify-content-left alignt-items-center fullPage" id="about">
-            <h1 class="title text-white pl-2">ABOUT.</h1>
+        <!-- </div> -->
+        <div class="d-lg-flex flex-column justify-content-left alignt-items-center fullPage rellax"
+            data-rellax-speed="4" id="about" style="padding-left: 10vw;">
+            <h1 class="title text-white" style="z-index: 1 !important; margin-top: 240px;" id="aboutText">ABOUT.
+            </h1>
+            <div>
+                <h3>I'm Jack Graddon.</h3>
+                <p>I'm a high school class of '22 student at Lynden High School in Lynden, Washington. My interest
+                    in
+                    graphic esign was started in my younger years at my grandparents house, where I had access to a
+                    computer with Microsoft Publisher. Publisher isn't exactly the staple of graphic design
+                    software,
+                    let alone graphic design software at all, but it is what got me interested in design. This then
+                    led
+                    to various apps related to graphic design and digital art, such as Procreate and Affinity
+                    Designer,
+                    which I bought for my iPad Pro (2017) from mowing lawns.</p>
+            </div>
         </div>
 
 
         <!-- Font Test -->
-        <div id="fontTest" class="d-flex flex-column justify-content-center align-items-center mt-5">
+        <div id="fontTest" class="d-flex flex-column justify-content-center align-items-center mt-5"
+            style="z-index: 3 !important;">
             <span onclick="showHide('fontToggle')" class="button" id="fontToggle">
                 <p>Toggle Font Test <i class="fa fa-plus-circle" aria-hidden="true" id="fontIcon"
                         style="transform:rotateZ(0deg);"></i></p>
@@ -114,7 +146,7 @@
                 <p>The quick, brown fox jumps over the lazy dog.</p>
             </div>
         </div>
-
+        <div class="mt-5 mb-5" style="height: 50px;"></div>
     </main>
 
     <!-- Sctipt -->
@@ -122,12 +154,14 @@
     <script type="text/javascript">
         function scrollDown(id, btn) {
             let multiplier;
+            let y;
             switch (id) {
                 case 'about':
                     multiplier = 1;
+                    y = window.innerHeight;
                     break;
             }
-            let y = window.innerHeight * multiplier;
+            // let y = window.innerHeight * multiplier;
             window.scrollTo({
                 top: y,
                 left: 0,
@@ -156,14 +190,14 @@
         var animateButton = function (e) {
             var audio = new Audio('./media/mp3/honk.mp3');
             audio.volume = 0.2;
-            e.preventDefault;
-            //reset animation
-            e.target.classList.remove('animate');
-            e.target.classList.add('animate');
+            // e.preventDefault;
+            // //reset animation
+            // e.target.classList.remove('animate');
+            // e.target.classList.add('animate');
             audio.play();
-            setTimeout(function () {
-                e.target.classList.remove('animate');
-            }, 500);
+            // setTimeout(function () {
+            //     e.target.classList.remove('animate');
+            // }, 500);
         };
 
         var classname = document.getElementsByClassName("easter-egg");
@@ -174,9 +208,25 @@
     </script>
     <!-- Parallax -->
     <script src="./script/parallax.js"></script>
+    <!-- Rellax -->
+    <script src="./script/rellax.min.js"></script>
+    <script type="text/javascript">var rellax = new Rellax('.rellax');</script>
+    <!-- Background Color Changer -->
+    <script>
+        let rand = Math.floor(Math.random() * 3) + 1;
+        let imgUrl = `./images/jpg/background-${rand}.jpg`;
+        let faviconUrl = `./images/png/favicon-${rand}.png`;
+        document.getElementById('favicon').href = faviconUrl;
+        document.getElementById('backgroundTitle').style.backgroundImage = `url('${imgUrl}')`;
+        document.getElementById('bgInfo1').style.backgroundImage = `url('${imgUrl}')`;
+        document.getElementById('bgInfo2').style.backgroundImage = `url('${imgUrl}')`;
+        document.getElementById('bgInfo3').style.backgroundImage = `url('${imgUrl}')`;
+        document.getElementById('bgInfo4').style.backgroundImage = `url('${imgUrl}')`;
+
+    </script>
 
     <div class="version">
-        <h6>0.1.11</h6>
+        <h6>0.1.12</h6>
     </div>
 </body>
 
