@@ -35,7 +35,7 @@ if (md.mobile() != null) {
 
     // Backround
     [].forEach.call(background, (input) => {
-      input.style.backgroundPosition = `${xValue * 0.02}vw ${yValue * 0.02}vh`;
+      input.style.backgroundPosition = `${xValue * 0.02}px ${yValue * 0.02}px`;
     });
     [].forEach.call(backgroundInfo, (input) => {
       input.style.transform = `translateX(${xValue * 0.3}px) translateY(${

@@ -2,232 +2,141 @@
 <html lang="en">
 
 <head>
-    <title>Jack Graddon - Beta</title>
+    <title>Beta | Jack Graddon</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color">
 
-    <!-- Site Icon -->
-    <link rel="icon" id="favicon">
-
-    <!-- Personal CSS -->
-    <link rel="stylesheet" href="./css/style.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Fontawesome Script -->
-    <script src="https://kit.fontawesome.com/e80db28d62.js" crossorigin="anonymous"></script>
-
-    <!-- Mobile Detection -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
-    <script>
-        window.addEventListener("load", function () {
-            var md = new MobileDetect(window.navigator.userAgent);
-            console.log(md.mobile()); // null if not mobile device
-            console.log(md.phone()); // null if not smartphone
-            console.log(md.tablet()); // null if not tablet
-            console.log(md.userAgent()); // Browser used
-            console.log(md.os()); // Operating System
-            console.log(md.version('Webkit')); // Webkit version
-            console.log(md.versionStr('Build')); // Build
-
-            if (md.mobile() != null) {
-                window.location.href = "./mobile/"
-            }
-        });
-    </script>
-
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
+    <!-- Optional JavaScript -->
+    <script>
+        var dateFull = new Date();
+        var date = {
+            year: dateFull.getFullYear(),
+            month: dateFull.getMonth() + 1,
+            calDay: dateFull.getDate(),
+            day: dateFull.getUTCDay(),
+            hour: dateFull.getHours(),
+        }
+        console.log(date.year, date.month, date.calDay, date.day, date.hour);
+        let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS, then custom JS loaded at the top. -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            let title = document.getElementById('title');
+            let subtitle = document.getElementById('subtitle');
+            let body = document.getElementById('background');
+            let meta = document.querySelector('meta[name="theme-color"]')
+            let stylesheet = document.querySelector('link[href="./css/style.css"]');
+
+            date.hour = 18;
+            if ((date.hour >= 5) && (date.hour < 12)) {
+                title.innerHTML = "Good morning!";
+                subtitle.innerHTML = "It's going to be a great day.";
+                $('body').css('background-color', '#33004f');
+                $('#background').css('background-image', 'linear-gradient(180deg, rgba(51,0,79,1) 0%, rgba(177,72,38,1) 100%)');
+                meta.setAttribute('content', '#33004f')
+            } else if ((date.hour >= 12) && (date.hour < 18)) {
+                title.innerHTML = "Good afternoon!";
+                subtitle.innerHTML = "What a beautiful day it is.";
+                $('body').css('background-color', '#067bbb');
+                $('#background').css('background-image', 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)');
+                meta.setAttribute('content', '#067bbb')
+            } else if ((date.hour >= 18) && (date.hour < 22)) {
+                title.innerHTML = "Good evening!";
+                subtitle.innerHTML = "Don't miss the sunset.";
+                $('body').css('background-color', '#79a3cf');
+                $('#background').css('background-image', 'linear-gradient(180deg, rgba(121, 163, 207,1) 0%, rgba(255, 158, 73,1) 100%)');
+                meta.setAttribute('content', '#79a3cf')
+            } else if ((date.hour >= 22) || (date.hour < 5)) {
+                title.innerHTML = "Good night!";
+                subtitle.innerHTML = "The moon shines bright outside tonight.";
+                $('body').css('background-color', '#13001d');
+                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
+                meta.setAttribute('content', '#13001d')
+                stylesheet.setAttribute('href', './css/styleDark.css');
+            }
+
+            if (matched && ((date.hour <= 22) && (date.hour > 5))) {
+                title.innerHTML = "Good night!";
+                subtitle.innerHTML = "It isn't night yet, but your computer told me it is.";
+                $('body').css('background-color', '#13001d');
+                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
+                meta.setAttribute('content', '#13001d')
+                stylesheet.setAttribute('href', './css/styleDark.css');
+                console.log('Browser in dark mode, night color scheme applied.')
+            } else {
+                console.log('Browser in light mode, default color scheme applied.')
+            }
+        });
+        let i = 0;
+        let j = 0;
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
+                while (i < 1) {
+                    var curHeight = $('#header').height();
+                    $('#header').css('height', 'fit-content');
+                    var autoHeight = $('#header').height();
+                    $('#header').height(curHeight).animate({ height: autoHeight }, 300, () => { console.log('Fit') });
+                    $('#header').addClass('mt-5');
+                    $('#header').addClass('mb-5');
+                    i++;
+                    j = 0;
+                }
+            }
+            // else if (document.body.scrollTop == 0 || document.documentElement.scrollTop == 0) {
+            //     while (j < 1) {
+            //         var curHeight = $('#header').height();
+            //         $('#header').css('height', '100vh');
+            //         // var fullHeight = $('#header').height();
+            //         $('#header').height(curHeight).animate({ height: '100vh' }, 300, () => { console.log('Full') });
+            //         $('#header').removeClass('pt-5');
+            //         j++;
+            //         i = 0;
+            //     }
+            // }
+        };
+
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS, then Rellax.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <!-- Button Click Effect -->
-    <script type="text/javascript" src="./script/btnClick.js"></script>
-
-    <!-- If Window Too Small -->
-    <div style="background-color: #ddd9d9; width: 100vw; height: 100vh; z-index: -100; opacity: 0; position: absolute; transition: 300ms ease;"
-        class="d-flex flex-column justify-content-center align-items-center" id="windowSizeAlert">
-        <h2>This window is too small!</h2>
-        <p><i>Please make the window larger.</i></p>
-    </div>
-    <script type="text/javascript">
-        if ((window.innerWidth < 750) || (window.innerHeight < 600)) {
-            $('#windowSizeAlert').css('z-index', '100');
-            $('#windowSizeAlert').css('opacity', '1');
-        } else {
-            $('#windowSizeAlert').css('opacity', '0');
-            setTimeout(() => {
-                $('#windowSizeAlert').css('z-index', '-100')
-            }, 300)
-        }
-        window.addEventListener("resize", () => {
-            if ((window.innerWidth < 750) || (window.innerHeight < 600)) {
-                $('#windowSizeAlert').css('z-index', '100');
-                $('#windowSizeAlert').css('opacity', '1');
-            } else {
-                $('#windowSizeAlert').css('opacity', '0');
-                setTimeout(() => {
-                    $('#windowSizeAlert').css('z-index', '-100')
-                }, 300)
-            }
-        });
-    </script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
+    <script>
+        var rellax = new Rellax('.rellax');
+    </script> -->
 
     <!-- Begin Page -->
-    <div id="backgroundTitle">
-    </div>
-    <div class="sticky-top" style="z-index: 5; right: 0; top: 35vh; position: fixed;">
-        <div class="d-flex flex-column justify-content-center align-items-end" id="backgroundInfo">
-            <span>
-                <h4 class="subtitle" onclick="javascript:scrollDown('about', 'bgInfo1')" id="bgInfo1">// Jack Graddon
-                </h4>
-                <h4 class="subtitle" id="bgInfo2">// Web Designer</h4>
-                <h4 class="subtitle" id="bgInfo3">// Graphic Artist</h4>
-                <h4 class="subtitle" id="bgInfo4">// Text...</h4>
-            </span>
+    <div id="background"></div>
+    <div class="d-flex flex-row justify-content-center align-content-center" id="header" style="height: 100vh;">
+        <div class="d-flex justify-content-center align-items-center w-100">
+            <div class="d-flex flex-column" style="height: fit-content; width: fit-content;">
+                <h1 class="m-auto" id="title">Hello!</h1>
+                <p class="lead m-auto" id="subtitle">Have a great day!</p>
+            </div>
         </div>
     </div>
-    <main class="body">
-        <!-- <div class=""> -->
-        <div class="rellax" data-rellax-speed="-2">
-            <div class="d-flex flex-column justify-content-center align-items-center fullPage"
-                style="height: 100vh; width: 100vw;" id="titleContainer">
-                <h1 class="title">HELLO<span class="easter-egg">.</span></h1>
-                <a onclick="javascript:scrollDown('about', 'titleGo')" class="button btn-vertical" id="titleGo">
-                    <p>Continue <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></p>
-                </a>
-            </div>
-        </div>
-        <!-- </div> -->
-        <div class="d-lg-flex flex-column justify-content-left alignt-items-center fullPage rellax"
-            data-rellax-speed="4" id="about" style="padding-left: 10vw;">
-            <h1 class="title text-white" style="z-index: 1 !important; margin-top: 240px;" id="aboutText">ABOUT.
-            </h1>
-            <div>
-                <h3>I'm Jack Graddon.</h3>
-                <p>I'm a high school class of '22 student at Lynden High School in Lynden, Washington. My interest
-                    in
-                    graphic esign was started in my younger years at my grandparents house, where I had access to a
-                    computer with Microsoft Publisher. Publisher isn't exactly the staple of graphic design
-                    software,
-                    let alone graphic design software at all, but it is what got me interested in design. This then
-                    led
-                    to various apps related to graphic design and digital art, such as Procreate and Affinity
-                    Designer,
-                    which I bought for my iPad Pro (2017) from mowing lawns.</p>
-            </div>
-        </div>
 
-
-        <!-- Font Test -->
-        <div id="fontTest" class="d-flex flex-column justify-content-center align-items-center mt-5"
-            style="z-index: 3 !important;">
-            <span onclick="showHide('fontToggle')" class="button" id="fontToggle">
-                <p>Toggle Font Test <i class="fa fa-plus-circle" aria-hidden="true" id="fontIcon"
-                        style="transform:rotateZ(0deg);"></i></p>
-            </span>
-            <div style="overflow: hidden;" id="fonts" hidden>
-                <h1>The quick, brown fox jumps over the lazy dog.</h1>
-                <h2>The quick, brown fox jumps over the lazy dog.</h2>
-                <h3>The quick, brown fox jumps over the lazy dog.</h3>
-                <h4>The quick, brown fox jumps over the lazy dog.</h4>
-                <h5>The quick, brown fox jumps over the lazy dog.</h5>
-                <h6>The quick, brown fox jumps over the lazy dog.</h6>
-                <p>The quick, brown fox jumps over the lazy dog.</p>
-            </div>
+    <main class="container mt-5" style="height: 100vh;">
+        <div class="jumbotron">
+            Here for the looks :)
         </div>
-        <div class="mt-5 mb-5" style="height: 50px;"></div>
     </main>
 
-    <!-- Sctipt -->
-    <!-- Scrollign -->
-    <script type="text/javascript">
-        function scrollDown(id, btn) {
-            let multiplier;
-            let y;
-            switch (id) {
-                case 'about':
-                    multiplier = 1;
-                    y = window.innerHeight;
-                    break;
-            }
-            // let y = window.innerHeight * multiplier;
-            window.scrollTo({
-                top: y,
-                left: 0,
-                behavior: 'smooth'
-            });
-            click(btn);
-        }
-    </script>
-    <!-- Button Toggle -->
-    <script type="text/javascript">
-        let open = false;
-        function showHide(id) {
-            document.getElementById('fonts').toggleAttribute('hidden')
-            if (!open) {
-                document.getElementById('fontIcon').style['transform'] = 'rotate(45deg)';
-                open = true;
-            } else {
-                document.getElementById('fontIcon').style['transform'] = 'rotate(0deg)';
-                open = false;
-            }
-            click(id);
-        }
-    </script>
-    <!-- Easter Egg Script -->
-    <script>
-        var animateButton = function (e) {
-            var audio = new Audio('./media/mp3/honk.mp3');
-            audio.volume = 0.2;
-            // e.preventDefault;
-            // //reset animation
-            // e.target.classList.remove('animate');
-            // e.target.classList.add('animate');
-            audio.play();
-            // setTimeout(function () {
-            //     e.target.classList.remove('animate');
-            // }, 500);
-        };
-
-        var classname = document.getElementsByClassName("easter-egg");
-
-        for (var i = 0; i < classname.length; i++) {
-            classname[i].addEventListener('click', animateButton, false);
-        }
-    </script>
-    <!-- Parallax -->
-    <script src="./script/parallax.js"></script>
-    <!-- Rellax -->
-    <script src="./script/rellax.min.js"></script>
-    <script type="text/javascript">var rellax = new Rellax('.rellax');</script>
-    <!-- Background Color Changer -->
-    <script>
-        let rand = Math.floor(Math.random() * 3) + 1;
-        let imgUrl = `./images/jpg/background-${rand}.jpg`;
-        let faviconUrl = `./images/png/favicon-${rand}.png`;
-        document.getElementById('favicon').href = faviconUrl;
-        document.getElementById('backgroundTitle').style.backgroundImage = `url('${imgUrl}')`;
-        document.getElementById('bgInfo1').style.backgroundImage = `url('${imgUrl}')`;
-        document.getElementById('bgInfo2').style.backgroundImage = `url('${imgUrl}')`;
-        document.getElementById('bgInfo3').style.backgroundImage = `url('${imgUrl}')`;
-        document.getElementById('bgInfo4').style.backgroundImage = `url('${imgUrl}')`;
-
-    </script>
-
-    <div class="version">
-        <h6>0.1.12</h6>
-    </div>
 </body>
 
 </html>

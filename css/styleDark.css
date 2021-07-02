@@ -1,7 +1,7 @@
 :root {
-  --theme: #b3e5fc;
-  --primary: #82b3c9;
-  --secondary: #e6ffff;
+  --theme: #283593;
+  --primary: #001064;
+  --secondary: #5f5fc4;
 }
 
 /* Font */
@@ -47,10 +47,10 @@ h3 {
 
 /* Buttons */
 .btn-primary {
-  background-color: var(--primary);
-  color: var(--primary);
+  background-color: var(--dark-primary);
+  color: var(--dark-primary);
 }
 .btn-secondary {
-  background-color: var(--secondary);
-  color: var(--secondary);
+  background-color: var(--dark-secondary);
+  color: var(--dark-secondary);
 }
