@@ -107,6 +107,24 @@
         };
 
     </script>
+    <!-- Mobile Detection -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
+    <script>
+        window.addEventListener("load", function () {
+            var md = new MobileDetect(window.navigator.userAgent);
+            console.log(md.mobile()); // null if not mobile device
+            console.log(md.phone()); // null if not smartphone
+            console.log(md.tablet()); // null if not tablet
+            console.log(md.userAgent()); // Browser used
+            console.log(md.os()); // Operating System
+            console.log(md.version('Webkit')); // Webkit version
+            console.log(md.versionStr('Build')); // Build
+
+            if (md.mobile() != null) {
+                document.getElementById('title').addClass('p-1');
+            }
+        });
+    </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS, then Rellax.js -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -124,7 +142,7 @@
     <div id="background"></div>
     <div class="d-flex flex-row justify-content-center align-content-center" id="header" style="height: 100vh;">
         <div class="d-flex justify-content-center align-items-center w-100">
-            <div class="d-flex flex-column" style="height: fit-content; width: fit-content;">
+            <div class="d-flex flex-column container" style="height: fit-content; width: fit-content;">
                 <h1 class="m-auto" id="title">Hello!</h1>
                 <p class="lead m-auto" id="subtitle">Have a great day!</p>
             </div>
