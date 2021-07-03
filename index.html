@@ -79,8 +79,10 @@
                 meta.setAttribute('content', '#13001d')
                 stylesheet.setAttribute('href', './css/styleDark.css');
                 console.log('Browser in dark mode, night color scheme applied.')
+            } else if (matched) {
+                console.log('Browser in dark mode, but the default color scheme was applied.')
             } else {
-                console.log('Browser in light mode, default color scheme applied.')
+                console.log('Browser in light mode, default color scheme applied.');
             }
         }
 
@@ -94,6 +96,12 @@
         });
 
         function setDarkMode() {
+            let title = document.getElementById('title');
+            let subtitle = document.getElementById('subtitle');
+            let body = document.getElementById('background');
+            let condition = document.getElementById('condition');
+            let meta = document.querySelector('meta[name="theme-color"]')
+            let stylesheet = document.querySelector('link[href="./css/style.css"]');
             if (matched && ((date.hour < 22) && (date.hour > 5))) {
                 title.innerHTML = "Good night!";
                 subtitle.innerHTML = "It isn't night yet, but your computer told me it is.";
