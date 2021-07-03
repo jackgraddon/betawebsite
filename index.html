@@ -5,8 +5,9 @@
     <title>Beta | Jack Graddon</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
     <meta name="theme-color">
+    <meta name="og:title" content="Jack Graddon">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -89,13 +90,14 @@
         window.addEventListener('DOMContentLoaded', (event) => {
             colorSchemeSet()
             $('#scrollDown').fadeIn(1500);
-            $('#scrollArrow').fadeIn(1500);
+            $('#downArrow').fadeIn(1500);
             $('#title').fadeIn(1500);
             $('#subtitle').fadeIn(1500);
             $('#condition').fadeIn(1500);
 
             let rand = Math.floor(Math.random() * 3) + 1;
             console.log(rand);
+
             switch (rand) {
                 case 1:
                     $('#cloud').attr("src", "./images/png/front/cloud1.png");
@@ -108,7 +110,6 @@
                     break;
             }
             $('#cloudContainer').fadeIn(1500);
-
         });
 
         function setDarkMode() {
@@ -147,24 +148,30 @@
         let i = 0;
         let j = 0;
         window.onscroll = function () { scrollFunction() };
+        $(window).scroll(function () {
+            $('#cloudContainer').css("opacity", 1 - ($(window).scrollTop() * 10));
+        });
 
         function scrollFunction() {
             if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
                 while (i < 1) {
-                    let curHeight = $('#header').height();
-                    $('#header').css('height', 'fit-content');
-                    let autoHeight = $('#header').height();
-                    $('#header').height(curHeight).animate({ height: autoHeight }, 1000, () => { console.log('Fit') });
+                    // let curHeight = $('#header').height();
+                    // $('#header').css('height', 'fit-content');
+                    // let autoHeight = $('#header').height();
+                    // $('#header').height(curHeight).animate({ height: autoHeight }, 1000, () => { console.log('Fit') });
 
-                    let curTop = $("#cloudContainer").position().top;
-                    $("#cloudContainer").attr('top', curTop).animate({ top: '-50%', opacity: '0' }, 1000, () => {
-                        console.log('Cloud Rose'); $("#cloudContainer").hide();
-                    });
+                    // let curTop = $("#cloudContainer").position().top;
+                    // $("#cloudContainer").attr('top', curTop).animate({ top: '-50%', opacity: '0' }, 1000, () => {
+                    //     console.log('Cloud risen');;
+                    // });
                     // $('#header').addClass('mt-5');
                     // $('#header').addClass('mb-5');
                     $('#scrollDown').fadeOut(1000);
-                    $('#scrollArrow').fadeOut(1000);
+                    $('#downArrow').fadeOut(1000);
+                    $('#scrollTop').fadeIn(1000);
+                    $('#topArrow').fadeIn(1000);
                     $("#condition").fadeOut(1000);
+                    $('#scrollTop').fadeIn(1000);
                     $("#title").fadeOut(function () {
                         $(this).text("Jack Graddon").fadeIn();
                     });
@@ -205,7 +212,6 @@
             if (md.mobile() != null) {
                 document.getElementById('cloudContainer').style.width = '200%';
                 document.getElementById('cloudContainer').style.left = '-20%';
-                document.getElementById('cloudContainer').style.top = '65%';
             }
         });
     </script>
@@ -220,34 +226,48 @@
 
     <!-- Begin Page -->
     <div id="background"></div>
-    <div class="d-flex flex-row justify-content-center align-content-center pt-5" id="header"
-        style="height: 100vh; z-index: 1;">
+    <div class="d-flex flex-column justify-content-center align-content-center" id="header"
+        style="height: 140vh; z-index: 1; overflow-x: hidden;">
         <div class="d-flex justify-content-center align-items-center w-100">
             <div class="d-flex flex-column container" style="height: fit-content; width: fit-content;">
                 <p class="m-sm-auto" id="condition" style="display: none;"><i class="fa fa-heart"
                         aria-hidden="true"></i></p>
                 <h1 class="m-sm-auto" id="title" style="display: none;">Hello!</h1>
                 <p class="lead m-sm-auto" id="subtitle" style="display: none;">Have a great day!</p>
-                <p class="lead scrollDown m-sm-auto" id="scrollDown" style="font-size: smaller; display: none;">Scroll
-                    down to begin</p>
-                <img src="./images/svg/icon/arrow.svg" id="scrollArrow"
-                    style="rotate: 90deg; height: 20px; display: none;">
+                <a class="lead scroll m-sm-auto d-flex flex-column"
+                    onclick="javascript:document.getElementById('sectionOne').scrollIntoView({ block: 'end',  behavior: 'smooth' });">
+                    <p class="lead scroll m-auto" id="scrollDown" style="font-size: smaller; display: none;">
+                        Scroll Down</p>
+                    <img src="./images/svg/icon/arrow.svg" id="downArrow"
+                        style="rotate: 90deg; height: 20px; display: none;" class="m-sm-auto">
+                </a>
             </div>
         </div>
-    </div>
-
-    <div id="cloudContainer" class="rellax"
-        style="position: absolute; height: 100vh; width: 100vw; top: 65%; display: none;" data-rellax-speed="10">
-        <div class="d-flex flex-row">
+        <div id="cloudContainer" style="height: 50vh; display: none;">
             <img id="cloud" width="100%">
         </div>
     </div>
 
-    <main class="container mt-5" style="height: 100vh;">
-        <div class="d-flex flex-column justify-content-center align-items-center w-100">
+
+    <main class="container rellax" data-rellax-speed="-2" id="sectionOne" style="height: 100vh; z-index: 3;">
+        <div class="pt-5 d-flex flex-column justify-content-center align-items-center w-100">
             <h2>Website In Development</h2>
-            <p>Hello, and welcome to my new website!</p>
+            <p>Hello, and welcome to my new website! This page is still in very early access and likely will not
+                work as
+                intended 100% of the time. If you want to view a more stable page, please check out my current site
+                at
+                <a href="https://www.jackgraddon.page/" target="_blank">this page <i class="fa fa-external-link"
+                        aria-hidden="true"></i></a>.
+            </p>
         </div>
+        <!-- <div class="fixed-bottom p-2">
+            <a class="lead scroll m-sm-auto d-flex flex-column" onclick="window.scrollTo(0, 0);">
+                <img src="./images/svg/icon/arrow.svg" id="topArrow"
+                    style="rotate: -90deg; height: 20px; display: none;">
+                <p class="lead scroll m-sm-auto" id="scrollTop" style="font-size: smaller; display: none;">Scroll up to
+                    top</p>
+            </a>
+        </div> -->
     </main>
 
     <!-- Rellax JS -->

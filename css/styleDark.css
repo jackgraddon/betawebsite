@@ -16,6 +16,7 @@ body {
   background-repeat: no-repeat;
   color: white;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 #background {
   position: fixed;
@@ -38,6 +39,14 @@ h1,
 h2,
 h3 {
   font-family: "Sunflower", serif;
+}
+a {
+  color: white;
+  text-decoration: underline;
+  fill: white;
+}
+a:hover {
+  text-decoration: none;
 }
 #title {
   font-size: 48pt;
@@ -72,7 +81,7 @@ h3 {
     background-position: 0px;
   }
   100% {
-    background-position: 131px;
+    background-position: 77px;
   }
 }
 

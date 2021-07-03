@@ -15,7 +15,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
+  scroll-behavior: smooth;
 }
 #background {
   position: fixed;
@@ -39,6 +40,14 @@ h2,
 h3 {
   font-family: "Sunflower", serif;
 }
+a {
+  color: white;
+  text-decoration: underline;
+  fill: white;
+}
+a:hover {
+  text-decoration: none;
+}
 #title {
   font-size: 48pt;
   color: white;
@@ -46,7 +55,7 @@ h3 {
 #subtitle {
   color: white;
 }
-.scrollDown {
+.scroll {
   color: white;
   background: linear-gradient(
     to right,
@@ -56,6 +65,7 @@ h3 {
   );
   background-position: 0;
   background-clip: text;
+  background-color: rgba(255, 255, 255, 0.5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shine 3s infinite linear;
@@ -68,11 +78,11 @@ h3 {
 }
 
 @keyframes shine {
-  0% {
-    background-position: 0px;
+  from {
+    background-position: 0%;
   }
-  100% {
-    background-position: 131px;
+  to {
+    background-position: calc(77px);
   }
 }
 
