@@ -14,6 +14,7 @@
 body {
   background-size: cover;
   background-repeat: no-repeat;
+  color: white;
 }
 #background {
   position: fixed;
@@ -43,6 +44,35 @@ h3 {
 }
 #subtitle {
   color: white;
+}
+.scrollDown {
+  color: #ffffff;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.5) 0,
+    white 10%,
+    rgba(255, 255, 255, 0.5) 20%
+  );
+  background-position: 0;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+  animation-fill-mode: forwards;
+  -webkit-text-size-adjust: none;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: 131px;
+  }
 }
 
 /* Buttons */

@@ -11,6 +11,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Personal CSS -->
     <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -29,35 +31,40 @@
         console.log(date.year, date.month, date.calDay, date.day, date.hour);
         let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        window.addEventListener('DOMContentLoaded', (event) => {
+        function colorSchemeSet() {
             let title = document.getElementById('title');
             let subtitle = document.getElementById('subtitle');
             let body = document.getElementById('background');
+            let condition = document.getElementById('condition');
             let meta = document.querySelector('meta[name="theme-color"]')
             let stylesheet = document.querySelector('link[href="./css/style.css"]');
 
-            // date.hour = 18;
+            date.hour = 12;
             if ((date.hour >= 5) && (date.hour < 12)) {
                 title.innerHTML = "Good morning!";
                 subtitle.innerHTML = "It's going to be a great day.";
+                condition.innerHTML = "<img src=\"./images/svg/icon/sunrise.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#33004f');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(51,0,79,1) 0%, rgba(177,72,38,1) 100%)');
                 meta.setAttribute('content', '#33004f')
             } else if ((date.hour >= 12) && (date.hour < 18)) {
                 title.innerHTML = "Good afternoon!";
                 subtitle.innerHTML = "What a beautiful day it is.";
+                condition.innerHTML = "<img src=\"./images/svg/icon/sunny.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#067bbb');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)');
                 meta.setAttribute('content', '#067bbb')
             } else if ((date.hour >= 18) && (date.hour < 22)) {
                 title.innerHTML = "Good evening!";
                 subtitle.innerHTML = "Don't miss the sunset.";
-                $('body').css('background-color', '#79a3cf');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(121, 163, 207,1) 0%, rgba(255, 158, 73,1) 100%)');
-                meta.setAttribute('content', '#79a3cf')
+                condition.innerHTML = "<img src=\"./images/svg/icon/sunset.svg\" height=\"20pt\">";
+                $('body').css('background-color', '#2a6ca1');
+                $('#background').css('background-image', 'linear-gradient(0deg, rgba(255,177,177,1) 0%, rgba(226,218,187,1) 25%, rgba(184,214,228,1) 40%, rgba(42,108,161,1) 100%)');
+                meta.setAttribute('content', '#2a6ca1')
             } else if ((date.hour >= 22) || (date.hour < 5)) {
                 title.innerHTML = "Good night!";
                 subtitle.innerHTML = "The moon shines bright outside tonight.";
+                condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#13001d');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
                 meta.setAttribute('content', '#13001d')
@@ -75,7 +82,44 @@
             } else {
                 console.log('Browser in light mode, default color scheme applied.')
             }
+        }
+
+        window.addEventListener('DOMContentLoaded', (event) => {
+            colorSchemeSet()
+            $('.scrollDown').fadeIn(1500);
+            $('#scrollArrow').fadeIn(1500);
+            $('#title').fadeIn(1500);
+            $('#subtitle').fadeIn(1500);
+            $('#condition').fadeIn(1500);
         });
+
+        function setDarkMode() {
+            if (matched && ((date.hour < 22) && (date.hour > 5))) {
+                title.innerHTML = "Good night!";
+                subtitle.innerHTML = "It isn't night yet, but your computer told me it is.";
+                condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
+                $('body').css('background-color', '#13001d');
+                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
+                meta.setAttribute('content', '#13001d')
+                stylesheet.setAttribute('href', './css/styleDark.css');
+                console.log('Browser in dark mode, night color scheme applied.')
+            } else {
+                title.innerHTML = "Good night!";
+                subtitle.innerHTML = "The moon shines bright outside tonight.";
+                condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
+                $('body').css('background-color', '#13001d');
+                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
+                meta.setAttribute('content', '#13001d')
+                stylesheet.setAttribute('href', './css/styleDark.css');
+                console.log('Browser in light mode, but the night color scheme was applied.')
+            }
+        }
+        function setLightMode() {
+            colorSchemeSet();
+        }
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => e.matches && setDarkMode());
+        window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", e => e.matches && setLightMode());
+
         let i = 0;
         let j = 0;
         window.onscroll = function () { scrollFunction() };
@@ -83,12 +127,21 @@
         function scrollFunction() {
             if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
                 while (i < 1) {
-                    var curHeight = $('#header').height();
+                    let curHeight = $('#header').height();
                     $('#header').css('height', 'fit-content');
-                    var autoHeight = $('#header').height();
-                    $('#header').height(curHeight).animate({ height: autoHeight }, 300, () => { console.log('Fit') });
-                    $('#header').addClass('mt-5');
-                    $('#header').addClass('mb-5');
+                    let autoHeight = $('#header').height();
+                    $('#header').height(curHeight).animate({ height: autoHeight }, 1000, () => { console.log('Fit') });
+                    // $('#header').addClass('mt-5');
+                    // $('#header').addClass('mb-5');
+                    $('.scrollDown').fadeOut(1000);
+                    $('#scrollArrow').fadeOut(1000);
+                    $("#condition").fadeOut(1000);
+                    $("#title").fadeOut(function () {
+                        $(this).text("Jack Graddon").fadeIn();
+                    });
+                    $("#subtitle").fadeOut(function () {
+                        $(this).text("Web Development | Graphic Design").fadeIn();
+                    });
                     i++;
                     j = 0;
                 }
@@ -140,18 +193,23 @@
 
     <!-- Begin Page -->
     <div id="background"></div>
-    <div class="d-flex flex-row justify-content-center align-content-center" id="header" style="height: 100vh;">
+    <div class="d-flex flex-row justify-content-center align-content-center pt-5" id="header" style="height: 100vh;">
         <div class="d-flex justify-content-center align-items-center w-100">
             <div class="d-flex flex-column container" style="height: fit-content; width: fit-content;">
-                <h1 class="m-auto" id="title">Hello!</h1>
-                <p class="lead m-auto" id="subtitle">Have a great day!</p>
+                <p class="m-sm-auto" id="condition" style="display: none;"><i class="fa fa-heart"
+                        aria-hidden="true"></i></p>
+                <h1 class="m-sm-auto" id="title" style="display: none;">Hello!</h1>
+                <p class="lead m-sm-auto" id="subtitle" style="display: none;">Have a great day!</p>
+                <p class="lead scrollDown m-sm-auto" style="font-size: smaller; display: none;">Scroll down to begin</p>
+                <img src="./images/svg/icon/arrow.svg" style="rotate: 90deg; height: 20px; display: none;"
+                    id="scrollArrow">
             </div>
         </div>
     </div>
 
     <main class="container mt-5" style="height: 100vh;">
-        <div class="jumbotron">
-            Here for the looks :)
+        <div class="d-flex flex-row justify-content-center align-items-center w-100">
+            <h2>Test</h2>
         </div>
     </main>
 
