@@ -7,7 +7,10 @@
 /* Font */
 @font-face {
   font-family: "Sunflower";
-  src: url(./fonts/Sunflower.woff2);
+  src: url("./fonts/Sunflower.otf") format("otf"),
+    url("./fonts/Sunflower.woff2") format("woff2"),
+    url("./fonts/Sunflower.woff2") format("woff");
+  font-display: swap;
 }
 
 /* Body */
@@ -30,9 +33,6 @@ body {
   width: 100%;
   transition: 200ms;
 }
-.full {
-  transition: height 200ms ease-in-out;
-}
 
 /* Text */
 h1,
@@ -46,6 +46,7 @@ a {
   fill: white;
 }
 a:hover {
+  color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
 }
 #title {
@@ -95,3 +96,6 @@ a:hover {
   background-color: var(--secondary);
   color: var(--secondary);
 }
+
+/* Images */
+/* img {} */

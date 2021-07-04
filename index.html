@@ -19,6 +19,14 @@
 </head>
 
 <body>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS, then Rellax.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <!-- Optional JavaScript -->
     <script>
         var dateFull = new Date();
@@ -37,6 +45,7 @@
             let subtitle = document.getElementById('subtitle');
             let body = document.getElementById('background');
             let condition = document.getElementById('condition');
+            let cloud = document.getElementById('cloud');
             let meta = document.querySelector('meta[name="theme-color"]')
             let stylesheet = document.querySelector('link[href="./css/style.css"]');
 
@@ -69,7 +78,6 @@
                 $('body').css('background-color', '#13001d');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
                 meta.setAttribute('content', '#13001d')
-                stylesheet.setAttribute('href', './css/styleDark.css');
             }
 
             if (matched && ((date.hour < 22) && (date.hour > 5))) {
@@ -78,7 +86,6 @@
                 $('body').css('background-color', '#13001d');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
                 meta.setAttribute('content', '#13001d')
-                stylesheet.setAttribute('href', './css/styleDark.css');
                 console.log('Browser in dark mode, night color scheme applied.')
             } else if (matched) {
                 console.log('Browser in dark mode, but the default color scheme was applied.')
@@ -87,13 +94,44 @@
             }
         }
 
+        function setDarkMode() {
+            let title = document.getElementById('title');
+            let subtitle = document.getElementById('subtitle');
+            let body = document.getElementById('background');
+            let condition = document.getElementById('condition');
+            let meta = document.querySelector('meta[name="theme-color"]')
+            if ((date.hour < 22) && (date.hour > 5)) {
+                title.innerHTML = "Good night!";
+                subtitle.innerHTML = "It isn't night yet, but your computer told me it is.";
+                condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
+                $('body').css('background-color', '#13001d');
+                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
+                meta.setAttribute('content', '#13001d')
+                console.log('Browser in dark mode during the day, so the night color scheme applied.')
+            } else {
+                title.innerHTML = "Good night!";
+                subtitle.innerHTML = "The moon shines bright outside tonight.";
+                condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
+                $('body').css('background-color', '#13001d');
+                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
+                meta.setAttribute('content', '#13001d')
+                console.log('Browser in light mode at night, so the night color scheme was applied.')
+            }
+        }
+        function setLightMode() {
+            colorSchemeSet();
+        }
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => e.matches && setDarkMode());
+        window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", e => e.matches && setLightMode());
+
         window.addEventListener('DOMContentLoaded', (event) => {
             colorSchemeSet()
-            $('#scrollDown').fadeIn(1500);
-            $('#downArrow').fadeIn(1500);
+            $('#scrollDown').fadeIn(3000);
+            $('#downArrow').fadeIn(3000);
             $('#title').fadeIn(1500);
-            $('#subtitle').fadeIn(1500);
-            $('#condition').fadeIn(1500);
+            $('#subtitle').fadeIn(2000);
+            $('#condition').fadeIn(2000);
+            $('#background').fadeIn(4000);
 
             let rand = Math.floor(Math.random() * 3) + 1;
             console.log(rand);
@@ -112,45 +150,9 @@
             $('#cloudContainer').fadeIn(1500);
         });
 
-        function setDarkMode() {
-            let title = document.getElementById('title');
-            let subtitle = document.getElementById('subtitle');
-            let body = document.getElementById('background');
-            let condition = document.getElementById('condition');
-            let meta = document.querySelector('meta[name="theme-color"]')
-            let stylesheet = document.querySelector('link[href="./css/style.css"]');
-            if ((date.hour < 22) && (date.hour > 5)) {
-                title.innerHTML = "Good night!";
-                subtitle.innerHTML = "It isn't night yet, but your computer told me it is.";
-                condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                meta.setAttribute('content', '#13001d')
-                stylesheet.setAttribute('href', './css/styleDark.css');
-                console.log('Browser in dark mode during the day, so the night color scheme applied.')
-            } else {
-                title.innerHTML = "Good night!";
-                subtitle.innerHTML = "The moon shines bright outside tonight.";
-                condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                meta.setAttribute('content', '#13001d')
-                stylesheet.setAttribute('href', './css/styleDark.css');
-                console.log('Browser in light mode at night, so the night color scheme was applied.')
-            }
-        }
-        function setLightMode() {
-            colorSchemeSet();
-        }
-        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => e.matches && setDarkMode());
-        window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", e => e.matches && setLightMode());
-
         let i = 0;
         let j = 0;
         window.onscroll = function () { scrollFunction() };
-        $(window).scroll(function () {
-            $('#cloudContainer').css("opacity", 1 - ($(window).scrollTop() * 10));
-        });
 
         function scrollFunction() {
             if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
@@ -166,11 +168,11 @@
                     // });
                     // $('#header').addClass('mt-5');
                     // $('#header').addClass('mb-5');
-                    $('#scrollDown').fadeOut(1000);
-                    $('#downArrow').fadeOut(1000);
+                    // $('#scrollDown').fadeOut(1000);
+                    // $('#downArrow').fadeOut(1000);
                     $('#scrollTop').fadeIn(1000);
                     $('#topArrow').fadeIn(1000);
-                    $("#condition").fadeOut(1000);
+                    // $("#condition").fadeOut(1000);
                     $('#scrollTop').fadeIn(1000);
                     $("#title").fadeOut(function () {
                         $(this).text("Jack Graddon").fadeIn();
@@ -215,17 +217,9 @@
             }
         });
     </script>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS, then Rellax.js -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
 
     <!-- Begin Page -->
-    <div id="background"></div>
+    <div id="background" style="display: none;"></div>
     <div class="d-flex flex-column justify-content-center align-content-center" id="header"
         style="height: 140vh; z-index: 1; overflow-x: hidden;">
         <div class="d-flex justify-content-center align-items-center w-100">
@@ -235,7 +229,7 @@
                 <h1 class="m-sm-auto" id="title" style="display: none;">Hello!</h1>
                 <p class="lead m-sm-auto" id="subtitle" style="display: none;">Have a great day!</p>
                 <a class="lead scroll m-sm-auto d-flex flex-column"
-                    onclick="javascript:document.getElementById('sectionOne').scrollIntoView({ block: 'end',  behavior: 'smooth' });">
+                    onclick="javascript:document.getElementById('sectionOne').scrollIntoView({ behavior: 'smooth' });">
                     <p class="lead scroll m-auto" id="scrollDown" style="font-size: smaller; display: none;">
                         Scroll Down</p>
                     <img src="./images/svg/icon/arrow.svg" id="downArrow"
@@ -249,7 +243,7 @@
     </div>
 
 
-    <main class="container rellax" data-rellax-speed="-2" id="sectionOne" style="height: 100vh; z-index: 3;">
+    <main class="container rellax" data-rellax-speed="2" id="sectionOne" style="height: 100vh; z-index: 3;">
         <div class="pt-5 d-flex flex-column justify-content-center align-items-center w-100">
             <h2>Website In Development</h2>
             <p>Hello, and welcome to my new website! This page is still in very early access and likely will not
