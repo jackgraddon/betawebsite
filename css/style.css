@@ -10,7 +10,7 @@
   src: url("./fonts/Sunflower.otf") format("otf"),
     url("./fonts/Sunflower.woff2") format("woff2"),
     url("./fonts/Sunflower.woff2") format("woff");
-  font-display: swap;
+  font-display: block;
 }
 
 /* Body */
