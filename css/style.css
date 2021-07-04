@@ -29,6 +29,28 @@ body {
   height: 100vh;
   z-index: -10;
 }
+/* #background.starry {
+  background-color: black;
+  background-image: radial-gradient(
+      white,
+      rgba(255, 255, 255, 0.2) 2px,
+      transparent 4px
+    ),
+    radial-gradient(white, rgba(255, 255, 255, 0.15) 1px, transparent 3px),
+    radial-gradient(white, rgba(255, 255, 255, 0.1) 1px, transparent 4px),
+    radial-gradient(
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 3px
+    ),
+    linear-gradient(180deg, rgba(19, 0, 29, 1) 0%, rgba(51, 0, 79, 1) 100%);
+  background-size: 55% 45%, 35% 25%, 75% 15%, 95% 25%, 100% 100%;
+  background-position: 0px 0px, 40px 60px, 130px 270px, 70px 100px, 0 0;
+} */
+.starry {
+  background: url(./images/stars.png) no-repeat top center;
+  background-size: 100vw 100vh;
+}
 #header {
   width: 100%;
   transition: 200ms;
@@ -99,3 +121,7 @@ a:hover {
 
 /* Images */
 /* img {} */
+#cloudContainer {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
