@@ -30,7 +30,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <!-- Optional JavaScript -->
+
+    <!-- Script for Landing Page -->
     <script>
         var dateFull = new Date();
         var date = {
@@ -249,42 +250,73 @@
             <div class="d-flex flex-column container" style="height: fit-content; width: fit-content;">
                 <p class="m-sm-auto" id="condition" style="display: none;"><i class="fa fa-heart"
                         aria-hidden="true"></i></p>
-                <h1 class="m-sm-auto" id="title" style="display: none;">Hello!</h1>
-                <p class="lead m-sm-auto" id="subtitle" style="display: none;">Have a great day!</p>
+                <h1 class="m-sm-auto title" id="title" style="display: none;">Hello!</h1>
+                <p class="m-sm-auto subtitle" id="subtitle" style="display: none;">Have a great day!</p>
                 <a class="lead scroll m-sm-auto d-flex flex-column"
                     onclick="javascript:document.getElementById('sectionOne').scrollIntoView({ behavior: 'smooth' });">
                     <p class="lead scroll m-auto" id="scrollDown" style="font-size: smaller; display: none;">
                         Scroll Down</p>
                     <img src="./images/svg/icon/arrow.svg" id="downArrow"
-                        style="rotate: 90deg; height: 20px; display: none;" class="m-sm-auto">
+                        style="rotate: 90deg; height: 20px; display: none;" class="m-sm-auto" alt="Arrow pointing down">
                 </a>
             </div>
         </div>
         <div id="cloudContainer" style="height: fit-content; display: none;">
-            <img id="cloud" width="100%">
+            <img id="cloud" width="100%" alt="A cloud that covers the entire width of the screen.">
         </div>
     </div>
 
-
-    <main class="container rellax" data-rellax-speed="0" id="sectionOne" style="height: 100vh; z-index: 3;">
-        <div class="pt-5 d-flex flex-column justify-content-center align-items-center w-100">
-            <h1>Website In Development</h1>
-            <p>Hello, and welcome to my new website! This page is still in very early access and likely will not
-                work as intended 100% of the time. If you want to view a more stable page, please check out my current
+    <!-- Script for Main Page -->
+    <script>
+        $('.toast').toast();
+    </script>
+    <main class="container px-5" id="sectionOne" style="height: 100vh; z-index: 3;">
+        <!-- In Development Notice -->
+        <div class="alert alert-primary alert-dismissible fade show mb-5" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h3 class="alert-heading">Website In Development</h3>
+            <p>
+                Hello, and welcome to my new website! This page is still in very early access and likely will not
+                work as intended 100% of the time. If you want to view a more stable page, please check out my
+                current
                 site at
-                <a href="https://www.jackgraddon.page/" target="_blank">this page <i class="fa fa-external-link"
-                        aria-hidden="true"></i></a>.
+                <a class="alert-link" href="https://www.jackgraddon.page/" target="_blank">this page <i
+                        class="fa fa-external-link" aria-hidden="true"></i></a>.
             </p>
         </div>
+        <div class="d-flex flex-column align-items-start">
+            <div class="d-flex flex-row">
+                <div>
+                    <h1 class="title">Hello!</h1>
+                    <p class="subtitle">I'm Jack, a freelance Web Developer and Graphic Designer.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll to Top button -->
         <div class="fixed-bottom p-2">
             <a class="lead scroll m-sm-auto d-flex flex-column" onclick="window.scrollTo(0, 0);">
                 <img src="./images/svg/icon/arrow.svg" id="topArrow"
-                    style="rotate: -90deg; height: 20px; display: none;">
+                    style="rotate: -90deg; height: 20px; display: none;" alt="An arrow pointing up.">
                 <p class="lead scroll m-auto" id="scrollTop" style="font-size: smaller; display: none;">Scroll to top
                 </p>
             </a>
         </div>
     </main>
+    <nav class="navbar navbar-expand p-3" style="background-color: rgba(200, 200, 200, 0.25);">
+        <div class="d-flex flex-row">
+            <div class="d-flex">
+                <img src="./images/png/favicon/favicon.png" width="100px" height="auto"
+                    alt="A capital letter J filled with a blue gradient.">
+            </div>
+            <div class="d-flex flex-column">
+                <h3>Jack Graddon</h3>
+                <p>Website &copy; Jack Graddon 2021</p>
+            </div>
+        </div>
+    </nav>
 
     <!-- Rellax JS -->
     <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
