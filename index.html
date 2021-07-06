@@ -8,7 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
     <meta name="theme-color">
     <meta name="og:title" content="Jack Graddon">
+    <meta name="og:image" content="./images/png/favicon/favicon.png">
 
+    <!-- Favicon -->
+    <link rel="icon" href="./images/png/favicon/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -189,17 +192,30 @@
                     j = 0;
                 }
             }
-            // else if (document.body.scrollTop == 0 || document.documentElement.scrollTop == 0) {
-            //     while (j < 1) {
-            //         var curHeight = $('#header').height();
-            //         $('#header').css('height', '100vh');
-            //         // var fullHeight = $('#header').height();
-            //         $('#header').height(curHeight).animate({ height: '100vh' }, 300, () => { console.log('Full') });
-            //         $('#header').removeClass('pt-5');
-            //         j++;
-            //         i = 0;
-            //     }
-            // }
+            else if (document.body.scrollTop == 0 || document.documentElement.scrollTop == 0) {
+                while (j < 1) {
+                    //         var curHeight = $('#header').height();
+                    //         $('#header').css('height', '100vh');
+                    //         // var fullHeight = $('#header').height();
+                    //         $('#header').height(curHeight).animate({ height: '100vh' }, 300, () => { console.log('Full') });
+                    //         $('#header').removeClass('pt-5');
+                    //         j++;
+                    //         i = 0;
+
+                    $('#scrollTop').fadeOut(1000);
+                    $('#topArrow').fadeOut(1000);
+                    // $("#condition").fadeIn(1000);
+                    $('#scrollTop').fadeOut(1000);
+                    $("#title").fadeOut(function () {
+                        $(this).text("Hello again!").fadeIn();
+                    });
+                    $("#subtitle").fadeOut(function () {
+                        $(this).text("How are you doing?").fadeIn();
+                    });
+                    j++;
+                    i = 0;
+                }
+            }
         };
 
     </script>
