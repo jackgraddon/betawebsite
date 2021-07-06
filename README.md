@@ -15,6 +15,3 @@ You have permission to:
 Please be respectful of my requests.
 
 # This work is Copyright Jackson Graddon 2021
-
-## Work from Others:
-- [Confetti Button](https://www.cssscript.com/bubble-confetti-effect-button/)
