@@ -1,17 +1,32 @@
 :root {
-  --theme: #b3e5fc;
-  --primary: #82b3c9;
-  --secondary: #e6ffff;
+  --primary: #2d5d7b;
+  --primary-hover: #3d7ea7;
+  --secondary: #4594ac;
+  --secondary-hover: #43bee4;
+  --success: #45cb85;
+  --success-hover: #56ffa8;
+  --info: #00798c;
+  --info-hover: #00abc5;
+  --warning: #edae49;
+  --warning-hover: #ffd38c;
+  --danger: #d1495b;
+  --danger-hover: #ff7d8f;
 }
 
 /* Font */
 @font-face {
-  font-family: "Sunflower";
-  src: url("./fonts/Sunflower.otf") format("otf"),
-    url("./fonts/Sunflower.woff2") format("woff2"),
-    url("./fonts/Sunflower.woff2") format("woff");
-  font-display: block;
+  font-family: "MADESunflower";
+  src: url("./fonts/made-sunflower.eot");
+  src: url("./fonts/made-sunflower.eot?#iefix") format("embedded-opentype"),
+    url("./fonts/made-sunflower.woff2") format("woff2"),
+    url("./fonts/made-sunflower.woff") format("woff"),
+    url("./fonts/made-sunflower.ttf") format("truetype"),
+    url("./fonts/made-sunflower.svg#youworkforthem") format("svg");
+  font-weight: normal;
+  font-style: normal;
 }
+
+@import url(./bootstrap-icons.css);
 
 /* Body */
 body {
@@ -31,30 +46,12 @@ body {
 }
 #background {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: calc(0 - env(safe-area-inset-top));
+  left: calc(0 - env(safe-area-inset-left));
   width: 100vw;
   height: 100vh;
   z-index: -10;
 }
-/* #background.starry {
-  background-color: black;
-  background-image: radial-gradient(
-      white,
-      rgba(255, 255, 255, 0.2) 2px,
-      transparent 4px
-    ),
-    radial-gradient(white, rgba(255, 255, 255, 0.15) 1px, transparent 3px),
-    radial-gradient(white, rgba(255, 255, 255, 0.1) 1px, transparent 4px),
-    radial-gradient(
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.1) 1px,
-      transparent 3px
-    ),
-    linear-gradient(180deg, rgba(19, 0, 29, 1) 0%, rgba(51, 0, 79, 1) 100%);
-  background-size: 55% 45%, 35% 25%, 75% 15%, 95% 25%, 100% 100%;
-  background-position: 0px 0px, 40px 60px, 130px 270px, 70px 100px, 0 0;
-} */
 #stars {
   position: fixed;
   top: 0;
@@ -63,6 +60,16 @@ body {
   height: 100vh;
   z-index: -9;
   background: url(./images/stars.png) no-repeat top center;
+  background-size: cover;
+}
+#starMorn {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -9;
+  background: url(./images/starsMorning.png) no-repeat top center;
   background-size: 100vw 100vh;
 }
 #header {
@@ -71,10 +78,13 @@ body {
 }
 
 /* Text */
+.text-primary {
+  color: var(--primary) !important;
+}
 h1,
 h2,
 h3 {
-  font-family: "Sunflower", serif;
+  font-family: "MADESunflower", serif;
 }
 a {
   color: white;
@@ -84,6 +94,17 @@ a {
 a:hover {
   color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
+}
+a.nav-link {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+}
+a.nav-link:hover {
+  color: rgba(255, 255, 255, 1);
+  text-decoration: underline;
+}
+a.nav-link.active {
+  color: rgba(255, 255, 255, 1);
 }
 .title {
   font-size: 4rem;
@@ -126,9 +147,29 @@ a:hover {
 }
 
 /* Buttons */
+.btn {
+  padding: 0.4rem;
+  border-width: 0.3rem;
+  border-style: solid;
+  width: max-content;
+  height: fit-content;
+  text-align: center;
+  text-decoration: none;
+  transition: 200ms ease-out;
+  border-radius: 0.5rem;
+  background-color: #faf9f9;
+}
+.btn:hover {
+  transform: scale(1.1);
+}
 .btn-primary {
-  background-color: var(--primary);
+  border-color: var(--primary);
   color: var(--primary);
+}
+.btn-primary:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #faf9f9;
 }
 .btn-secondary {
   background-color: var(--secondary);
@@ -140,4 +181,79 @@ a:hover {
 #cloudContainer {
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+/* Cards */
+.card {
+  border: none;
+  border-radius: 0.5rem !important;
+  color: black;
+  padding: 0 0 0.4rem 0;
+}
+.card-footer {
+  border: none;
+  background-color: white;
+  color: black;
+  border-radius: 0 0 0.5rem 0.5rem !important;
+}
+.card .card-footer .btn {
+  margin: 0 !important;
+}
+.card-text a {
+  color: var(--primary);
+}
+.card-text a:hover {
+  color: var(--primary-hover);
+}
+
+/* Alert */
+.alert {
+  background-color: #faf9f9;
+  border: 5px var(--primary) solid;
+  border-radius: 1rem;
+}
+.alert-primary {
+  color: var(--primary);
+}
+.alert-primary .alert-link {
+  color: var(--primary);
+}
+.alert-primary .alert-link:hover {
+  color: var(--primary-hover);
+}
+
+/* Project Display */
+.projectDeck {
+  display: flex;
+  flex-direction: column;
+}
+.projectDeck .row {
+  flex-direction: row;
+  justify-content: space-between;
+}
+.projectTile {
+  border: none;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 32%;
+}
+@media screen and (max-width: 768px) {
+  .projectDeck .row {
+    flex-direction: column !important;
+  }
+  .projectTile {
+    width: auto !important;
+    margin: 0.5rem 1rem;
+  }
+}
+.projectTile img {
+  border-radius: 0.5rem 0.5rem 0 0;
+  width: 100%;
+  aspect-ratio: 1.6;
+}
+.projectTile .btn {
+  margin: 1rem auto;
 }

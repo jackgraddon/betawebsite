@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
-    <title>Beta | Jack Graddon</title>
+    <title>Legal | Jack Graddon</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport"
         content="width=device-width, viewport-fit=cover, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
     <meta name="theme-color">
-    <meta name="og:title" content="Jack Graddon">
-    <meta name="og:image" content="../images/jpg/ogImage.jpg">
+    <meta name="og:title" content="Legal Info">
+    <meta name="og:image" content="./img/ogImage.jpg">
 
     <!-- Favicon -->
-    <link rel="icon" href="./images/png/favicon/favicon.png">
+    <link rel="icon" href="../images/png/favicon/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,7 +20,7 @@
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Personal CSS -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -57,38 +57,28 @@
 
             // date.hour = 3;
             if ((date.hour >= 5) && (date.hour < 9)) {
-                title.innerHTML = "Good morning!";
-                subtitle.innerHTML = "It's going to be a great day.";
-                condition.innerHTML = "<img src=\"./images/svg/icon/sunrise.svg\" height=\"20pt\">";
+                condition.innerHTML = "<img src=\"../images/svg/icon/sunrise.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#33004f');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(51,0,79,1) 0%, rgba(177,72,38,1) 100%)');
                 meta.setAttribute('content', '#33004f');
                 $('#starMorn').fadeIn(6000);
             } else if ((date.hour >= 9) && (date.hour < 12)) {
-                title.innerHTML = "Good morning!";
-                subtitle.innerHTML = "It's going to be a great day.";
-                condition.innerHTML = "<img src=\"./images/svg/icon/sunny.svg\" height=\"20pt\">";
+                condition.innerHTML = "<img src=\"../images/svg/icon/sunny.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#067bbb');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)');
                 meta.setAttribute('content', '#067bbb')
             } else if ((date.hour >= 12) && (date.hour < 18)) {
-                title.innerHTML = "Good afternoon!";
-                subtitle.innerHTML = "What a beautiful day it is.";
-                condition.innerHTML = "<img src=\"./images/svg/icon/sunny.svg\" height=\"20pt\">";
+                condition.innerHTML = "<img src=\"../images/svg/icon/sunny.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#067bbb');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)');
                 meta.setAttribute('content', '#067bbb')
             } else if ((date.hour >= 18) && (date.hour < 22)) {
-                title.innerHTML = "Good evening!";
-                subtitle.innerHTML = "Don't miss the sunset.";
-                condition.innerHTML = "<img src=\"./images/svg/icon/sunset.svg\" height=\"20pt\">";
+                condition.innerHTML = "<img src=\"../images/svg/icon/sunset.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#2a6ca1');
                 $('#background').css('background-image', 'linear-gradient(0deg, rgba(255,177,177,1) 0%, rgba(226,218,187,1) 25%, rgba(184,214,228,1) 40%, rgba(42,108,161,1) 100%)');
                 meta.setAttribute('content', '#2a6ca1')
             } else if ((date.hour >= 22) || (date.hour < 5)) {
-                title.innerHTML = "Good night!";
-                subtitle.innerHTML = "The moon shines bright outside tonight.";
-                condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
+                condition.innerHTML = "<img src=\"../images/svg/icon/moon.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#13001d');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
                 $('#stars').fadeIn(6000);
@@ -96,8 +86,6 @@
             }
 
             if (matched && ((date.hour < 22) && (date.hour > 5))) {
-                title.innerHTML = "Good night!";
-                subtitle.innerHTML = "It isn't night yet, but your computer told me it is.";
                 $('body').css('background-color', '#13001d');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
                 meta.setAttribute('content', '#13001d');
@@ -117,18 +105,14 @@
             let condition = document.getElementById('condition');
             let meta = document.querySelector('meta[name="theme-color"]')
             if ((date.hour < 22) && (date.hour > 5)) {
-                title.innerHTML = "Good night!";
-                subtitle.innerHTML = "It isn't night yet, but your computer told me it is.";
-                condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
+                condition.innerHTML = "<img src=\"../images/svg/icon/moon.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#13001d');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
                 meta.setAttribute('content', '#13001d');
                 $('#stars').fadeIn(400);
                 console.log('Browser in dark mode during the day, so the night color scheme applied.')
             } else {
-                title.innerHTML = "Good night!";
-                subtitle.innerHTML = "The moon shines bright outside tonight.";
-                condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
+                condition.innerHTML = "<img src=\"../images/svg/icon/moon.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#13001d');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
                 meta.setAttribute('content', '#13001d');
@@ -157,13 +141,13 @@
 
             switch (rand) {
                 case 1:
-                    $('#cloud').attr("src", "./images/png/front/cloud1.png");
+                    $('#cloud').attr("src", "../images/png/front/cloud1.png");
                     break;
                 case 2:
-                    $('#cloud').attr("src", "./images/png/front/cloud2.png");
+                    $('#cloud').attr("src", "../images/png/front/cloud2.png");
                     break;
                 case 3:
-                    $('#cloud').attr("src", "./images/png/front/cloud3.png");
+                    $('#cloud').attr("src", "../images/png/front/cloud3.png");
                     break;
             }
             $('#cloudContainer').fadeIn(1500);
@@ -178,15 +162,7 @@
                 while (i < 1) {
                     $('#scrollDown').attr('opacity', '1').animate({ opacity: '0' }, 400);
                     $('#downArrow').attr('opacity', '1').animate({ opacity: '0' }, 400);
-                    setTimeout(() => {
-                        $('#scrollToTop').attr('opacity', '0').animate({ opacity: '1' }, 400);
-                    }, 400);
-                    $("#title").fadeOut(function () {
-                        $(this).text("Jack Graddon").fadeIn();
-                    });
-                    $("#subtitle").fadeOut(function () {
-                        $(this).text("Web Development | Graphic Design").fadeIn();
-                    });
+                    $('#scrollToTop').attr('opacity', '0').animate({ opacity: '1' }, 400);
                     i++;
                     j = 0;
                 }
@@ -194,22 +170,13 @@
             else if (document.body.scrollTop == 0 || document.documentElement.scrollTop == 0) {
                 while (j < 1) {
                     $('#scrollToTop').attr('opacity', '1').animate({ opacity: '0' }, 400);
-                    setTimeout(() => {
-                        $('#scrollDown').attr('opacity', '0').animate({ opacity: '1' }, 400);
-                        $('#downArrow').attr('opacity', '0').animate({ opacity: '1' }, 400);
-                    }, 400);
-                    $("#title").fadeOut(function () {
-                        $(this).text("Hello again!").fadeIn();
-                    });
-                    $("#subtitle").fadeOut(function () {
-                        $(this).text("How are you doing?").fadeIn();
-                    });
+                    $('#scrollDown').attr('opacity', '0').animate({ opacity: '1' }, 400);
+                    $('#downArrow').attr('opacity', '0').animate({ opacity: '1' }, 400);
                     j++;
                     i = 0;
                 }
             }
         };
-
     </script>
     <!-- Mobile Detection -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
@@ -249,11 +216,12 @@
             id="titleContainer">
             <div class="d-flex flex-column container" style="height: fit-content; width: fit-content;">
                 <p class="m-sm-auto" id="condition" style="display: none;"><i class="fa fa-heart"
-                        aria-hidden="true"></i></p>
-                <h1 class="m-sm-auto title" id="title" style="display: none;">Hello!</h1>
-                <p class="m-sm-auto subtitle" id="subtitle" style="display: none;">Have a great day!</p>
-                <a class="m-sm-auto d-flex flex-column" id="scrollDown" style="display: none;"
-                    onclick="document.querySelector('#sectionOne').scrollIntoView({behavior: 'smooth'});">
+                        aria-hidden="true"></i>
+                </p>
+                <h1 class="m-sm-auto title" id="title" style="display: none;">Legals</h1>
+                <p class="m-sm-auto subtitle" id="subtitle" style="display: none;">All of the information.</p>
+                <a class="m-auto d-flex flex-column" id="scrollDown" style="display: none;"
+                    onclick="javascript:document.getElementById('sectionOne').scrollIntoView({ behavior: 'smooth' });">
                     <p class="scroll m-auto" style="font-size: smaller;">
                         Scroll Down</p>
                     <i class="bi-chevron-down m-auto"></i>
@@ -270,57 +238,77 @@
         $('.toast').toast();
     </script>
     <main class="container px-sm-5 mb-5 pt-5" id="sectionOne" style="z-index: 3;">
-        <!-- In Development Notice -->
-        <div class="alert alert-primary alert-dismissible fade show my-5" role="alert">
-            <button type="button" class="close text-primary" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <h3 class="alert-heading">Website In Development</h3>
-            <p>
-                Hello, and welcome to my new website! This page is still in very early access and likely will not
-                work as intended 100% of the time. If you want to view a more stable page, please check out my
-                current site on
-                <a class="alert-link" href="https://www.jackgraddon.page/" target="_blank">this page <i
-                        class="bi bi-box-arrow-up-right"></i></a>. If you wish to help me with this page,
-                please let me know of any bugs or issues on my <a
-                    href="https://github.com/jackgraddon/betawebsite/issues/new/choose" target="_blank"
-                    class="alert-link">GitHub
-                    page <i class="bi bi-box-arrow-up-right"></i></a>!
-            </p>
-        </div>
-        <!-- Main Page -->
         <div class="d-flex flex-column align-items-start">
-            <div class="d-flex flex-row">
-                <div>
-                    <h1 class="title">Hello!</h1>
-                    <p class="subtitle">I'm Jack, a freelance Web Developer and Graphic Designer.</p>
+            <div class="d-flex flex-column">
+                <div class="mb-4">
+                    <h1>&copy; Copyright</h1>
+                    <p class="subtitle">This page was designed and developed by Jack Graddon. All rights reserved
+                        2021.<br>
+                        If you need to contact me, please do so by clicking <a
+                            href="mailto:jjg0704@icloud.com?subject=What%20do%20you%20want%20to%20talk%20about?">here <i
+                                class="bi bi-box-arrow-up-right"></i></a>.
+                    </p>
+                </div>
+                <div class="mb-4">
+                    <h1><i class="fa fa-file-o" aria-hidden="true"></i> Other Work</h1>
+                    <p class="subtitle">Other work, code, fonts, or images I used are credited below.</p>
+                    <div class="d-flex flex-column">
+                        <div class="projectDeck">
+                            <div class="row">
+                                <div class="projectTile card">
+                                    <img class="card-img-top" src="./img/madesunflower.png" alt="Ad for MADE Sunflower">
+                                    <div class="card-body">
+                                        <h3>MADE Sunflower</h3>
+                                        <p class="card-text">To learn more about MADE Type,
+                                            please visit <a href="https://www.behance.net/madetype" target="_blank">this
+                                                page <i class="bi bi-box-arrow-up-right"></i></a>.
+                                        </p>
+                                        <p class="text-muted m-0" style="font-size: smaller;">Sunflower &copy; MADE
+                                            Type www.youworkforthem.com</p>
+                                    </div>
+                                    <div class="card-footer d-flex flex-column">
+                                        <a class="btn btn-primary" target="_blank"
+                                            href="https://www.youworkforthem.com/font/T11080/made-sunflower">Font <i
+                                                class="bi bi-box-arrow-up-right"></i></a>
+                                    </div>
+                                </div>
+                                <div class="projectTile card">
+                                    <img class="card-img-top" src="./img/bootstrap.png" alt="Ad for Bootstrap">
+                                    <div class="card-body">
+                                        <h3>Bootstrap</h3>
+                                        <p class="card-text">To get started using Bootstrap on your site,
+                                            please visit <a
+                                                href="https://getbootstrap.com/docs/5.0/getting-started/introduction/"
+                                                target="_blank">these docs <i class="bi bi-box-arrow-up-right"></i></a>.
+                                        </p>
+                                    </div>
+                                    <div class="card-footer d-flex flex-column">
+                                        <a class="btn btn-primary" target="_blank" href="https://getbootstrap.com">Site
+                                            <i class="bi bi-box-arrow-up-right"></i></a>
+                                    </div>
+                                </div>
+                                <div class="projectTile card">
+                                    <img class="card-img-top" src="../images/png/placeholder.png"
+                                        alt="Ad for MADE Sunflower">
+                                    <div class="card-body">
+                                        <h3>Placeholder</h3>
+                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Adipisci voluptatem magnam non, deserunt repudiandae <a target="_blank"
+                                                href="https://www.bing.com">
+                                                delectus dicta <i class="bi bi-box-arrow-up-right"></i></a>.
+                                        </p>
+                                    </div>
+                                    <div class="card-footer d-flex flex-column">
+                                        <a class="btn btn-primary" target="_blank" href="https://www.bing.com">Click
+                                            <i class="bi bi-box-arrow-up-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="projectDeck mx-auto">
-                <div class="d-flex row">
-                    <div class="projectTile" style="background-color: #C1E3FF;">
-                        <img src="./images/jpg/projects/coffeeAddictsWebsite.jpg"
-                            alt="The Coffee Addicts - A streaming group." style="border-bottom: #289BFA 1px dashed;">
-                        <a href="./projects/web/tca/" class="btn" style="color: #289BFA; border-color: #289BFA;">Learn
-                            More</a>
-                    </div>
-                    <div class="projectTile" style="background-color: #FFC1C1;">
-                        <img src="./images/jpg/projects/fblaProject.jpg"
-                            alt="Future Business Leaders of America 2020/21 Competition - Website Design."
-                            style="border-bottom: #FF6161 1px dashed;">
-                        <a href="./projects/web/fbla2021/" class="btn"
-                            style="color: #FF6161; border-color: #FF6161;">Learn More</a>
-                    </div>
-                    <div class="projectTile" style="background-color: #FFE9C1;">
-                        <img src="./images/jpg/projects/lyndenITWebsite.jpg"
-                            alt="Lynden High School IT - Helping Students and Teachers with Tech Issues."
-                            style="border-bottom: #D68D04 1px dashed;">
-                        <a href="./projects/web/lyndenit/" class="btn"
-                            style="color: #D68D04; border-color: #D68D04;">Learn More</a>
-                    </div>
-                </div>
-                </table>
-            </div>
+        </div>
     </main>
     <!-- Scroll to Top button -->
     <div class="p-2" style="position: sticky; bottom: env(safe-area-inset-bottom); overflow-y: hidden; opacity: 0;"
@@ -339,13 +327,13 @@
         <div style="width: fit-content;" class="m-auto">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link active">Home</a>
+                    <a class="nav-link" href="../">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./about/">About</a>
+                    <a class="nav-link" href="../about/">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./legal/">Legal</a>
+                    <a class="nav-link active" href="#">Legal</a>
                 </li>
             </ul>
         </div>
