@@ -162,6 +162,9 @@ a.nav-link.active {
 .btn:hover {
   transform: scale(1.1);
 }
+.btn:active {
+  transform: scale(0.95);
+}
 .btn-primary {
   border-color: var(--primary);
   color: var(--primary);
@@ -169,6 +172,11 @@ a.nav-link.active {
 .btn-primary:hover {
   background-color: var(--primary);
   border-color: var(--primary);
+  color: #faf9f9;
+}
+.btn-primary:active {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
   color: #faf9f9;
 }
 .btn-secondary {
@@ -204,6 +212,19 @@ a.nav-link.active {
 }
 .card-text a:hover {
   color: var(--primary-hover);
+}
+
+/* Modal */
+.modal {
+  color: black;
+}
+.modal-content {
+  border: 5px var(--primary) solid;
+  border-radius: 1rem;
+}
+.modal-header,
+.modal-footer {
+  border: none;
 }
 
 /* Alert */

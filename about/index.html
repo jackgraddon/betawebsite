@@ -57,28 +57,23 @@
 
             // date.hour = 3;
             if ((date.hour >= 5) && (date.hour < 9)) {
-                condition.innerHTML = "<img src=\"../images/svg/icon/sunrise.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#33004f');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(51,0,79,1) 0%, rgba(177,72,38,1) 100%)');
                 meta.setAttribute('content', '#33004f');
                 $('#starMorn').fadeIn(6000);
             } else if ((date.hour >= 9) && (date.hour < 12)) {
-                condition.innerHTML = "<img src=\"../images/svg/icon/sunny.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#067bbb');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)');
                 meta.setAttribute('content', '#067bbb')
             } else if ((date.hour >= 12) && (date.hour < 18)) {
-                condition.innerHTML = "<img src=\"../images/svg/icon/sunny.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#067bbb');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)');
                 meta.setAttribute('content', '#067bbb')
             } else if ((date.hour >= 18) && (date.hour < 22)) {
-                condition.innerHTML = "<img src=\"../images/svg/icon/sunset.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#2a6ca1');
                 $('#background').css('background-image', 'linear-gradient(0deg, rgba(255,177,177,1) 0%, rgba(226,218,187,1) 25%, rgba(184,214,228,1) 40%, rgba(42,108,161,1) 100%)');
                 meta.setAttribute('content', '#2a6ca1')
             } else if ((date.hour >= 22) || (date.hour < 5)) {
-                condition.innerHTML = "<img src=\"../images/svg/icon/moon.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#13001d');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
                 $('#stars').fadeIn(6000);
@@ -105,14 +100,12 @@
             let condition = document.getElementById('condition');
             let meta = document.querySelector('meta[name="theme-color"]')
             if ((date.hour < 22) && (date.hour > 5)) {
-                condition.innerHTML = "<img src=\"../images/svg/icon/moon.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#13001d');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
                 meta.setAttribute('content', '#13001d');
                 $('#stars').fadeIn(400);
                 console.log('Browser in dark mode during the day, so the night color scheme applied.')
             } else {
-                condition.innerHTML = "<img src=\"../images/svg/icon/moon.svg\" height=\"20pt\">";
                 $('body').css('background-color', '#13001d');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
                 meta.setAttribute('content', '#13001d');
@@ -215,11 +208,11 @@
         <div class=" d-flex justify-content-center align-items-center w-100" style="padding-top: 35vh;"
             id="titleContainer">
             <div class="d-flex flex-column container" style="height: fit-content; width: fit-content;">
-                <p class="m-sm-auto" id="condition" style="display: none;"><i class="fa fa-heart"
-                        aria-hidden="true"></i>
+                <h3 class="m-sm-auto" id="condition" style="display: none;"><i class="bi bi-person-badge"></i>
+                </h3>
+                <h1 class="m-sm-auto title" id="title" style="display: none;">About Me</h1>
+                <p class="m-sm-auto subtitle" id="subtitle" style="display: none;">All you need to know about myself.
                 </p>
-                <h1 class="m-sm-auto title" id="title" style="display: none;">Legals</h1>
-                <p class="m-sm-auto subtitle" id="subtitle" style="display: none;">All of the information.</p>
                 <a class="m-auto d-flex flex-column" id="scrollDown" style="display: none;"
                     onclick="javascript:document.getElementById('sectionOne').scrollIntoView({ behavior: 'smooth' });">
                     <p class="scroll m-auto" style="font-size: smaller;">
@@ -235,79 +228,91 @@
 
     <!-- Script for Main Page -->
     <script>
-        $('.toast').toast();
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
     </script>
     <main class="container px-sm-5 mb-5 pt-5" id="sectionOne" style="z-index: 3;">
         <div class="d-flex flex-column align-items-start">
             <div class="d-flex flex-column">
                 <div class="mb-4">
-                    <h1>&copy; Copyright</h1>
-                    <p class="subtitle">This page was designed and developed by Jack Graddon. All rights reserved
-                        2021.<br>
-                        If you need to contact me, please do so by clicking <a
-                            href="mailto:jjg0704@icloud.com?subject=What%20do%20you%20want%20to%20talk%20about?">here <i
-                                class="bi bi-box-arrow-up-right"></i></a>.
+                    <h1>To Sum it Up</h1>
+                    <p>I am Jack Graddon, a Web Developer and Graphic Designer. I grew up in <a
+                            href="https://maps.apple.com/?address=Lynden,%20WA,%20United%20States&auid=3609148360053010219&ll=48.945582,-122.453512&lsp=6489&q=Lynden&_ext=Ch8KBQgEEOIBCgQIBRADCgQIBhADCgQIChAJCgQIVRAIEiYpNez3xDp3SEAxOgZkr3egXsA5SaEsfH17SEBBEW+df7uZXsBQDA%3D%3D"
+                            target="_blank">Lynden, Washington</a>, a farming community about five miles south of the
+                        Canadian Border. I enjoy designing, and making my design myself gives me a huge sense of pride
+                        and accomplishment.
                     </p>
                 </div>
                 <div class="mb-4">
-                    <h1><i class="fa fa-file-o" aria-hidden="true"></i> Other Work</h1>
-                    <p class="subtitle">Other work, code, fonts, or images I used are credited below.</p>
-                    <div class="d-flex flex-column">
-                        <div class="projectDeck">
-                            <div class="row">
-                                <div class="projectTile card">
-                                    <img class="card-img-top" src="./madesunflower.png" alt="Ad for MADE Sunflower">
-                                    <div class="card-body">
-                                        <h3>MADE Sunflower</h3>
-                                        <p class="card-text">To learn more about MADE Type,
-                                            please visit <a href="https://www.behance.net/madetype" target="_blank">this
-                                                page <i class="bi bi-box-arrow-up-right"></i></a>.
-                                        </p>
-                                        <p class="text-muted m-0" style="font-size: smaller;">Sunflower &copy; MADE
-                                            Type www.youworkforthem.com</p>
-                                    </div>
-                                    <div class="card-footer d-flex flex-column">
-                                        <a class="btn btn-primary" target="_blank"
-                                            href="https://www.youworkforthem.com/font/T11080/made-sunflower">Font <i
-                                                class="bi bi-box-arrow-up-right"></i></a>
-                                    </div>
+                    <h1>Getting Started</h1>
+                    <p>I'm a high school class of '22 student at Lynden High School in Lynden,
+                        Washington. My interest in good graphic design was started in my younger years at my
+                        grandparents house, where I had access to a computer with Microsoft Publisher. Publisher isn't
+                        exactly the staple of graphic design software, let alone graphic design software at all, but it
+                        is what got me interested in design. This then led to various apps related to graphic design and
+                        digital art, such as Procreate and Affinity Designer, which I bought for my iPad Pro (2017) from
+                        money made mowing lawns.</p>
+                </div>
+                <div class="mb-4">
+                    <h1>Growing Up</h1>
+                    <p>As a child, I grew up with the need to take things apart. I did this to learn how the things I
+                        took apart worked, how they were made. And I often put them back together. Did they work after I
+                        put them back together? They worked every time, about 20% of the time. This did however lead me
+                        down a path of making things, and making them to look good - visually and aesthetically
+                        pleasing. I crave to learn more and more about ways I can make things. And I have learned how to
+                        make many different things. I’ve taught myself how to code websites (with HTML, CSS, and
+                        JavaScript), how to use design software like Photoshop and Illustrator <a
+                            data-target="#adobeModal" data-toggle="modal">
+                            <i data-toggle="tooltip" data-placement="top"
+                                title="I'm not a fan of Adobe products, and as of when writing this (July 2021) I no longer use them."
+                                class="bi bi-info-circle-fill"></i></a>, and
+                        am even starting now on 3D modelling with
+                        Blender. I learn as I go, trying new stuff every project. With each new thing I try, I have to
+                        learn a new thing.</p>
+                    <div class="modal fade" id="adobeModal" tabindex="-1" role="dialog"
+                        aria-labelledby="adobeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title" id="adobeModalLabel">My Distaste of Adobe</h3>
                                 </div>
-                                <div class="projectTile card">
-                                    <img class="card-img-top" src="./bootstrap.png" alt="Ad for Bootstrap">
-                                    <div class="card-body">
-                                        <h3>Bootstrap</h3>
-                                        <p class="card-text">To get started using Bootstrap on your site,
-                                            please visit <a
-                                                href="https://getbootstrap.com/docs/5.0/getting-started/introduction/"
-                                                target="_blank">these docs <i class="bi bi-box-arrow-up-right"></i></a>.
-                                        </p>
-                                    </div>
-                                    <div class="card-footer d-flex flex-column">
-                                        <a class="btn btn-primary" target="_blank" href="https://getbootstrap.com">Site
-                                            <i class="bi bi-box-arrow-up-right"></i></a>
-                                    </div>
+                                <div class="modal-body">
+                                    I have personally had nothing but bad experiences with Adobe Creative Cloud. When I
+                                    installed it, it ran poorly, crashed often, frequently slowed my computer down, and
+                                    just overall I had a bad experience with it. Plus I am just not a major fan of
+                                    subscription services for apps in the first place, I would rather own the apps I
+                                    need to use. I use Pixelmator Pro, the Affinity Suite, and Procreate currently.
                                 </div>
-                                <div class="projectTile card">
-                                    <img class="card-img-top" src="../images/png/placeholder.png"
-                                        alt="Ad for MADE Sunflower">
-                                    <div class="card-body">
-                                        <h3>Placeholder</h3>
-                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            Adipisci voluptatem magnam non, deserunt repudiandae <a target="_blank"
-                                                href="https://www.bing.com">
-                                                delectus dicta <i class="bi bi-box-arrow-up-right"></i></a>.
-                                        </p>
-                                    </div>
-                                    <div class="card-footer d-flex flex-column">
-                                        <a class="btn btn-primary" target="_blank" href="https://www.bing.com">Click
-                                            <i class="bi bi-box-arrow-up-right"></i></a>
-                                    </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Got it</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="mb-4">
+                    <h1>School</h1>
+                    <p>I took all of the design and coding classes I could possibly take at my High School. Those
+                        classes included Graphic Arts I and II, Broadcast I and II, Web Design, and Javascript. In
+                        Graphic Arts I and II, you have access to Photoshop, Adobe Illustrator, and InDesign to learn
+                        the basics of the programs. You are not instructed as much as you are given a set of YouTube
+                        video tutorials. In Broadcast I and II you learn how to record and edit video for the school's
+                        Morning Announcements, and how to make graphics and effects for the videos you record. In Web
+                        Design, you learn the basics of HTML, where I took the top of my class fairly quickly. In
+                        JavaScript you learn basic fundemental JavaScript to code Arduinos and aid HTML.</p>
+                </div>
+                <div class="mb-4">
+                    <h1>Today</h1>
+                    <p>I use the Affinity Suite, Pixelmator Pro, and Procreate to design, draw, and edit photos. I use
+                        Visual Studio Code to write code for my websites. You can view my other website projects <a
+                            href="../projects/web/">here</a>. I have worked on many projects in the past year, including
+                        building a website for the Lynden High Shchool IT Department, my FBLA Website for the FBLA
+                        Business Achievement Awards, and the website and branding for The Coffee Addicts, and the
+                        website for the school's Morning Announcements.</p>
+                </div>
             </div>
+        </div>
         </div>
     </main>
     <!-- Scroll to Top button -->
@@ -330,10 +335,13 @@
                     <a class="nav-link" href="../">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../about/">About</a>
+                    <a class="nav-link active" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Legal</a>
+                    <a class="nav-link" href="../projects/">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../legal/">Legal</a>
                 </li>
             </ul>
         </div>
