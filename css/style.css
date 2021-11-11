@@ -62,7 +62,7 @@ body {
   background: url(./images/stars.png) no-repeat top center;
   background-size: cover;
 }
-#starMorn {
+#starsMorn {
   position: fixed;
   top: 0;
   left: 0;
@@ -109,6 +109,7 @@ a.nav-link.active {
 .title {
   font-size: 4rem;
   color: white;
+  text-align: center;
 }
 .subtitle {
   font-size: 1.25rem;

@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Personal CSS -->
     <link rel="stylesheet" href="./css/style.css">
+    <!-- Reset scroll to top -->
+    <script>history.scrollRestoration = "manual"</script>
 </head>
 
 <body>
@@ -33,7 +35,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <!-- Script for Landing Page -->
+    <!-- Script for Root Landing Page -->
     <script>
         var dateFull = new Date();
         var date = {
@@ -55,7 +57,7 @@
             let meta = document.querySelector('meta[name="theme-color"]')
             let stylesheet = document.querySelector('link[href="./css/style.css"]');
 
-            // date.hour = 3;
+            // date.hour = 2;
             if ((date.hour >= 5) && (date.hour < 9)) {
                 title.innerHTML = "Good morning!";
                 subtitle.innerHTML = "It's going to be a great day.";
@@ -63,7 +65,7 @@
                 $('body').css('background-color', '#33004f');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(51,0,79,1) 0%, rgba(177,72,38,1) 100%)');
                 meta.setAttribute('content', '#33004f');
-                $('#starMorn').fadeIn(6000);
+                $('#starsMorn').fadeIn(6000);
             } else if ((date.hour >= 9) && (date.hour < 12)) {
                 title.innerHTML = "Good morning!";
                 subtitle.innerHTML = "It's going to be a great day.";
@@ -145,12 +147,6 @@
 
         window.addEventListener('DOMContentLoaded', (event) => {
             colorSchemeSet()
-            $('#background').fadeIn(4000);
-            // $('#header').fadeIn(1000);
-            $('#scrollDown').fadeIn(2000);
-            $('#title').fadeIn(1500);
-            $('#subtitle').fadeIn(1500);
-            $('#condition').fadeIn(2000);
 
             let rand = Math.floor(Math.random() * 3) + 1;
             console.log(rand);
@@ -166,7 +162,6 @@
                     $('#cloud').attr("src", "./images/png/front/cloud3.png");
                     break;
             }
-            $('#cloudContainer').fadeIn(1500);
         });
 
         let i = 0;
@@ -199,7 +194,7 @@
                         $('#downArrow').attr('opacity', '0').animate({ opacity: '1' }, 400);
                     }, 400);
                     $("#title").fadeOut(function () {
-                        $(this).text("Hello again!").fadeIn();
+                        $(this).text("Why, hello again!").fadeIn();
                     });
                     $("#subtitle").fadeOut(function () {
                         $(this).text("How are you doing?").fadeIn();
@@ -210,13 +205,67 @@
             }
         };
 
+        window.addEventListener("DOMContentLoaded", () => {
+            window.scrollTo(0, 0
+            );
+            let loadtl = gsap.timeline({ delay: 0.5 });
+            loadtl.fromTo("#background", { opacity: 0 }, { opacity: 1, duration: 4 });
+            // loadtl.fromTo("#scrollDown", { opacity: 0 }, { opacity: 1, duration: 2 }, "<");
+            loadtl.to("#header, body", { overflow: "hidden", duration: 0 }, "<");
+            loadtl.fromTo("#title, #subtitle, #condition, #cloudContainer, #scrollDown", { opacity: 0, filter: 'blur(20px)', transform: 'scale(1.1)', y: 0 }, { opacity: 1, filter: 'blur(0px)', transform: 'scale(1)', y: 0, duration: 2, ease: "power3.out" }, "<");
+            loadtl.to("body", { overflowY: "scroll", duration: 0 }, "<+=2");
+            window.addEventListener("keydown", (e) => {
+                if (e.key == "Enter") {
+                    // alert('press enter');
+                    loadtl.timeScale(10);
+                    clearTimeout(scrollByTimer);
+                }
+            }, false);
+            window.addEventListener("touchstart", () => {
+                loadtl.timeScale(10);
+                clearTimeout(scrollByTimer);
+            }, false);
+        })
+    </script>
+    <!-- Begin Page -->
+    <div id="background"></div>
+
+    <div class="d-flex flex-column justify-content-center align-content-center" id="header"
+        style="height: fit-content; z-index: 1; overflow-x: hidden;">
+        <div id="stars" style="display: none;"></div>
+        <div id="starsMorn" style="display: none;"></div>
+        <div class="d-flex justify-content-center align-items-center w-100 rellax" style="padding-top: 35vh;"
+            id="titleContainer">
+            <div class="d-flex flex-column container align-items-center"
+                style="height: fit-content; width: fit-content;">
+                <p class="m-sm-auto" id="condition"><i class="fa fa-heart" aria-hidden="true"></i></p>
+                <h1 class="m-sm-auto title" id="title">Hello!</h1>
+                <p class="m-sm-auto subtitle" id="subtitle">Have a great day!</p>
+                <a class="m-sm-auto d-flex flex-column" id="scrollDown"
+                    onclick="document.querySelector('#sectionOne').scrollIntoView({behavior: 'smooth'});">
+                    <p class="scroll m-auto" style="font-size: smaller;">
+                        Scroll Down</p>
+                    <i class="bi-chevron-down m-auto"></i>
+                </a>
+            </div>
+        </div>
+        <div id="cloudContainer" style="height: fit-content;">
+            <img id="cloud" width="100%" alt="A cloud that covers the entire width of the screen.">
+        </div>
+    </div>
+
+    <!-- Script for Main Page -->
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
     </script>
     <!-- Mobile Detection -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
     <script>
         var md;
         // Get Device
-        window.addEventListener("load", function () {
+        window.addEventListener("DOMContentLoaded", function () {
             md = new MobileDetect(window.navigator.userAgent);
             // console.log(md.mobile()); // null if not mobile device
             // console.log(md.phone()); // null if not smartphone
@@ -229,8 +278,6 @@
             if (md.mobile() != null) {
                 document.getElementById('cloudContainer').style.width = '200%';
                 document.getElementById('cloudContainer').style.left = '-20%';
-                $('#stars').removeClass('rellax');
-                $('#starsMorn').removeClass('rellax');
                 // Get orienation on Mobile devices (fixes offcenter padding for title)
                 if ((Math.abs(window.orientation) == 90) || (Math.abs(window.orientation) == -90)) {
                     document.getElementById('titleContainer').style.paddingTop = "2rem";
@@ -238,38 +285,7 @@
             }
         });
     </script>
-    <!-- Begin Page -->
-    <div id="background" style="display: none;"></div>
-
-    <div class="d-flex flex-column justify-content-center align-content-center" id="header"
-        style="height: fit-content; z-index: 1; overflow-x: hidden; display: none;">
-        <div id="stars" style="display: none;" class="rellax" data-rellax-speed="10"></div>
-        <div id="starMorn" style="display: none;" class="rellax" data-rellax-speed="10"></div>
-        <div class=" d-flex justify-content-center align-items-center w-100" style="padding-top: 35vh;"
-            id="titleContainer">
-            <div class="d-flex flex-column container" style="height: fit-content; width: fit-content;">
-                <p class="m-sm-auto" id="condition" style="display: none;"><i class="fa fa-heart"
-                        aria-hidden="true"></i></p>
-                <h1 class="m-sm-auto title" id="title" style="display: none;">Hello!</h1>
-                <p class="m-sm-auto subtitle" id="subtitle" style="display: none;">Have a great day!</p>
-                <a class="m-sm-auto d-flex flex-column" id="scrollDown" style="display: none;"
-                    onclick="document.querySelector('#sectionOne').scrollIntoView({behavior: 'smooth'});">
-                    <p class="scroll m-auto" style="font-size: smaller;">
-                        Scroll Down</p>
-                    <i class="bi-chevron-down m-auto"></i>
-                </a>
-            </div>
-        </div>
-        <div id="cloudContainer" style="height: fit-content; display: none;">
-            <img id="cloud" width="100%" alt="A cloud that covers the entire width of the screen.">
-        </div>
-    </div>
-
-    <!-- Script for Main Page -->
-    <script>
-        $('.toast').toast();
-    </script>
-    <main class="container px-sm-5 mb-5 pt-5" id="sectionOne" style="z-index: 3;">
+    <main class="container px-sm-5 mb-5 pt-5 rellax" id="sectionOne" style="z-index: 3;" data-rellax-speed="1">
         <!-- In Development Notice -->
         <div class="alert alert-primary alert-dismissible fade show my-5" role="alert">
             <button type="button" class="close text-primary" data-dismiss="alert" aria-label="Close">
@@ -298,6 +314,13 @@
             </div>
             <div class="projectDeck mx-auto">
                 <div class="d-flex row">
+                    <div class="projectTile" style="background-color: #432534;">
+                        <img src="./images/jpg/projects/fblaProject22.jpg"
+                            alt="Future Business Leaders of America 2020/21 Competition - Website Design."
+                            style="border-bottom: #C44900 1px dashed;">
+                        <a href="./web/fbla/2021/" class="btn" style="color: #C44900; border-color: #C44900;">Learn
+                            More</a>
+                    </div>
                     <div class="projectTile" style="background-color: #2F3E46;">
                         <img src="./images/jpg/projects/alienPanels.jpg"
                             alt="AlienISLive - Twitch Streamer Panels and Brand."
@@ -310,13 +333,6 @@
                             alt="The Coffee Addicts - A streaming group." style="border-bottom: #289BFA 1px dashed;">
                         <a href="./projects/web/tca/" class="btn" style="color: #289BFA; border-color: #289BFA;">Learn
                             More</a>
-                    </div>
-                    <div class="projectTile" style="background-color: #FFC1C1;">
-                        <img src="./images/jpg/projects/fblaProject.jpg"
-                            alt="Future Business Leaders of America 2020/21 Competition - Website Design."
-                            style="border-bottom: #FF6161 1px dashed;">
-                        <a href="./projects/web/fbla2021/" class="btn"
-                            style="color: #FF6161; border-color: #FF6161;">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -369,6 +385,17 @@
     <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
     <script>
         smoothscroll.polyfill();
+    </script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/CSSRulePlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+            smoothscroll.polyfill();
+        })
     </script>
 </body>
 

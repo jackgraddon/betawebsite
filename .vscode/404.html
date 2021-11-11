@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Personal CSS -->
     <link rel="stylesheet" href="../css/style.css">
+    <!-- Reset scroll to top -->
+    <script>history.scrollRestoration = "manual"</script>
 </head>
 
 <body>
@@ -60,7 +62,7 @@
                 $('body').css('background-color', '#33004f');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(51,0,79,1) 0%, rgba(177,72,38,1) 100%)');
                 meta.setAttribute('content', '#33004f');
-                $('#starMorn').fadeIn(6000);
+                $('#starsMorn').fadeIn(6000);
             } else if ((date.hour >= 9) && (date.hour < 12)) {
                 $('body').css('background-color', '#067bbb');
                 $('#background').css('background-image', 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)');
@@ -171,47 +173,21 @@
             }
         };
     </script>
-    <!-- Mobile Detection -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
-    <script>
-        var md;
-        // Get Device
-        window.addEventListener("load", function () {
-            md = new MobileDetect(window.navigator.userAgent);
-            // console.log(md.mobile()); // null if not mobile device
-            // console.log(md.phone()); // null if not smartphone
-            // console.log(md.tablet()); // null if not tablet
-            // console.log(md.userAgent()); // Browser used
-            // console.log(md.os()); // Operating System
-            // console.log(md.version('Webkit')); // Webkit version
-            // console.log(md.versionStr('Build')); // Build
-
-            if (md.mobile() != null) {
-                document.getElementById('cloudContainer').style.width = '200%';
-                document.getElementById('cloudContainer').style.left = '-20%';
-                $('#stars').removeClass('rellax');
-                $('#starsMorn').removeClass('rellax');
-                // Get orienation on Mobile devices (fixes offcenter padding for title)
-                if ((Math.abs(window.orientation) == 90) || (Math.abs(window.orientation) == -90)) {
-                    document.getElementById('titleContainer').style.paddingTop = "2rem";
-                }
-            }
-        });
-    </script>
     <!-- Begin Page -->
-    <div id="background" style="display: none;"></div>
+    <div id="background"></div>
 
     <div class="d-flex flex-column justify-content-center align-content-center" id="header"
-        style="height: fit-content; z-index: 1; overflow-x: hidden; display: none;">
-        <div id="stars" style="display: none;" class="rellax" data-rellax-speed="10"></div>
-        <div id="starMorn" style="display: none;" class="rellax" data-rellax-speed="10"></div>
-        <div class=" d-flex justify-content-center align-items-center w-100" style="padding-top: 35vh;"
+        style="height: fit-content; z-index: 1; overflow-x: hidden;">
+        <div id="stars" style="display: none;"></div>
+        <div id="starsMorn" style="display: none;"></div>
+        <div class="d-flex justify-content-center align-items-center w-100 rellax" style="padding-top: 35vh;"
             id="titleContainer">
-            <div class="d-flex flex-column container" style="height: fit-content; width: fit-content;">
-                <h3 class="m-sm-auto" id="condition" style="display: none;"><i class="bi bi-exclamation-square"></i>
+            <div class="d-flex flex-column container align-items-center"
+                style="height: fit-content; width: fit-content;">
+                <h3 class="m-sm-auto" id="condition"><i class="bi bi-exclamation-square"></i>
                 </h3>
-                <h1 class="m-sm-auto title" id="title" style="display: none;">Error</h1>
-                <p class="m-sm-auto subtitle" id="subtitle" style="display: none;">It appears there has been an error...
+                <h1 class="m-sm-auto title" id="title">Error</h1>
+                <p class="m-sm-auto subtitle" id="subtitle">It appears there has been an error...
                 </p>
             </div>
         </div>
@@ -252,6 +228,16 @@
     <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
     <script>
         smoothscroll.polyfill();
+    </script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/CSSRulePlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+        })
     </script>
 </body>
 

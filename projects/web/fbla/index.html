@@ -36,7 +36,7 @@
         crossorigin="anonymous"></script>
 
     <!-- Script for Landing Page -->
-    <script src="../js/theming.js"></script>
+    <script src="../../../js/theming.js"></script>
     <!-- Begin Page -->
     <div id="background"></div>
 
@@ -96,20 +96,38 @@
             }
         });
     </script>
+    <!-- Mobile Detection -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
+    <script>
+        var md;
+        // Get Device
+        window.addEventListener("DOMContentLoaded", function () {
+            md = new MobileDetect(window.navigator.userAgent);
+            // console.log(md.mobile()); // null if not mobile device
+            // console.log(md.phone()); // null if not smartphone
+            // console.log(md.tablet()); // null if not tablet
+            // console.log(md.userAgent()); // Browser used
+            // console.log(md.os()); // Operating System
+            // console.log(md.version('Webkit')); // Webkit version
+            // console.log(md.versionStr('Build')); // Build
+
+            if (md.mobile() != null) {
+                document.getElementById('cloudContainer').style.width = '200%';
+                document.getElementById('cloudContainer').style.left = '-20%';
+                // Get orienation on Mobile devices (fixes offcenter padding for title)
+                if ((Math.abs(window.orientation) == 90) || (Math.abs(window.orientation) == -90)) {
+                    document.getElementById('titleContainer').style.paddingTop = "2rem";
+                }
+            }
+        });
+    </script>
     <main class="container px-sm-5 mb-5 pt-5" id="sectionOne" style="z-index: 3;">
         <div class="d-flex flex-column align-items-start">
             <div class="d-flex flex-column">
-                <div class="mb-4 d-flex flex-column justify-content-center align-items-center">
+                <div class="mb-4">
                     <h1>Recent Projects</h1>
                     <div class="projectDeck mx-auto">
                         <div class="d-flex row">
-                            <div class="projectTile" style="background-color: #432534;">
-                                <img src="../images/jpg/projects/fblaProject22.jpg"
-                                    alt="Future Business Leaders of America 2020/21 Competition - Website Design."
-                                    style="border-bottom: #C44900 1px dashed;">
-                                <a href="./web/fbla2021/" class="btn"
-                                    style="color: #C44900; border-color: #C44900;">Learn More</a>
-                            </div>
                             <div class="projectTile" style="background-color: #2F3E46;">
                                 <img src="../images/jpg/projects/alienPanels.jpg"
                                     alt="AlienISLive - Twitch Streamer Panels and Brand."
@@ -124,13 +142,17 @@
                                 <a href="./web/tca/" class="btn" style="color: #289BFA; border-color: #289BFA;">Learn
                                     More</a>
                             </div>
+                            <div class="projectTile" style="background-color: #432534;">
+                                <img src="../images/jpg/projects/fblaProject22.jpg"
+                                    alt="Future Business Leaders of America 2020/21 Competition - Website Design."
+                                    style="border-bottom: #C44900 1px dashed;">
+                                <a href="./web/fbla2021/" class="btn"
+                                    style="color: #C44900; border-color: #C44900;">Learn More</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="mb-4 d-flex flex-column justify-content-center align-items-center">
-
-                </div>
-                <div class="mb-4 d-flex flex-column justify-content-center align-items-center">
+                <div class="mb-4">
                     <h1>Personal Favourites</h1>
                     <div class="projectDeck mx-auto">
                         <div class="d-flex row">
@@ -156,14 +178,6 @@
                                     More</a>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="mb-4 d-flex flex-column justify-content-center align-items-center">
-                    <h1>View All Projects</h1>
-                    <div class="d-flex row justify-content-center align-items-center">
-                        <a href="./web/" class="btn btn-primary m-1">Web Projects</a>
-                        <a href="./design/" class="btn btn-primary m-1">Design Projects</a>
-                        <a href="./video/" class="btn btn-primary m-1">Video Projects</a>
                     </div>
                 </div>
             </div>

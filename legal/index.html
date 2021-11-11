@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Personal CSS -->
     <link rel="stylesheet" href="../css/style.css">
+    <!-- Reset scroll to top -->
+    <script>history.scrollRestoration = "manual"</script>
 </head>
 
 <body>
@@ -34,149 +36,48 @@
         crossorigin="anonymous"></script>
 
     <!-- Script for Landing Page -->
+    <script src="../js/theming.js"></script>
+    <!-- Begin Page -->
+    <div id="background"></div>
+
+    <div class="d-flex flex-column justify-content-center align-content-center" id="header"
+        style="height: fit-content; z-index: 1; overflow-x: hidden;">
+        <div id="stars" style="display: none;"></div>
+        <div id="starsMorn" style="display: none;"></div>
+        <div class="d-flex justify-content-center align-items-center w-100 rellax" style="padding-top: 35vh;"
+            id="titleContainer">
+            <div class="d-flex flex-column container align-items-center"
+                style="height: fit-content; width: fit-content;">
+                <h3 class="m-sm-auto" id="condition"><i class="bi bi-bank"></i>
+                </h3>
+                <h1 class="m-sm-auto title" id="title">Legals</h1>
+                <p class="m-sm-auto subtitle" id="subtitle">All of the information.</p>
+                <a class="m-auto d-flex flex-column" id="scrollDown"
+                    onclick="javascript:document.getElementById('sectionOne').scrollIntoView({ behavior: 'smooth' });">
+                    <p class="scroll m-auto" style="font-size: smaller;">
+                        Scroll Down</p>
+                    <i class="bi-chevron-down m-auto"></i>
+                </a>
+            </div>
+        </div>
+        <div id="cloudContainer" style="height: fit-content;">
+            <img id="cloud" width="100%" alt="A cloud that covers the entire width of the screen.">
+        </div>
+    </div>
+
+    <!-- Script for Main Page -->
     <script>
-        var dateFull = new Date();
-        var date = {
-            year: dateFull.getFullYear(),
-            month: dateFull.getMonth() + 1,
-            calDay: dateFull.getDate(),
-            day: dateFull.getUTCDay(),
-            hour: dateFull.getHours(),
-        }
-        console.log(date.year, date.month, date.calDay, date.day, date.hour);
-        let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        function colorSchemeSet() {
-            let title = document.getElementById('title');
-            let subtitle = document.getElementById('subtitle');
-            let body = document.getElementById('background');
-            let condition = document.getElementById('condition');
-            let cloud = document.getElementById('cloud');
-            let meta = document.querySelector('meta[name="theme-color"]')
-            let stylesheet = document.querySelector('link[href="./css/style.css"]');
-
-            // date.hour = 3;
-            if ((date.hour >= 5) && (date.hour < 9)) {
-                $('body').css('background-color', '#33004f');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(51,0,79,1) 0%, rgba(177,72,38,1) 100%)');
-                meta.setAttribute('content', '#33004f');
-                $('#starMorn').fadeIn(6000);
-            } else if ((date.hour >= 9) && (date.hour < 12)) {
-                $('body').css('background-color', '#067bbb');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)');
-                meta.setAttribute('content', '#067bbb')
-            } else if ((date.hour >= 12) && (date.hour < 18)) {
-                $('body').css('background-color', '#067bbb');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)');
-                meta.setAttribute('content', '#067bbb')
-            } else if ((date.hour >= 18) && (date.hour < 22)) {
-                $('body').css('background-color', '#2a6ca1');
-                $('#background').css('background-image', 'linear-gradient(0deg, rgba(255,177,177,1) 0%, rgba(226,218,187,1) 25%, rgba(184,214,228,1) 40%, rgba(42,108,161,1) 100%)');
-                meta.setAttribute('content', '#2a6ca1')
-            } else if ((date.hour >= 22) || (date.hour < 5)) {
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                $('#stars').fadeIn(6000);
-                meta.setAttribute('content', '#13001d');
-            }
-
-            if (matched && ((date.hour < 22) && (date.hour > 5))) {
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                meta.setAttribute('content', '#13001d');
-                $('#stars').fadeIn(6000);
-                console.log('Browser in dark mode, night color scheme applied.')
-            } else if (matched) {
-                console.log('Browser in dark mode, but the default color scheme was applied.')
-            } else {
-                console.log('Browser in light mode, default color scheme applied.');
-            }
-        }
-
-        function setDarkMode() {
-            let title = document.getElementById('title');
-            let subtitle = document.getElementById('subtitle');
-            let body = document.getElementById('background');
-            let condition = document.getElementById('condition');
-            let meta = document.querySelector('meta[name="theme-color"]')
-            if ((date.hour < 22) && (date.hour > 5)) {
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                meta.setAttribute('content', '#13001d');
-                $('#stars').fadeIn(400);
-                console.log('Browser in dark mode during the day, so the night color scheme applied.')
-            } else {
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                meta.setAttribute('content', '#13001d');
-                $('#stars').fadeIn(400);
-                console.log('Browser in light mode at night, so the night color scheme was applied.')
-            }
-        }
-        function setLightMode() {
-            colorSchemeSet();
-            $('#stars').fadeOut(400);
-        }
-        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => e.matches && setDarkMode());
-        window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", e => e.matches && setLightMode());
-
-        window.addEventListener('DOMContentLoaded', (event) => {
-            colorSchemeSet()
-            $('#background').fadeIn(4000);
-            // $('#header').fadeIn(1000);
-            $('#scrollDown').fadeIn(2000);
-            $('#title').fadeIn(1500);
-            $('#subtitle').fadeIn(1500);
-            $('#condition').fadeIn(2000);
-
-            let rand = Math.floor(Math.random() * 3) + 1;
-            console.log(rand);
-
-            switch (rand) {
-                case 1:
-                    $('#cloud').attr("src", "../images/png/front/cloud1.png");
-                    break;
-                case 2:
-                    $('#cloud').attr("src", "../images/png/front/cloud2.png");
-                    break;
-                case 3:
-                    $('#cloud').attr("src", "../images/png/front/cloud3.png");
-                    break;
-            }
-            $('#cloudContainer').fadeIn(1500);
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
         });
-
-        let i = 0;
-        let j = 0;
-        window.onscroll = function () { scrollFunction() };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-                while (i < 1) {
-                    $('#scrollDown').attr('opacity', '1').animate({ opacity: '0' }, 400);
-                    $('#downArrow').attr('opacity', '1').animate({ opacity: '0' }, 400);
-                    $('#scrollToTop').attr('opacity', '0').animate({ opacity: '1' }, 400);
-                    i++;
-                    j = 0;
-                }
-            }
-            else if (document.body.scrollTop == 0 || document.documentElement.scrollTop == 0) {
-                while (j < 1) {
-                    $('#scrollToTop').attr('opacity', '1').animate({ opacity: '0' }, 400);
-                    $('#scrollDown').attr('opacity', '0').animate({ opacity: '1' }, 400);
-                    $('#downArrow').attr('opacity', '0').animate({ opacity: '1' }, 400);
-                    j++;
-                    i = 0;
-                }
-            }
-        };
+        window.onunload = function () { window.scrollTo(0, 0); }
     </script>
     <!-- Mobile Detection -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
     <script>
         var md;
         // Get Device
-        window.addEventListener("load", function () {
+        window.addEventListener("DOMContentLoaded", function () {
             md = new MobileDetect(window.navigator.userAgent);
             // console.log(md.mobile()); // null if not mobile device
             // console.log(md.phone()); // null if not smartphone
@@ -189,8 +90,6 @@
             if (md.mobile() != null) {
                 document.getElementById('cloudContainer').style.width = '200%';
                 document.getElementById('cloudContainer').style.left = '-20%';
-                $('#stars').removeClass('rellax');
-                $('#starsMorn').removeClass('rellax');
                 // Get orienation on Mobile devices (fixes offcenter padding for title)
                 if ((Math.abs(window.orientation) == 90) || (Math.abs(window.orientation) == -90)) {
                     document.getElementById('titleContainer').style.paddingTop = "2rem";
@@ -198,41 +97,10 @@
             }
         });
     </script>
-    <!-- Begin Page -->
-    <div id="background" style="display: none;"></div>
-
-    <div class="d-flex flex-column justify-content-center align-content-center" id="header"
-        style="height: fit-content; z-index: 1; overflow-x: hidden; display: none;">
-        <div id="stars" style="display: none;" class="rellax" data-rellax-speed="10"></div>
-        <div id="starMorn" style="display: none;" class="rellax" data-rellax-speed="10"></div>
-        <div class=" d-flex justify-content-center align-items-center w-100" style="padding-top: 35vh;"
-            id="titleContainer">
-            <div class="d-flex flex-column container" style="height: fit-content; width: fit-content;">
-                <h3 class="m-sm-auto" id="condition" style="display: none;"><i class="bi bi-bank"></i>
-                </h3>
-                <h1 class="m-sm-auto title" id="title" style="display: none;">Legals</h1>
-                <p class="m-sm-auto subtitle" id="subtitle" style="display: none;">All of the information.</p>
-                <a class="m-auto d-flex flex-column" id="scrollDown" style="display: none;"
-                    onclick="javascript:document.getElementById('sectionOne').scrollIntoView({ behavior: 'smooth' });">
-                    <p class="scroll m-auto" style="font-size: smaller;">
-                        Scroll Down</p>
-                    <i class="bi-chevron-down m-auto"></i>
-                </a>
-            </div>
-        </div>
-        <div id="cloudContainer" style="height: fit-content; display: none;">
-            <img id="cloud" width="100%" alt="A cloud that covers the entire width of the screen.">
-        </div>
-    </div>
-
-    <!-- Script for Main Page -->
-    <script>
-        $('.toast').toast();
-    </script>
     <main class="container px-sm-5 mb-5 pt-5" id="sectionOne" style="z-index: 3;">
         <div class="d-flex flex-column align-items-start">
             <div class="d-flex flex-column">
-                <div class="mb-4">
+                <div class="mb-4 d-flex flex-column justify-content-center align-items-center">
                     <h1>Copyright</h1>
                     <p>This page was designed and developed by Jack Graddon. All rights reserved
                         2021.<br>
@@ -241,7 +109,7 @@
                                 class="bi bi-box-arrow-up-right"></i></a>.
                     </p>
                 </div>
-                <div class="mb-4">
+                <div class="mb-4 d-flex flex-column justify-content-center align-items-center">
                     <h1>Other Work</h1>
                     <p>Other work, code, fonts, or images I used are credited below.</p>
                     <div class="d-flex flex-column">
@@ -350,6 +218,16 @@
     <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
     <script>
         smoothscroll.polyfill();
+    </script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/CSSRulePlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+        })
     </script>
 </body>
 

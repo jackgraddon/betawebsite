@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Personal CSS -->
     <link rel="stylesheet" href="../css/style.css">
+    <!-- Reset scroll to top -->
+    <script>history.scrollRestoration = "manual"</script>
 </head>
 
 <body>
@@ -34,149 +36,48 @@
         crossorigin="anonymous"></script>
 
     <!-- Script for Landing Page -->
+    <script src="../js/theming.js"></script>
+    <!-- Begin Page -->
+    <div id="background"></div>
+
+    <div class="d-flex flex-column justify-content-center align-content-center" id="header"
+        style="height: fit-content; z-index: 1; overflow-x: hidden;">
+        <div id="stars" style="display: none;"></div>
+        <div id="starsMorn" style="display: none;"></div>
+        <div class="d-flex justify-content-center align-items-center w-100 rellax" style="padding-top: 35vh;"
+            id="titleContainer">
+            <div class="d-flex flex-column container align-items-center"
+                style="height: fit-content; width: fit-content;">
+                <h3 class="m-sm-auto" id="condition"><i class="bi bi-person-badge"></i>
+                </h3>
+                <h1 class="m-sm-auto title" id="title">About Me</h1>
+                <p class="m-sm-auto subtitle" id="subtitle">All you need to know about myself.
+                </p>
+                <a class="m-auto d-flex flex-column" id="scrollDown"
+                    onclick="javascript:document.getElementById('sectionOne').scrollIntoView({ behavior: 'smooth' });">
+                    <p class="scroll m-auto" style="font-size: smaller;">
+                        Scroll Down</p>
+                    <i class="bi-chevron-down m-auto"></i>
+                </a>
+            </div>
+        </div>
+        <div id="cloudContainer" style="height: fit-content; min-height: 20vh;">
+            <img id="cloud" width="100%" alt="A cloud that covers the entire width of the screen.">
+        </div>
+    </div>
+
+    <!-- Script for Main Page -->
     <script>
-        var dateFull = new Date();
-        var date = {
-            year: dateFull.getFullYear(),
-            month: dateFull.getMonth() + 1,
-            calDay: dateFull.getDate(),
-            day: dateFull.getUTCDay(),
-            hour: dateFull.getHours(),
-        }
-        console.log(date.year, date.month, date.calDay, date.day, date.hour);
-        let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        function colorSchemeSet() {
-            let title = document.getElementById('title');
-            let subtitle = document.getElementById('subtitle');
-            let body = document.getElementById('background');
-            let condition = document.getElementById('condition');
-            let cloud = document.getElementById('cloud');
-            let meta = document.querySelector('meta[name="theme-color"]')
-            let stylesheet = document.querySelector('link[href="./css/style.css"]');
-
-            // date.hour = 3;
-            if ((date.hour >= 5) && (date.hour < 9)) {
-                $('body').css('background-color', '#33004f');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(51,0,79,1) 0%, rgba(177,72,38,1) 100%)');
-                meta.setAttribute('content', '#33004f');
-                $('#starMorn').fadeIn(6000);
-            } else if ((date.hour >= 9) && (date.hour < 12)) {
-                $('body').css('background-color', '#067bbb');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)');
-                meta.setAttribute('content', '#067bbb')
-            } else if ((date.hour >= 12) && (date.hour < 18)) {
-                $('body').css('background-color', '#067bbb');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)');
-                meta.setAttribute('content', '#067bbb')
-            } else if ((date.hour >= 18) && (date.hour < 22)) {
-                $('body').css('background-color', '#2a6ca1');
-                $('#background').css('background-image', 'linear-gradient(0deg, rgba(255,177,177,1) 0%, rgba(226,218,187,1) 25%, rgba(184,214,228,1) 40%, rgba(42,108,161,1) 100%)');
-                meta.setAttribute('content', '#2a6ca1')
-            } else if ((date.hour >= 22) || (date.hour < 5)) {
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                $('#stars').fadeIn(6000);
-                meta.setAttribute('content', '#13001d');
-            }
-
-            if (matched && ((date.hour < 22) && (date.hour > 5))) {
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                meta.setAttribute('content', '#13001d');
-                $('#stars').fadeIn(6000);
-                console.log('Browser in dark mode, night color scheme applied.')
-            } else if (matched) {
-                console.log('Browser in dark mode, but the default color scheme was applied.')
-            } else {
-                console.log('Browser in light mode, default color scheme applied.');
-            }
-        }
-
-        function setDarkMode() {
-            let title = document.getElementById('title');
-            let subtitle = document.getElementById('subtitle');
-            let body = document.getElementById('background');
-            let condition = document.getElementById('condition');
-            let meta = document.querySelector('meta[name="theme-color"]')
-            if ((date.hour < 22) && (date.hour > 5)) {
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                meta.setAttribute('content', '#13001d');
-                $('#stars').fadeIn(400);
-                console.log('Browser in dark mode during the day, so the night color scheme applied.')
-            } else {
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                meta.setAttribute('content', '#13001d');
-                $('#stars').fadeIn(400);
-                console.log('Browser in light mode at night, so the night color scheme was applied.')
-            }
-        }
-        function setLightMode() {
-            colorSchemeSet();
-            $('#stars').fadeOut(400);
-        }
-        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => e.matches && setDarkMode());
-        window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", e => e.matches && setLightMode());
-
-        window.addEventListener('DOMContentLoaded', (event) => {
-            colorSchemeSet()
-            $('#background').fadeIn(4000);
-            // $('#header').fadeIn(1000);
-            $('#scrollDown').fadeIn(2000);
-            $('#title').fadeIn(1500);
-            $('#subtitle').fadeIn(1500);
-            $('#condition').fadeIn(2000);
-
-            let rand = Math.floor(Math.random() * 3) + 1;
-            console.log(rand);
-
-            switch (rand) {
-                case 1:
-                    $('#cloud').attr("src", "../images/png/front/cloud1.png");
-                    break;
-                case 2:
-                    $('#cloud').attr("src", "../images/png/front/cloud2.png");
-                    break;
-                case 3:
-                    $('#cloud').attr("src", "../images/png/front/cloud3.png");
-                    break;
-            }
-            $('#cloudContainer').fadeIn(1500);
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
         });
-
-        let i = 0;
-        let j = 0;
-        window.onscroll = function () { scrollFunction() };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-                while (i < 1) {
-                    $('#scrollDown').attr('opacity', '1').animate({ opacity: '0' }, 400);
-                    $('#downArrow').attr('opacity', '1').animate({ opacity: '0' }, 400);
-                    $('#scrollToTop').attr('opacity', '0').animate({ opacity: '1' }, 400);
-                    i++;
-                    j = 0;
-                }
-            }
-            else if (document.body.scrollTop == 0 || document.documentElement.scrollTop == 0) {
-                while (j < 1) {
-                    $('#scrollToTop').attr('opacity', '1').animate({ opacity: '0' }, 400);
-                    $('#scrollDown').attr('opacity', '0').animate({ opacity: '1' }, 400);
-                    $('#downArrow').attr('opacity', '0').animate({ opacity: '1' }, 400);
-                    j++;
-                    i = 0;
-                }
-            }
-        };
     </script>
     <!-- Mobile Detection -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
     <script>
         var md;
         // Get Device
-        window.addEventListener("load", function () {
+        window.addEventListener("DOMContentLoaded", function () {
             md = new MobileDetect(window.navigator.userAgent);
             // console.log(md.mobile()); // null if not mobile device
             // console.log(md.phone()); // null if not smartphone
@@ -189,8 +90,6 @@
             if (md.mobile() != null) {
                 document.getElementById('cloudContainer').style.width = '200%';
                 document.getElementById('cloudContainer').style.left = '-20%';
-                $('#stars').removeClass('rellax');
-                $('#starsMorn').removeClass('rellax');
                 // Get orienation on Mobile devices (fixes offcenter padding for title)
                 if ((Math.abs(window.orientation) == 90) || (Math.abs(window.orientation) == -90)) {
                     document.getElementById('titleContainer').style.paddingTop = "2rem";
@@ -198,51 +97,24 @@
             }
         });
     </script>
-    <!-- Begin Page -->
-    <div id="background" style="display: none;"></div>
-
-    <div class="d-flex flex-column justify-content-center align-content-center" id="header"
-        style="height: fit-content; z-index: 1; overflow-x: hidden; display: none;">
-        <div id="stars" style="display: none;" class="rellax" data-rellax-speed="10"></div>
-        <div id="starMorn" style="display: none;" class="rellax" data-rellax-speed="10"></div>
-        <div class=" d-flex justify-content-center align-items-center w-100" style="padding-top: 35vh;"
-            id="titleContainer">
-            <div class="d-flex flex-column container" style="height: fit-content; width: fit-content;">
-                <h3 class="m-sm-auto" id="condition" style="display: none;"><i class="bi bi-person-badge"></i>
-                </h3>
-                <h1 class="m-sm-auto title" id="title" style="display: none;">About Me</h1>
-                <p class="m-sm-auto subtitle" id="subtitle" style="display: none;">All you need to know about myself.
-                </p>
-                <a class="m-auto d-flex flex-column" id="scrollDown" style="display: none;"
-                    onclick="javascript:document.getElementById('sectionOne').scrollIntoView({ behavior: 'smooth' });">
-                    <p class="scroll m-auto" style="font-size: smaller;">
-                        Scroll Down</p>
-                    <i class="bi-chevron-down m-auto"></i>
-                </a>
-            </div>
-        </div>
-        <div id="cloudContainer" style="height: fit-content; display: none;">
-            <img id="cloud" width="100%" alt="A cloud that covers the entire width of the screen.">
-        </div>
-    </div>
-
-    <!-- Script for Main Page -->
-    <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
     <main class="container px-sm-5 mb-5 pt-5" id="sectionOne" style="z-index: 3;">
         <div class="d-flex flex-column align-items-start">
             <div class="d-flex flex-column">
                 <div class="mb-4">
                     <h1>To Sum it Up</h1>
-                    <p>I am Jack Graddon, a Web Developer and Graphic Designer. I grew up in <a
-                            href="https://maps.apple.com/?address=Lynden,%20WA,%20United%20States&auid=3609148360053010219&ll=48.945582,-122.453512&lsp=6489&q=Lynden&_ext=Ch8KBQgEEOIBCgQIBRADCgQIBhADCgQIChAJCgQIVRAIEiYpNez3xDp3SEAxOgZkr3egXsA5SaEsfH17SEBBEW+df7uZXsBQDA%3D%3D"
-                            target="_blank">Lynden, Washington</a>, a farming community about five miles south of the
-                        Canadian Border. I enjoy designing, and making my design myself gives me a huge sense of pride
-                        and accomplishment.
-                    </p>
+                    <div class="d-flex flex-sm-row flex-column">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Lynden%2C_Washington_-_The_Mill_(restaurant_and_inn)_01.jpg"
+                            width="50%" alt="Image of Lynden's Front St windmill - credit to Wikipedia">
+                        <p>I am Jack Graddon, a freelance Web Developer and Graphic Designer. I grew up in <a
+                                href="https://maps.apple.com/?address=Lynden,%20WA,%20United%20States&auid=3609148360053010219&ll=48.945582,-122.453512&lsp=6489&q=Lynden&_ext=Ch8KBQgEEOIBCgQIBRADCgQIBhADCgQIChAJCgQIVRAIEiYpNez3xDp3SEAxOgZkr3egXsA5SaEsfH17SEBBEW+df7uZXsBQDA%3D%3D"
+                                target="_blank">Lynden, Washington</a>, a farming community about five miles south of
+                            the
+                            Canadian Border. I enjoy designing, and making my design myself gives me a huge sense of
+                            pride
+                            and accomplishment. I am studying Digital Technology and Culture at Washington State
+                            University,
+                        </p>
+                    </div>
                 </div>
                 <div class="mb-4">
                     <h1>Getting Started</h1>
@@ -262,54 +134,30 @@
                         down a path of making things, and making them to look good - visually and aesthetically
                         pleasing. I crave to learn more and more about ways I can make things. And I have learned how to
                         make many different things. I’ve taught myself how to code websites (with HTML, CSS, and
-                        JavaScript), how to use design software like Photoshop and Illustrator <a
-                            data-target="#adobeModal" data-toggle="modal">
-                            <i data-toggle="tooltip" data-placement="top"
-                                title="I'm not a fan of Adobe products, and as of when writing this (July 2021) I no longer use them."
-                                class="bi bi-info-circle-fill"></i></a>, and
-                        am even starting now on 3D modelling with
-                        Blender. I learn as I go, trying new stuff every project. With each new thing I try, I have to
-                        learn a new thing.</p>
-                    <div class="modal fade" id="adobeModal" tabindex="-1" role="dialog"
-                        aria-labelledby="adobeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h3 class="modal-title" id="adobeModalLabel">My Distaste of Adobe</h3>
-                                </div>
-                                <div class="modal-body">
-                                    I have personally had nothing but bad experiences with Adobe Creative Cloud. When I
-                                    installed it, it ran poorly, crashed often, frequently slowed my computer down, and
-                                    just overall I had a bad experience with it. Plus I am just not a major fan of
-                                    subscription services for apps in the first place, I would rather own the apps I
-                                    need to use. I use Pixelmator Pro, the Affinity Suite, and Procreate currently.
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Got it</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        JavaScript), how to use design software like Photoshop and Illustrator, and am even starting now
+                        on 3D modelling with Blender. I learn as I go, trying new stuff every project. With each new
+                        thing I try, I have to learn a new thing.</p>
                 </div>
                 <div class="mb-4">
                     <h1>School</h1>
                     <p>I took all of the design and coding classes I could possibly take at my High School. Those
-                        classes included Graphic Arts I and II, Broadcast I and II, Web Design, and Javascript. In
-                        Graphic Arts I and II, you have access to Photoshop, Adobe Illustrator, and InDesign to learn
-                        the basics of the programs. You are not instructed as much as you are given a set of YouTube
-                        video tutorials. In Broadcast I and II you learn how to record and edit video for the school's
-                        Morning Announcements, and how to make graphics and effects for the videos you record. In Web
-                        Design, you learn the basics of HTML, where I took the top of my class fairly quickly. In
-                        JavaScript you learn basic fundemental JavaScript to code Arduinos and aid HTML.</p>
+                        classes included Graphic Arts I and II, Broadcast I and II, Web Design, Javascript, and AP
+                        Computer Science. In Graphic Arts I and II, you have access to Photoshop, Adobe Illustrator, and
+                        InDesign to learn the basics of the programs. In Broadcast I and II you learn how to record and
+                        edit video for the school's Morning Announcements, and how to make graphics and effects for the
+                        videos you record. In Web Design, you learn the basics of HTML, where I took the top of my class
+                        fairly quickly. In JavaScript and AP Computer Science, you learn basic fundemental JavaScript to
+                        code Arduinos and aid HTML.</p>
                 </div>
                 <div class="mb-4">
                     <h1>Today</h1>
-                    <p>I use the Affinity Suite, Pixelmator Pro, and Procreate to design, draw, and edit photos. I use
-                        Visual Studio Code to write code for my websites. You can view my other website projects <a
-                            href="../projects/web/">here</a>. I have worked on many projects in the past year, including
-                        building a website for the Lynden High Shchool IT Department, my FBLA Website for the FBLA
-                        Business Achievement Awards, and the website and branding for The Coffee Addicts, and the
-                        website for the school's Morning Announcements.</p>
+                    <p>I use a combination of the Adobe and the Affinity Suites, Pixelmator Pro, and Procreate to
+                        design, draw, and edit photos. I use Visual Studio Code to write code for my websites, and I use
+                        DaVinci Resolve to edit video. You can view my other website projects <a
+                            href="../projects/web/">here</a>. I will be attending Wasington State University to study <a
+                            href="https://dtc.wsu.edu/" target="_blank">Digital Technology and Culture <i
+                                class="bi bi-box-arrow-up-right"></i></a>, and plan on traveling to Oceania to further
+                        my studies.</p>
                 </div>
             </div>
         </div>
@@ -359,11 +207,23 @@
 
         var rellax = new Rellax('.rellax');
     </script>
-    <!-- Pollyfill (for Smooth Scrolling on Unsupported Browsers) -->
+    <!-- Pollyfills -->
     <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
+    <!-- ^ For Smooth Scrolling on Unsupported Browsers ^ -->
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/CSSRulePlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
     <script>
-        smoothscroll.polyfill();
+        window.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+            smoothscroll.polyfill();
+        })
     </script>
+
+
 </body>
 
 </html>

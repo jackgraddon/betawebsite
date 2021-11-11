@@ -21,7 +21,7 @@
     <!-- Mobile Detection -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
     <script>
-        window.addEventListener("load", function () {
+        window.addEventListener("DOMContentLoaded", function () {
             var md = new MobileDetect(window.navigator.userAgent);
             console.log(md.mobile()); // null if not mobile device
             console.log(md.phone()); // null if not smartphone
