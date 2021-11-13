@@ -41,13 +41,13 @@
     <div id="background"></div>
 
     <div class="d-flex flex-column justify-content-center align-content-center" id="header"
-        style="height: fit-content; z-index: 1; overflow-x: hidden;">
+        style="height: fit-content; z-index: 1; overflow: hidden;">
         <div id="stars" style="display: none;"></div>
         <div id="starsMorn" style="display: none;"></div>
         <div class="d-flex justify-content-center align-items-center w-100 rellax" style="padding-top: 35vh;"
             id="titleContainer">
             <div class="d-flex flex-column container align-items-center"
-                style="height: fit-content; width: fit-content;">
+                style="height: fit-content; width: fit-content;" id="headerText">
                 <h3 class="m-sm-auto" id="condition"><i class="bi bi-person-badge"></i>
                 </h3>
                 <h1 class="m-sm-auto title" id="title">About Me</h1>
@@ -67,11 +67,6 @@
     </div>
 
     <!-- Script for Main Page -->
-    <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
     <!-- Mobile Detection -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
     <script>
@@ -99,20 +94,18 @@
     </script>
     <main class="container px-sm-5 mb-5 pt-5" id="sectionOne" style="z-index: 3;">
         <div class="d-flex flex-column align-items-start">
-            <div class="d-flex flex-column">
-                <div class="mb-4">
+            <div class="container d-flex flex-column">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Lynden%2C_Washington_-_The_Mill_(restaurant_and_inn)_01.jpg"
+                    width="50%" alt="Image of Lynden's Front St windmill - credit to Wikipedia" id="lynden">
+                <div class="mb-4" id="summary">
                     <h1>To Sum it Up</h1>
                     <div class="d-flex flex-sm-row flex-column">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Lynden%2C_Washington_-_The_Mill_(restaurant_and_inn)_01.jpg"
-                            width="50%" alt="Image of Lynden's Front St windmill - credit to Wikipedia">
                         <p>I am Jack Graddon, a freelance Web Developer and Graphic Designer. I grew up in <a
                                 href="https://maps.apple.com/?address=Lynden,%20WA,%20United%20States&auid=3609148360053010219&ll=48.945582,-122.453512&lsp=6489&q=Lynden&_ext=Ch8KBQgEEOIBCgQIBRADCgQIBhADCgQIChAJCgQIVRAIEiYpNez3xDp3SEAxOgZkr3egXsA5SaEsfH17SEBBEW+df7uZXsBQDA%3D%3D"
                                 target="_blank">Lynden, Washington</a>, a farming community about five miles south of
-                            the
-                            Canadian Border. I enjoy designing, and making my design myself gives me a huge sense of
-                            pride
-                            and accomplishment. I am studying Digital Technology and Culture at Washington State
-                            University,
+                            the Canadian Border. I enjoy designing, and making my design myself gives me a huge sense of
+                            pride and accomplishment. I am studying Digital Technology and Culture at Washington State
+                            University,...
                         </p>
                     </div>
                 </div>
@@ -195,17 +188,6 @@
         </div>
     </nav>
 
-    <!-- Rellax JS -->
-    <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
-    <script>
-        // var md = new MobileDetect(window.navigator.userAgent);
-        // if (md.mobile() != null) {
-        //     return;
-        // } else {
-        //     var rellax = new Rellax('.rellax');
-        // }
-
-        var rellax = new Rellax('.rellax');
     </script>
     <!-- Pollyfills -->
     <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
@@ -217,13 +199,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/TextPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            gsap.registerPlugin(ScrollTrigger);
-            smoothscroll.polyfill();
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.to("#headerText", {
+            scrollTrigger: {
+                trigger: "#headerText",
+                id: "header",
+                start: "top 35%",
+                end: "bottom 20%",
+                markers: true,
+                // pin: true,
+                scrub: true,
+            },
+            opacity: 0,
+            y: 170,
+            transform: "scale(0.9)",
+            filter: "blur(10px)",
+            ease: "none",
+            duration: 2,
+        });
+        gsap.to("#lynden", {
+            scrollTrigger: {
+                trigger: "#summary",
+                id: "summary",
+                start: "top center",
+                end: "bottom center",
+                markers: true,
+                // pin: true,
+                scrub: true,
+            },
+            y: 200,
+            ease: "none",
+            duration: 2,
         })
     </script>
-
-
 </body>
 
 </html>

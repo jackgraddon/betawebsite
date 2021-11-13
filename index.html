@@ -149,7 +149,7 @@
             colorSchemeSet()
 
             let rand = Math.floor(Math.random() * 3) + 1;
-            console.log(rand);
+            // console.log(rand);
 
             switch (rand) {
                 case 1:
@@ -211,55 +211,63 @@
             let loadtl = gsap.timeline({ delay: 0.5 });
             loadtl.fromTo("#background", { opacity: 0 }, { opacity: 1, duration: 4 });
             // loadtl.fromTo("#scrollDown", { opacity: 0 }, { opacity: 1, duration: 2 }, "<");
-            loadtl.to("#header, body", { overflow: "hidden", duration: 0 }, "<");
+            // loadtl.to("#header", { overflow: "hidden", duration: 0 }, "<");
             loadtl.fromTo("#title, #subtitle, #condition, #cloudContainer, #scrollDown", { opacity: 0, filter: 'blur(20px)', transform: 'scale(1.1)', y: 0 }, { opacity: 1, filter: 'blur(0px)', transform: 'scale(1)', y: 0, duration: 2, ease: "power3.out" }, "<");
-            loadtl.to("body", { overflowY: "scroll", duration: 0 }, "<+=2");
-            window.addEventListener("keydown", (e) => {
-                if (e.key == "Enter") {
-                    // alert('press enter');
-                    loadtl.timeScale(10);
-                    clearTimeout(scrollByTimer);
-                }
-            }, false);
-            window.addEventListener("touchstart", () => {
+
+            window.addEventListener("scroll", finishAnimation, false);
+            function finishAnimation() {
                 loadtl.timeScale(10);
-                clearTimeout(scrollByTimer);
-            }, false);
+                console.log("Finishing animation...");
+                window.removeEventListener("scroll", finishAnimation, false);
+            }
         })
     </script>
     <!-- Begin Page -->
-    <div id="background"></div>
+    <div id="background"></div <div class="d-flex flex-column justify-content-center align-content-center" id="header"
+        style="height: fit-content; z-index: 1; overflow: hidden;">
+    <div id="stars" style="display: none;"></div>
+    <div id="starsMorn" style="display: none;"></div>
+    <div class="d-flex justify-content-center align-items-center w-100 rellax" style="padding-top: 35vh;"
+        id="titleContainer">
+        <div class="d-flex flex-column container align-items-center" style="height: fit-content; width: fit-content;"
+            id="headerText">
+            <p class="m-sm-auto" id="condition"><i class="fa fa-heart" aria-hidden="true"></i></p>
+            <h1 class="m-sm-auto title" id="title">Hello!</h1>
+            <p class="m-sm-auto subtitle" id="subtitle">Have a great day!</p>
+            <a class="m-sm-auto d-flex flex-column" id="scrollDown"
+                onclick="document.querySelector('#sectionOne').scrollIntoView({behavior: 'smooth'});">
+                <p class="scroll m-auto" style="font-size: smaller;">
+                    Scroll Down</p>
+                <i class="bi-chevron-down m-auto"></i>
+            </a>
+        </div>
+    </div>
+    <!-- <nav class="d-flex flex-column p-1 sticky-top" id="headerNavbar">
+        <h3 style="width: fit-content;" class="m-auto">Jack Graddon</h3>
+        <div style="width: fit-content;" class="m-auto">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./about/">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./projects/">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./legal/">Legal</a>
+                </li>
+            </ul>
+        </div>
+    </nav> -->
+    <div id="cloudContainer" style="height: fit-content;">
+        <img id="cloud" width="100%" alt="A cloud that covers the entire width of the screen.">
+    </div>
 
-    <div class="d-flex flex-column justify-content-center align-content-center" id="header"
-        style="height: fit-content; z-index: 1; overflow-x: hidden;">
-        <div id="stars" style="display: none;"></div>
-        <div id="starsMorn" style="display: none;"></div>
-        <div class="d-flex justify-content-center align-items-center w-100 rellax" style="padding-top: 35vh;"
-            id="titleContainer">
-            <div class="d-flex flex-column container align-items-center"
-                style="height: fit-content; width: fit-content;">
-                <p class="m-sm-auto" id="condition"><i class="fa fa-heart" aria-hidden="true"></i></p>
-                <h1 class="m-sm-auto title" id="title">Hello!</h1>
-                <p class="m-sm-auto subtitle" id="subtitle">Have a great day!</p>
-                <a class="m-sm-auto d-flex flex-column" id="scrollDown"
-                    onclick="document.querySelector('#sectionOne').scrollIntoView({behavior: 'smooth'});">
-                    <p class="scroll m-auto" style="font-size: smaller;">
-                        Scroll Down</p>
-                    <i class="bi-chevron-down m-auto"></i>
-                </a>
-            </div>
-        </div>
-        <div id="cloudContainer" style="height: fit-content;">
-            <img id="cloud" width="100%" alt="A cloud that covers the entire width of the screen.">
-        </div>
     </div>
 
     <!-- Script for Main Page -->
-    <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    </script>
     <!-- Mobile Detection -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
     <script>
@@ -305,7 +313,7 @@
             </p>
         </div>
         <!-- Main Page -->
-        <div class="d-flex flex-column align-items-start">
+        <div class="d-flex flex-column align-items-center">
             <div class="d-flex flex-row">
                 <div>
                     <h1 class="title">Hello!</h1>
@@ -369,34 +377,59 @@
         </div>
     </nav>
 
-    <!-- Rellax JS -->
-    <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
-    <script>
-        // var md = new MobileDetect(window.navigator.userAgent);
-        // if (md.mobile() != null) {
-        //     return;
-        // } else {
-        //     var rellax = new Rellax('.rellax');
-        // }
-
-        var rellax = new Rellax('.rellax');
     </script>
     <!-- Pollyfill (for Smooth Scrolling on Unsupported Browsers) -->
     <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
-    <script>
-        smoothscroll.polyfill();
-    </script>
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/CSSRulePlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/TextPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
     <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            gsap.registerPlugin(ScrollTrigger);
-            smoothscroll.polyfill();
-        })
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.to("#headerText", {
+            scrollTrigger: {
+                trigger: "#headerText",
+                id: "header",
+                start: "top 35%",
+                end: "bottom 20%",
+                markers: true,
+                // pin: true,
+                scrub: true,
+            },
+            opacity: 0,
+            y: 170,
+            transform: "scale(0.9)",
+            filter: "blur(10px)",
+            ease: "none",
+            duration: 2,
+        });
+        // gsap.fromTo("#headerNavbar", {
+        //     filter: "blur(10px)",
+        //     backdropFilter: "blur(0px)",
+        //     opacity: 0,
+        //     y: 200,
+        // },
+        //     {
+        //         scrollTrigger: {
+        //             trigger: "#cloudContainer",
+        //             id: "rootNav",
+        //             start: "center center",
+        //             end: "bottom center",
+        //             markers: true,
+        //             scrub: true,
+        //         },
+        //         filter: "blur(0px)",
+        //         backdropFilter: "blur(2px)",
+        //         backgroundColor: "rgba(20,20,20,0.25)",
+        //         opacity: 1,
+        //         y: 0,
+        //         ease: "power1.out",
+        //         duration: 2
+        //     });
     </script>
+
 </body>
 
 </html>
