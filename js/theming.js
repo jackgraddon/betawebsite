@@ -152,33 +152,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 let i = 0;
 let j = 0;
-window.onscroll = function () {
-  scrollFunction();
-};
-
-// Change between having scroll down and scroll up links visible
-function scrollFunction() {
-  if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-    while (i < 1) {
-      $("#scrollDown").attr("opacity", "1").animate({ opacity: "0" }, 400);
-      $("#downArrow").attr("opacity", "1").animate({ opacity: "0" }, 400);
-      $("#scrollToTop").attr("opacity", "0").animate({ opacity: "1" }, 400);
-      i++;
-      j = 0;
-    }
-  } else if (
-    document.body.scrollTop == 0 ||
-    document.documentElement.scrollTop == 0
-  ) {
-    while (j < 1) {
-      $("#scrollToTop").attr("opacity", "1").animate({ opacity: "0" }, 400);
-      $("#scrollDown").attr("opacity", "0").animate({ opacity: "1" }, 400);
-      $("#downArrow").attr("opacity", "0").animate({ opacity: "1" }, 400);
-      j++;
-      i = 0;
-    }
-  }
-}
 
 window.addEventListener("DOMContentLoaded", () => {
   let loadtl = gsap.timeline({ delay: 0.5 });

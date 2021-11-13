@@ -166,44 +166,6 @@
 
         let i = 0;
         let j = 0;
-        window.onscroll = function () { scrollFunction() };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-                while (i < 1) {
-                    $('#scrollDown').attr('opacity', '1').animate({ opacity: '0' }, 400);
-                    $('#downArrow').attr('opacity', '1').animate({ opacity: '0' }, 400);
-                    setTimeout(() => {
-                        $('#scrollToTop').attr('opacity', '0').animate({ opacity: '1' }, 400);
-                    }, 400);
-                    $("#title").fadeOut(function () {
-                        $(this).text("Jack Graddon").fadeIn();
-                    });
-                    $("#subtitle").fadeOut(function () {
-                        $(this).text("Web Development | Graphic Design").fadeIn();
-                    });
-                    i++;
-                    j = 0;
-                }
-            }
-            else if (document.body.scrollTop == 0 || document.documentElement.scrollTop == 0) {
-                while (j < 1) {
-                    $('#scrollToTop').attr('opacity', '1').animate({ opacity: '0' }, 400);
-                    setTimeout(() => {
-                        $('#scrollDown').attr('opacity', '0').animate({ opacity: '1' }, 400);
-                        $('#downArrow').attr('opacity', '0').animate({ opacity: '1' }, 400);
-                    }, 400);
-                    $("#title").fadeOut(function () {
-                        $(this).text("Why, hello again!").fadeIn();
-                    });
-                    $("#subtitle").fadeOut(function () {
-                        $(this).text("How are you doing?").fadeIn();
-                    });
-                    j++;
-                    i = 0;
-                }
-            }
-        };
 
         window.addEventListener("DOMContentLoaded", () => {
             window.scrollTo(0, 0
@@ -242,29 +204,9 @@
             </a>
         </div>
     </div>
-    <!-- <nav class="d-flex flex-column p-1 sticky-top" id="headerNavbar">
-        <h3 style="width: fit-content;" class="m-auto">Jack Graddon</h3>
-        <div style="width: fit-content;" class="m-auto">
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link active">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./about/">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./projects/">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./legal/">Legal</a>
-                </li>
-            </ul>
-        </div>
-    </nav> -->
     <div id="cloudContainer" style="height: fit-content;">
         <img id="cloud" width="100%" alt="A cloud that covers the entire width of the screen.">
     </div>
-
     </div>
 
     <!-- Script for Main Page -->
@@ -293,9 +235,31 @@
             }
         });
     </script>
-    <main class="container px-sm-5 mb-5 pt-5 rellax" id="sectionOne" style="z-index: 3;" data-rellax-speed="1">
+
+    <nav id="headerNavbar" style="opacity: 0;">
+        <div style="width: fit-content; z-index: 5;">
+            <h3 style="width: fit-content;" class="mx-auto">Jack Graddon</h3>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./about/">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./projects/">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./legal/">Legal</a>
+                </li>
+            </ul>
+        </div>
+        <div id="headerNavBG"></div>
+    </nav>
+
+    <main class="container px-sm-5 mb-5" id="sectionOne" style="z-index: 3;">
         <!-- In Development Notice -->
-        <div class="alert alert-primary alert-dismissible fade show my-5" role="alert">
+        <div class="alert alert-primary alert-dismissible fade show mb-5" role="alert">
             <button type="button" class="close text-primary" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -387,6 +351,87 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
     <script>
         gsap.registerPlugin(ScrollTrigger);
+        // Hidden Menu
+        document.onmousemove = handleMouseMove;
+        let mousePos = {
+            x: 0,
+            y: 0
+        };;
+        function handleMouseMove(e) {
+            mousePos = {
+                x: e.clientX,
+                y: e.clientY
+            };
+        }
+        // setInterval(getMousePos, 100);
+        function getMousePos() {
+            let pos = mousePos;
+            gsap.to("#headerNavbar", { y: pos.y, x: pos.x, duration: 0 })
+        };
+        let hide, firstTime = true;
+
+        window.addEventListener('keypress', (e) => {
+            clearTimeout(hide);
+            if (e.key == "Escape") {
+                if (firstTime) {
+                    getMousePos();
+                    gsap.to("#headerNavbar", { opacity: 1, duration: 1, ease: "power1" })
+                    firstTime = false;
+                } else {
+                    gsap.to("#headerNavbar", { opacity: 0, duration: 0.3, ease: "power1" })
+                    setTimeout(() => {
+                        getMousePos();
+                        gsap.to("#headerNavbar", { opacity: 1, duration: 1, ease: "power1" })
+                    }, 300)
+                }
+                hide = setTimeout(() => {
+                    gsap.to("#headerNavbar", { opacity: 0, duration: 1, ease: "power1" })
+                }, 3000)
+            }
+        });
+        function onLongTouch() {
+            let elemWidth = document.getElementById("headerNavbar").clientWidth;
+            let elemHeight = document.getElementById("headerNavbar").clientHeight;
+
+            clearTimeout(hide);
+            if (firstTime) {
+                gsap.to("#headerNavbar", { y: mousePos.y - (elemHeight / 2), x: mousePos.x - (elemWidth / 2), duration: 0 })
+                gsap.to("#headerNavbar", { opacity: 1, duration: 1, ease: "power1" })
+                firstTime = false;
+            } else {
+                gsap.to("#headerNavbar", { opacity: 0, duration: 0.3, ease: "power1" })
+                setTimeout(() => {
+                    gsap.to("#headerNavbar", { y: mousePos.y - (elemHeight / 2), x: mousePos.x - (elemWidth / 2), duration: 0 })
+                    gsap.to("#headerNavbar", { opacity: 1, duration: 1, ease: "power1" })
+                }, 300)
+            }
+            hide = setTimeout(() => {
+                gsap.to("#headerNavbar", { opacity: 0, duration: 1, ease: "power1" })
+            }, 3000)
+        };
+
+        var timer;
+
+        window.addEventListener("touchstart", (e) => {
+            if (e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel') {
+                var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+                var touch = evt.touches[0] || evt.changedTouches[0];
+                mousePos.x = touch.clientX;
+                mousePos.y = touch.clientY;
+            }
+            timer = setTimeout(onLongTouch, 300);
+        })
+        window.addEventListener("touchend", touchend)
+
+        function touchend() {
+            console.log('touch end');
+            // Stops short touches from firing the event
+            clearTimeout(timer);
+        }
+
+        window.addEventListener("scroll", () => {
+            gsap.to("#headerNavbar", { opacity: 0, duration: 0.3, ease: "power1" })
+        })
 
         gsap.to("#headerText", {
             scrollTrigger: {
@@ -394,7 +439,6 @@
                 id: "header",
                 start: "top 35%",
                 end: "bottom 20%",
-                markers: true,
                 // pin: true,
                 scrub: true,
             },
@@ -405,28 +449,49 @@
             ease: "none",
             duration: 2,
         });
+        gsap.to("#title", {
+            scrollTrigger: {
+                trigger: "#cloudContainer",
+                id: "titleText",
+                start: "top 15%",
+                end: "top 10%",
+            },
+            text: "Jack Graddon",
+            duration: 0.1,
+        });
+        gsap.to("#subtitle", {
+            scrollTrigger: {
+                trigger: "#cloudContainer",
+                id: "subtitleText",
+                start: "top 15%",
+                end: "top 10%",
+            },
+            text: "Graphic Designer | Web Developer",
+            duration: 0.1,
+        });
+
         // gsap.fromTo("#headerNavbar", {
         //     filter: "blur(10px)",
         //     backdropFilter: "blur(0px)",
         //     opacity: 0,
-        //     y: 200,
+        //     y: 0,
         // },
         //     {
         //         scrollTrigger: {
         //             trigger: "#cloudContainer",
         //             id: "rootNav",
-        //             start: "center center",
+        //             start: "90% center",
         //             end: "bottom center",
         //             markers: true,
         //             scrub: true,
         //         },
         //         filter: "blur(0px)",
         //         backdropFilter: "blur(2px)",
-        //         backgroundColor: "rgba(20,20,20,0.25)",
+        //         // backgroundColor: "rgba(100,100,100,0.1)",
         //         opacity: 1,
         //         y: 0,
         //         ease: "power1.out",
-        //         duration: 2
+        //         duration: 2,
         //     });
     </script>
 
