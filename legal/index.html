@@ -37,7 +37,9 @@
 
     <!-- Script for Landing Page -->
     <script src="../js/theming.js"></script>
-    <!-- Begin Page -->
+    <script src="../js/hiddenMenu.js"></script>
+
+    <script src="../js/hiddenMenu.js"></script> <!-- Begin Page -->
     <div id="background"></div>
 
     <div class="d-flex flex-column justify-content-center align-content-center" id="header"
@@ -97,26 +99,6 @@
             }
         });
     </script>
-    <nav id="headerNavbar" style="opacity: 0;">
-        <div style="width: fit-content; z-index: 5;">
-            <h3 style="width: fit-content;" class="mx-auto">Jack Graddon</h3>
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link active">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./about/">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./projects/">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./legal/">Legal</a>
-                </li>
-            </ul>
-        </div>
-        <div id="headerNavBG"></div>
-    </nav>
 
     <main class="container px-sm-5 mb-5 pt-5" id="sectionOne" style="z-index: 3;">
         <div class="d-flex flex-column align-items-start">
@@ -232,89 +214,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/TextPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
     <script>
-        gsap.registerPlugin(ScrollTrigger);
-        // Hidden Menu
-        document.onmousemove = handleMouseMove;
-        let mousePos = {
-            x: 0,
-            y: 0
-        };;
-        function handleMouseMove(e) {
-            mousePos = {
-                x: e.clientX,
-                y: e.clientY
-            };
-        }
-        // setInterval(getMousePos, 100);
-        function getMousePos() {
-            let pos = mousePos;
-            gsap.to("#headerNavbar", { y: pos.y, x: pos.x, duration: 0 })
-        };
-        let hide, firstTime = true;
-
-        window.addEventListener('keypress', (e) => {
-            clearTimeout(hide);
-            gsap.to("#headerNavbar", { opacity: 0, duration: 0.3, ease: "power1" })
-            if (e.key == "Escape") {
-                if (firstTime) {
-                    getMousePos();
-                    gsap.to("#headerNavbar", { opacity: 1, duration: 1, ease: "power1" })
-                    firstTime = false;
-                } else {
-                    setTimeout(() => {
-                        getMousePos();
-                        gsap.to("#headerNavbar", { opacity: 1, duration: 1, ease: "power1" })
-                    }, 300)
-                }
-                hide = setTimeout(() => {
-                    gsap.to("#headerNavbar", { opacity: 0, duration: 1, ease: "power1" })
-                }, 3000)
-            }
-        });
-        function onLongTouch() {
-            let elemWidth = document.getElementById("headerNavbar").clientWidth;
-            let elemHeight = document.getElementById("headerNavbar").clientHeight;
-
-            clearTimeout(hide);
-            if (firstTime) {
-                gsap.to("#headerNavbar", { y: mousePos.y - (elemHeight / 2), x: mousePos.x - (elemWidth / 2), duration: 0 })
-                gsap.to("#headerNavbar", { opacity: 1, duration: 1, ease: "power1" })
-                firstTime = false;
-            } else {
-                gsap.to("#headerNavbar", { opacity: 0, duration: 0.3, ease: "power1" })
-                setTimeout(() => {
-                    gsap.to("#headerNavbar", { y: mousePos.y - (elemHeight / 2), x: mousePos.x - (elemWidth / 2), duration: 0 })
-                    gsap.to("#headerNavbar", { opacity: 1, duration: 1, ease: "power1" })
-                }, 300)
-            }
-            hide = setTimeout(() => {
-                gsap.to("#headerNavbar", { opacity: 0, duration: 1, ease: "power1" })
-            }, 3000)
-        };
-
-        var timer;
-
-        window.addEventListener("touchstart", (e) => {
-            if (e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel') {
-                var evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
-                var touch = evt.touches[0] || evt.changedTouches[0];
-                mousePos.x = touch.clientX;
-                mousePos.y = touch.clientY;
-            }
-            timer = setTimeout(onLongTouch, 300);
-        })
-        window.addEventListener("touchend", touchend)
-
-        function touchend() {
-            console.log('touch end');
-            // Stops short touches from firing the event
-            clearTimeout(timer);
-        }
-
-        window.addEventListener("scroll", () => {
-            gsap.to("#headerNavbar", { opacity: 0, duration: 0.3, ease: "power1" })
-        })
-
         gsap.to("#headerText", {
             scrollTrigger: {
                 trigger: "#headerText",
@@ -332,6 +231,7 @@
             duration: 2,
         });
     </script>
+    <script src="../js/hiddenMenu.js"></script>
 
 </body>
 

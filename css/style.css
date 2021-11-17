@@ -156,17 +156,30 @@ a.nav-link.active {
   border-radius: 1em;
   padding: 1em;
 }
+#headerNavbar .nav-link {
+  transition: 300ms ease;
+}
+#headerNavbar .nav-link:hover {
+  transform: scale(1.1);
+}
+
 #headerNavBG {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: -10%;
+  left: 0%;
   width: 100%;
-  height: 100%;
   z-index: -5;
-  padding: 1em;
-  background-color: rgba(200, 200, 200, 0.75);
-  border-radius: 1em;
-  filter: blur(50px);
+  padding: 0;
+  background-color: rgba(200, 200, 200, 0.25);
+  /* filter: blur(30px); */
+  backdrop-filter: blur(5px);
+  /* -webkit-filter: blur(30px); */
+  -webkit-backdrop-filter: blur(5px);
+  zoom: 110%;
+  border-radius: 100%;
+  border: 3px solid white;
+  aspect-ratio: 1;
+  transition: 0ms !important;
 }
 
 /* Buttons */
@@ -269,24 +282,24 @@ a.nav-link.active {
 /* Project Display */
 .projectDeck {
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
 }
 .projectDeck .row {
-  flex-direction: row;
+  flex-flow: row;
   justify-content: space-between;
 }
 .projectTile {
   border: none;
   border-radius: 0.5rem;
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
   justify-content: center;
   align-content: center;
   width: 32%;
 }
 @media screen and (max-width: 768px) {
   .projectDeck .row {
-    flex-direction: column !important;
+    flex-flow: column !important;
   }
   .projectTile {
     width: auto !important;
@@ -300,4 +313,20 @@ a.nav-link.active {
 }
 .projectTile .btn {
   margin: 1rem auto;
+}
+
+/* About Classes */
+#story {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  align-items: center;
+}
+#story .row {
+  display: flex;
+  flex-flow: row;
+  padding-bottom: 2em;
+}
+#story .row div {
+  padding: 1em;
 }
