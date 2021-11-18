@@ -39,7 +39,8 @@
     <script src="../js/theming.js"></script>
     <script src="../js/hiddenMenu.js"></script>
 
-    <script src="../js/hiddenMenu.js"></script> <!-- Begin Page -->
+      <script src="../js/hiddenMenu.js"></script> 
+  <!-- Begin Page -->
     <div id="background"></div>
 
     <div class="d-flex flex-column justify-content-center align-content-center" id="header"
@@ -94,31 +95,11 @@
             }
         });
     </script>
-    <main class="container px-sm-5 mb-5 pt-5" id="sectionOne" style="z-index: 3;">
-        <div id="story">
-            <h1>Bio will go here.</h1>
-            <div class="row">
-                <div style="text-align: right;">
-                    <p>
-                    </p>
-                </div>
-                <img src="
-                    https://upload.wikimedia.org/wikipedia/commons/7/7f/Lynden%2C_Washington_-_The_Mill_(restaurant_and_inn)_01.jpg"
-                    width="60%">
-            </div>
-            <h1>More sections</h1>
-            <div class="row">
-                <img src="
-                    https://upload.wikimedia.org/wikipedia/commons/7/7f/Lynden%2C_Washington_-_The_Mill_(restaurant_and_inn)_01.jpg"
-                    width="60%">
-                <div style="text-align: left;">
-                    <p>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </main>
-    <!-- Scroll to Top button -->
+        
+  <div id="vidcontainer">
+    <video  id="sectionOne" src="https://assets.codepen.io/39255/output_960.mp4" playsinline="true" webkit-playsinline="true" preload="auto" muted="muted" class="videoBackground"></video>
+  </div>
+          <!-- Scroll to Top button -->
     <div class="p-2" style="position: sticky; bottom: env(safe-area-inset-bottom); overflow-y: hidden; opacity: 0;"
         id="scrollToTop">
         <a class="m-sm-auto d-flex flex-column justify-content-center align-content-center"
@@ -150,7 +131,6 @@
         </div>
     </nav>
 
-    </script>
     <!-- Pollyfills -->
     <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
     <!-- ^ For Smooth Scrolling on Unsupported Browsers ^ -->
@@ -179,6 +159,7 @@
         });
     </script>
     <script src="../js/hiddenMenu.js"></script>
+    <script src="./video.js"></script>
 </body>
 
 </html>
