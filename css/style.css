@@ -316,9 +316,13 @@ a.nav-link.active {
 }
 
 /* About Classes */
-.videoBackground  {
+.videoBackground {
   width: 100%;
   height: 100%;
+}
+
+#containerwrapper {
+  height: 200vh;
 }
 
 #vidcontainer {

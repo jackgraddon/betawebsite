@@ -39,8 +39,8 @@
     <script src="../js/theming.js"></script>
     <script src="../js/hiddenMenu.js"></script>
 
-      <script src="../js/hiddenMenu.js"></script> 
-  <!-- Begin Page -->
+    <script src="../js/hiddenMenu.js"></script>
+    <!-- Begin Page -->
     <div id="background"></div>
 
     <div class="d-flex flex-column justify-content-center align-content-center" id="header"
@@ -95,11 +95,13 @@
             }
         });
     </script>
-        
-  <div id="vidcontainer">
-    <video  id="sectionOne" src="https://assets.codepen.io/39255/output_960.mp4" playsinline="true" webkit-playsinline="true" preload="auto" muted="muted" class="videoBackground"></video>
-  </div>
-          <!-- Scroll to Top button -->
+    <div id="containerwrapper">
+        <div id="vidcontainer">
+            <video id="sectionOne" src="https://assets.codepen.io/39255/output_960.mp4" playsinline="true"
+                webkit-playsinline="true" preload="auto" muted="muted" class="videoBackground"></video>
+        </div>
+    </div>
+    <!-- Scroll to Top button -->
     <div class="p-2" style="position: sticky; bottom: env(safe-area-inset-bottom); overflow-y: hidden; opacity: 0;"
         id="scrollToTop">
         <a class="m-sm-auto d-flex flex-column justify-content-center align-content-center"
@@ -110,7 +112,7 @@
         </a>
     </div>
     <!-- Footer -->
-    <nav class="d-flex flex-column p-3">
+    <nav class="d-flex flex-column p-3" id="footer">
         <h3 style="width: fit-content;" class="m-auto">Jack Graddon</h3>
         <p style="width: fit-content; font-size: small;" class="m-auto">Website &copy; Jack Graddon 2021</p>
         <div style="width: fit-content;" class="m-auto">

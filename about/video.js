@@ -25,22 +25,22 @@ gsap.registerPlugin(ScrollTrigger);
 let tl = gsap.timeline({
   defaults: { duration: 1 },
   scrollTrigger: {
-    trigger: "#cloud",
-    start: "bottom center",
-    endTrigger: "#vidcontainer",
-    end: "bottom center",
+    trigger: "#vidcontainer",
+    start: "center center",
+    endTrigger: "#footer",
+    end: "bottom bottom",
     scrub: true,
-  }
+  },
 });
 
 once(video, "loadedmetadata", () => {
   tl.fromTo(
     video,
     {
-      currentTime: 0
+      currentTime: 0,
     },
     {
-      currentTime: video.duration || 1
+      currentTime: video.duration || 1,
     }
   );
 });
