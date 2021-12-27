@@ -3,14 +3,87 @@ window.addEventListener("load", () => {
   nav.id = "headerNavbar";
   nav.style.opacity = "0";
   nav.style.display = "none";
-  nav.innerHTML =
-    '<div style="width: fit-content; z-index: 5;"> <ul class="nav justify-content-center"> <li class="nav-item"> <a class="nav-link" href="https://beta.jackgraddon.page/">Home</a> </li> <li class="nav-item"> <a class="nav-link" href="https://beta.jackgraddon.page/about">About</a></li> </ul> <h3 style="width: fit-content;" class="mx-auto my-2">Go To</h3> <ul class="nav justify-content-center"> <li class="nav-item"> <a class="nav-link" href="https://beta.jackgraddon.page/projects/">Projects</a> </li> <li class="nav-item"> <a class="nav-link" href="https://beta.jackgraddon.page/legals/">Legal</a> </li> </ul> </ul> </div> <div id="headerNavBG"></div>';
+  // nav.innerHTML =
+  //   '<div style="width: fit-content; z-index: 5;"> <ul class="nav justify-content-center"> <li class="nav-item"> <a class="nav-link" href="https://beta.jackgraddon.page/">Home</a> </li> <li class="nav-item"> <a class="nav-link" href="https://beta.jackgraddon.page/about">About</a></li> </ul> <h3 style="width: fit-content;" class="mx-auto my-2">Go To</h3> <ul class="nav justify-content-center"> <li class="nav-item"> <a class="nav-link" href="https://beta.jackgraddon.page/projects/">Projects</a> </li> <li class="nav-item"> <a class="nav-link" href="https://beta.jackgraddon.page/legals/">Legal</a> </li> </ul> </ul> </div> <div id="headerNavBG"></div>';
+
+  let mainURL = window.location.protocol + "//" + window.location.hostname;
+  if (mainURL.includes("localhost")) {
+    let port = window.location.port;
+    mainURL = mainURL + ":" + port;
+  }
+
+  let navDiv = document.createElement("div");
+  navDiv.style.width = "fit-content";
+  navDiv.style.zIndex = "5";
+  nav.appendChild(navDiv);
+
+  let navbartop = document.createElement("ul");
+  navbartop.classList.add("nav");
+  navbartop.classList.add("justify-content-center");
+  navDiv.appendChild(navbartop);
+
+  let title = document.createElement("h3");
+  title.classList.add("mx-auto");
+  title.classList.add("my-2");
+  title.style.width = "fit-content";
+  title.innerHTML = "Go To";
+  navDiv.appendChild(title);
+
+  let navbarbottom = document.createElement("ul");
+  navbarbottom.classList.add("nav");
+  navbarbottom.classList.add("justify-content-center");
+  navDiv.appendChild(navbarbottom);
+
+  let linkContainers = [];
+  for (let i = 0; i < 4; i++) {
+    linkContainers[i] = document.createElement("li");
+    linkContainers[i].classList.add("nav-item");
+  }
+
+  let homeLink = document.createElement("a");
+  homeLink.classList.add("nav-link");
+  homeLink.href = mainURL;
+  homeLink.innerHTML = "Home";
+
+  let aboutLink = document.createElement("a");
+  aboutLink.classList.add("nav-link");
+  aboutLink.href = mainURL + "/about/";
+  aboutLink.innerHTML = "About";
+
+  let projectsLink = document.createElement("a");
+  projectsLink.classList.add("nav-link");
+  projectsLink.href = mainURL + "/projects/";
+  projectsLink.innerHTML = "Projects";
+
+  let legalsLink = document.createElement("a");
+  legalsLink.classList.add("nav-link");
+  legalsLink.href = mainURL + "/legal/";
+  legalsLink.innerHTML = "Legals";
+
+  linkContainers[0].appendChild(homeLink);
+  linkContainers[1].appendChild(aboutLink);
+  linkContainers[2].appendChild(projectsLink);
+  linkContainers[3].appendChild(legalsLink);
+
+  for (let i = 0; i < 4; i++) {
+    if (i < 2) {
+      navbartop.appendChild(linkContainers[i]);
+    } else {
+      navbarbottom.appendChild(linkContainers[i]);
+    }
+    console.log(linkContainers[i]);
+  }
+  let headerNavBG = document.createElement("div");
+  headerNavBG.id = "headerNavBG";
+  nav.appendChild(headerNavBG);
   document.querySelector("body").append(nav);
   gsap.registerPlugin(ScrollTrigger);
 });
 
 // Hidden Menu
-document.onmousemove = handleMouseMove;
+document.addEventListener("mousemove", (e) => {
+  handleMouseMove(e);
+});
 let mousePos = {
   x: 0,
   y: 0,
@@ -21,39 +94,39 @@ function handleMouseMove(e) {
     y: e.clientY,
   };
 }
-// setInterval(getMousePos, 100);
-function getMousePos() {
+
+function getmousePos() {
   let elemWidth = document.getElementById("headerNavbar").clientWidth;
   let elemHeight = document.getElementById("headerNavbar").clientHeight;
-  let pos = mousePos;
   gsap.to("#headerNavbar", {
-    y: pos.y - elemHeight / 2,
-    x: pos.x - elemWidth / 2,
+    y: mousePos.y - elemHeight / 2,
+    x: mousePos.x - elemWidth / 2,
     duration: 0,
   });
 }
-let hide,
-  firstTime = true;
+let hidden,
+  firstNavTrigger = true;
 
 window.addEventListener("keypress", (e) => {
   if (e.key == "Escape") {
-    clearTimeout(hide);
+    console.log("yo");
+    clearTimeout(hidden);
     let nav = document.getElementById("headerNavbar");
 
     nav.style.display = "block";
-    if (firstTime) {
-      getMousePos();
-      gsap.to("#headerNavbar", { opacity: 1, duration: 1, ease: "power1" });
-      firstTime = false;
+    if (firstNavTrigger) {
+      getmousePos();
+      gsap.to(nav, { opacity: 1, duration: 1, ease: "power1" });
+      firstNavTrigger = false;
     } else {
-      gsap.to("#headerNavbar", { opacity: 0, duration: 0.3, ease: "power1" });
+      gsap.to(nav, { opacity: 0, duration: 0.3, ease: "power1" });
       setTimeout(() => {
-        getMousePos();
-        gsap.to("#headerNavbar", { opacity: 1, duration: 1, ease: "power1" });
+        getmousePos();
+        gsap.to(nav, { opacity: 1, duration: 1, ease: "power1" });
       }, 300);
     }
-    hide = setTimeout(() => {
-      gsap.to("#headerNavbar", { opacity: 0, duration: 1, ease: "power1" });
+    hidden = setTimeout(() => {
+      gsap.to(nav, { opacity: 0, duration: 1, ease: "power1" });
       setTimeout(() => {
         nav.style.display = "none";
       }, 1000);
@@ -61,23 +134,23 @@ window.addEventListener("keypress", (e) => {
   }
 });
 function onLongTouch() {
-  clearTimeout(hide);
+  clearTimeout(hidden);
   let nav = document.getElementById("headerNavbar");
 
   nav.style.display = "block";
-  if (firstTime) {
-    getMousePos();
-    gsap.to("#headerNavbar", { opacity: 1, duration: 1, ease: "power1" });
-    firstTime = false;
+  if (firstNavTrigger) {
+    getmousePos();
+    gsap.to(nav, { opacity: 1, duration: 1, ease: "power1" });
+    firstNavTrigger = false;
   } else {
-    gsap.to("#headerNavbar", { opacity: 0, duration: 0.3, ease: "power1" });
+    gsap.to(nav, { opacity: 0, duration: 0.3, ease: "power1" });
     setTimeout(() => {
-      getMousePos();
-      gsap.to("#headerNavbar", { opacity: 1, duration: 1, ease: "power1" });
+      getmousePos();
+      gsap.to(nav, { opacity: 1, duration: 1, ease: "power1" });
     }, 300);
   }
-  hide = setTimeout(() => {
-    gsap.to("#headerNavbar", { opacity: 0, duration: 1, ease: "power1" });
+  hidden = setTimeout(() => {
+    gsap.to(nav, { opacity: 0, duration: 1, ease: "power1" });
     setTimeout(() => {
       nav.style.display = "none";
     }, 1000);
@@ -109,5 +182,6 @@ function touchend() {
 }
 
 window.addEventListener("scroll", () => {
-  gsap.to("#headerNavbar", { opacity: 0, duration: 0.3, ease: "power1" });
+  let nav = document.getElementById("headerNavbar");
+  gsap.to(nav, { opacity: 0, duration: 0.3, ease: "power1" });
 });

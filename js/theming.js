@@ -134,18 +134,22 @@ window.addEventListener("DOMContentLoaded", (event) => {
   // Get random number to choose which cloud image is loaded
   let rand = Math.floor(Math.random() * 3) + 1;
   // console.log(rand);
-
+  let mainURL = window.location.protocol + "//" + window.location.hostname;
+  if (mainURL.includes("localhost")) {
+    let port = window.location.port;
+    mainURL = mainURL + ":" + port;
+  }
   switch (
     rand // Set cloud
   ) {
     case 1:
-      $("#cloud").attr("src", "../../images/png/front/cloud1.png");
+      $("#cloud").attr("src", mainURL + "/images/png/front/cloud1.png");
       break;
     case 2:
-      $("#cloud").attr("src", "../../images/png/front/cloud2.png");
+      $("#cloud").attr("src", mainURL + "/images/png/front/cloud2.png");
       break;
     case 3:
-      $("#cloud").attr("src", "../../images/png/front/cloud3.png");
+      $("#cloud").attr("src", mainURL + "/images/png/front/cloud3.png");
       break;
   }
 });
@@ -155,9 +159,14 @@ let j = 0;
 
 window.addEventListener("DOMContentLoaded", () => {
   let loadtl = gsap.timeline({ delay: 0.5 });
+  function finishAnimation() {
+    console.log("Finishing animation...");
+    loadtl.timeScale(15);
+    window.removeEventListener("scroll", finishAnimation, false);
+  }
+
+  window.addEventListener("scroll", finishAnimation, false);
   loadtl.fromTo("#background", { opacity: 0 }, { opacity: 1, duration: 4 });
-  // loadtl.fromTo("#scrollDown", { opacity: 0 }, { opacity: 1, duration: 2 }, "<");
-  // loadtl.to("#header", { overflow: "hidden", duration: 0 }, "<");
   loadtl.fromTo(
     "#title, #subtitle, #condition, #cloudContainer, #scrollDown",
     { opacity: 0, filter: "blur(20px)", transform: "scale(1.1)", y: 0 },
@@ -171,11 +180,4 @@ window.addEventListener("DOMContentLoaded", () => {
     },
     "<"
   );
-
-  window.addEventListener("scroll", finishAnimation, false);
-  function finishAnimation() {
-    loadtl.timeScale(10);
-    console.log("Finishing animation...");
-    window.removeEventListener("scroll", finishAnimation, false);
-  }
 });

@@ -224,7 +224,7 @@ a.nav-link.active {
 /* img {} */
 #cloudContainer {
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: visible;
 }
 
 /* Cards */
