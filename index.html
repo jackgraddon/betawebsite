@@ -57,7 +57,7 @@
             let meta = document.querySelector('meta[name="theme-color"]')
             let stylesheet = document.querySelector('link[href="./css/style.css"]');
 
-            // date.hour = 2;
+            /// date.hour =s ss 2;
             if ((date.hour >= 5) && (date.hour < 9)) {
                 title.innerHTML = "Good morning!";
                 subtitle.innerHTML = "It's going to be a great day.";
@@ -323,7 +323,6 @@
         </div>
     </nav>
 
-    </script>
     <!-- Pollyfill (for Smooth Scrolling on Unsupported Browsers) -->
     <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
     <!-- GSAP -->
@@ -368,8 +367,26 @@
             text: "Graphic Designer | Web Developer",
             duration: 0.1,
         });
+      gsap.to("#scrollToTop", {
+        scrollTrigger: {
+          trigger: "#cloudContainer",
+          id: "scrollTopButton",
+          start: "top 40%",
+          end: "top 10%",
+          scrub: 1,
+        },
+        opacity: 1, 
+        duration: 1
+      })
     </script>
+<<<<<<< HEAD
     <script src="./js/hiddenMenu.js"></script>
+=======
+    <script src="../js/hiddenMenu.js"></script>
+    <script>
+      console.log(false && false)
+    </script>
+>>>>>>> 001c89cf9aaff87877518528fa777a4f3e5adee0
 
 </body>
 

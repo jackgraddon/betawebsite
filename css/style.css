@@ -316,17 +316,21 @@ a.nav-link.active {
 }
 
 /* About Classes */
-#story {
-  display: flex;
-  flex-flow: column;
+.videoBackground {
   width: 100%;
-  align-items: center;
+  height: 100%;
 }
-#story .row {
+
+#containerwrapper {
+  height: 200vh;
+}
+
+#vidcontainer {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
   display: flex;
-  flex-flow: row;
-  padding-bottom: 2em;
-}
-#story .row div {
-  padding: 1em;
+  justify-content: center;
+  align-items: center;
 }
