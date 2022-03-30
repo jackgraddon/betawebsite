@@ -286,7 +286,8 @@ a.nav-link.active {
 }
 .projectDeck .row {
   flex-flow: row;
-  justify-content: space-between;
+  width: fit-content;
+  justify-content: space-around;
 }
 .projectTile {
   border: none;
