@@ -8,9 +8,9 @@ window.addEventListener("load", () => {
 
   let mainURL = window.location.protocol + "//" + window.location.hostname;
   if (mainURL.includes("localhost")) {
-    let port = window.location.port;
-    mainURL = mainURL + ":" + port;
+    mainURL = mainURL + ":" + window.location.port;
   }
+  console.log(mainURL);
 
   let navDiv = document.createElement("div");
   navDiv.style.width = "fit-content";
