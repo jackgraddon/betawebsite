@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Legal | Jack Graddon</title>
+    <title>Projects | Jack Graddon</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport"
@@ -12,7 +12,7 @@
     <meta name="og:image" content="./img/ogImage.jpg">
 
     <!-- Favicon -->
-    <link rel="icon" href="../images/png/favicon/favicon.png">
+    <link rel="icon" href="../../../../images/png/favicon/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,7 +20,7 @@
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Personal CSS -->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../../../css/style.css">
     <!-- Reset scroll to top -->
     <script>history.scrollRestoration = "manual"</script>
 </head>
@@ -36,8 +36,9 @@
         crossorigin="anonymous"></script>
 
     <!-- Script for Landing Page -->
-    <script src="../js/theming.js"></script>
-    <script src="../js/hiddenMenu.js"></script> <!-- Begin Page -->
+    <script src="../../../../js/theming.js"></script>
+    <script src="../../../../js/hiddenMenu.js"></script>
+    <!-- Begin Page -->
     <div id="background"></div>
 
     <div class="d-flex flex-column justify-content-center align-content-center" id="header"
@@ -48,10 +49,10 @@
             id="titleContainer">
             <div class="d-flex flex-column container align-items-center"
                 style="height: fit-content; width: fit-content;" id="headerText">
-                <h3 class="m-sm-auto" id="condition"><i class="bi bi-bank"></i>
-                </h3>
-                <h1 class="m-sm-auto title" id="title">Legals</h1>
-                <p class="m-sm-auto subtitle" id="subtitle">All of the information.</p>
+                <p class="m-sm-auto" id="condition"><i class="fa fa-briefcase" aria-hidden="true"></i>
+                </p>
+                <h1 class="m-sm-auto title" id="title">FBLA 2021/2022</h1>
+                <p class="m-sm-auto subtitle" id="subtitle">Web Design Competitive Event</p>
                 <a class="m-auto d-flex flex-column" id="scrollDown"
                     onclick="javascript:document.getElementById('sectionOne').scrollIntoView({ behavior: 'smooth' });">
                     <p class="scroll m-auto" style="font-size: smaller;">
@@ -66,12 +67,6 @@
     </div>
 
     <!-- Script for Main Page -->
-    <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-        window.onunload = function () { window.scrollTo(0, 0); }
-    </script>
     <!-- Mobile Detection -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
     <script>
@@ -99,76 +94,27 @@
     </script>
 
     <main class="container px-sm-5 mb-5 pt-5" id="sectionOne" style="z-index: 3;">
-        <div class="d-flex flex-column align-items-start">
-            <div class="d-flex flex-column">
-                <div class="mb-4 d-flex flex-column justify-content-center align-items-center">
-                    <h1>Copyright</h1>
-                    <p>This page was designed and developed by Jack Graddon. All rights reserved
-                        2021.<br>
-                        If you need to contact me, please do so by clicking <a
-                            href="mailto:jjg0704@icloud.com?subject=What%20do%20you%20want%20to%20talk%20about?">here <i
-                                class="bi bi-box-arrow-up-right"></i></a>.
-                    </p>
-                </div>
-                <div class="mb-4 d-flex flex-column justify-content-center align-items-center">
-                    <h1>Other Work</h1>
-                    <p>Other work, code, fonts, or images I used are credited below.</p>
-                    <div class="d-flex flex-column">
-                        <div class="projectDeck">
-                            <div class="row">
-                                <div class="projectTile card">
-                                    <img class="card-img-top" src="./img/madesunflower.png" alt="Ad for MADE Sunflower">
-                                    <div class="card-body">
-                                        <h3>MADE Sunflower</h3>
-                                        <p class="card-text">To learn more about MADE Type,
-                                            please visit <a href="https://www.behance.net/madetype" target="_blank">this
-                                                page <i class="bi bi-box-arrow-up-right"></i></a>.
-                                        </p>
-                                        <p class="text-muted m-0" style="font-size: smaller;">Sunflower &copy; MADE
-                                            Type www.youworkforthem.com</p>
-                                    </div>
-                                    <div class="card-footer d-flex flex-column">
-                                        <a class="btn btn-primary" target="_blank"
-                                            href="https://www.youworkforthem.com/font/T11080/made-sunflower">Font <i
-                                                class="bi bi-box-arrow-up-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="projectTile card">
-                                    <img class="card-img-top" src="./img/bootstrap.png" alt="Ad for Bootstrap">
-                                    <div class="card-body">
-                                        <h3>Bootstrap</h3>
-                                        <p class="card-text">To get started using Bootstrap on your site,
-                                            please visit <a
-                                                href="https://getbootstrap.com/docs/5.0/getting-started/introduction/"
-                                                target="_blank">these docs <i class="bi bi-box-arrow-up-right"></i></a>.
-                                        </p>
-                                    </div>
-                                    <div class="card-footer d-flex flex-column">
-                                        <a class="btn btn-primary" target="_blank" href="https://getbootstrap.com">Site
-                                            <i class="bi bi-box-arrow-up-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="projectTile card">
-                                    <img class="card-img-top" src="../images/png/placeholder.png"
-                                        alt="Ad for MADE Sunflower">
-                                    <div class="card-body">
-                                        <h3>Placeholder</h3>
-                                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            Adipisci voluptatem magnam non, deserunt repudiandae <a target="_blank"
-                                                href="https://www.bing.com">
-                                                delectus dicta <i class="bi bi-box-arrow-up-right"></i></a>.
-                                        </p>
-                                    </div>
-                                    <div class="card-footer d-flex flex-column">
-                                        <a class="btn btn-primary" target="_blank" href="https://www.bing.com">Click
-                                            <i class="bi bi-box-arrow-up-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div>
+            <h2>The Topic - Web Design</h2>
+            <p>Create a website for a new business in your local community, region, or state. The website must include
+                the business name, photos, and description for the entity. The website must include a minimum of four
+                web pages, including a contact us page and embedded features. The website should feature social media
+                and marketing material to promote the new business.
+            </p>
+            <h2>Getting Started</h2>
+            <p>I began working on this project shortly after the challenge topic was announced. I drew up sketches in
+                Pixelmator Pro of what I wanted the site to look like, and asked for feedback on the layout from my
+                peers. After some tweaks, I opened Visual Studio Code to begin transforming my vision into a tangible
+                product. I completed the final product in early Janurary, 2022, which allowed me to begin working on the
+                presentation.</p>
+            <p>Want to view my code? You can check it out
+                <a href="https://github.com/jackgraddon/fblaproject/tree/21/22" target="_blank">
+                    here <i class="bi bi-box-arrow-up-right"></i>
+                </a>. Want to view the live site? You can check out the demo
+                <a href="https://generatedprints.com/" target="_blank">
+                    here <i class="bi bi-box-arrow-up-right"></i>
+                </a>.
+            </p>
         </div>
     </main>
     <!-- Scroll to Top button -->
@@ -190,16 +136,16 @@
         <div style="width: fit-content;" class="m-auto">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="../">Home</a>
+                    <a class="nav-link" href="../../../../">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../about/">About</a>
+                    <a class="nav-link" href="../../../../about/">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../projects/">Projects</a>
+                    <a class="nav-link" href="../../../../projects/">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Legal</a>
+                    <a class="nav-link" href="../../../../legal/">Legal</a>
                 </li>
             </ul>
         </div>
@@ -231,7 +177,7 @@
             duration: 2,
         });
     </script>
-    <script src="../js/hiddenMenu.js"></script>
+    <script src="../../../../js/hiddenMenu.js"></script>
 
 </body>
 

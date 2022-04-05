@@ -13,6 +13,14 @@
   --danger-hover: #ff7d8f;
 }
 
+#help-ukraine {
+  cursor: pointer;
+  transition: 300ms;
+}
+#help-ukraine:hover {
+  transform: scale(1.1);
+}
+
 /* Font */
 @font-face {
   font-family: "MADESunflower";
