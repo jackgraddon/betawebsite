@@ -21,6 +21,13 @@
   transform: scale(1.1);
 }
 
+.alert-cookie {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  width: 25vw;
+}
+
 /* Font */
 @font-face {
   font-family: "MADESunflower";

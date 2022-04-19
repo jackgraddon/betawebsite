@@ -57,7 +57,7 @@
             let meta = document.querySelector('meta[name="theme-color"]')
             let stylesheet = document.querySelector('link[href="./css/style.css"]');
 
-            /// date.hour =s ss 2;
+            // date.hour = 19;
             if ((date.hour >= 5) && (date.hour < 9)) {
                 title.innerHTML = "Good morning!";
                 subtitle.innerHTML = "It's going to be a great day.";
@@ -239,6 +239,16 @@
 
 
     <main class="container px-sm-5 mb-5" id="sectionOne" style="z-index: 3;">
+        <!-- Cookie alert -->
+        <div class="shadow alert alert-primary alert-dismissible fade show" id="alertUntracked"
+            style="position: fixed; right: 2rem; bottom: 2rem; width: 20vw; z-index: 5; opacity: 0;">
+            <button type="button" class="close text-primary" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h3 style="font-size: medium;">🍪 This website does not use cookies!</h3>
+            <p style="font-size: x-small;">You are free to browse with the peace of mind that you are not being tracked.
+            </p>
+        </div>
         <!-- In Development Notice -->
         <div class="alert alert-primary alert-dismissible fade show mb-5" role="alert">
             <button type="button" class="close text-primary" data-dismiss="alert" aria-label="Close">
@@ -259,7 +269,7 @@
         </div>
         <!-- Main Page -->
         <div class="d-flex flex-column align-items-center">
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row" id="titleContainer">
                 <div>
                     <h1 class="title">Hello!</h1>
                     <p class="subtitle">I'm Jack, a freelance Web Developer and Graphic Designer.</p>
@@ -271,9 +281,8 @@
                         <img src="./images/jpg/projects/fblaProject22.jpg"
                             alt="Future Business Leaders of America 2020/21 Competition - Website Design."
                             style="border-bottom: #C44900 1px dashed;">
-                        <a href="./projects/web/fbla/2021/" class="btn"
-                            style="color: #C44900; border-color: #C44900;">Learn
-                            More</a>
+                        <a href="./projects/web/fbla/2022/" class="btn"
+                            style="color: #C44900; border-color: #C44900;">Learn More</a>
                     </div>
                     <div class="projectTile" style="background-color: #2F3E46;">
                         <img src="./images/jpg/projects/alienPanels.jpg"
@@ -295,6 +304,7 @@
             </p>
         </a>
     </div>
+
     <!-- Footer -->
     <nav class="d-flex flex-column p-3">
         <h3 style="width: fit-content;" class="m-auto" id="help-ukraine"
@@ -373,6 +383,22 @@
                 scrub: 1,
             },
             opacity: 1,
+            duration: 1
+        })
+        // gsap.set("#alertUntracked", {
+        //     opacity: 0,
+        //     y: -100,
+        // })
+        gsap.to("#alertUntracked", {
+            scrollTrigger: {
+                trigger: "#titleContainer",
+                id: "alertUntracked",
+                start: "140% top",
+                end: "150% top",
+                scrub: true
+            },
+            opacity: 1,
+            ease: "ease",
             duration: 1
         })
     </script>
