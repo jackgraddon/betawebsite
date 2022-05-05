@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Projects | Jack Graddon</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, viewport-fit=cover, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
+    <meta name="theme-color">
+    <meta name="og:title" content="Legal Info">
+    <meta name="og:image" content="./img/ogImage.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../../images/png/favicon/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+
+    <!-- Script for Landing Page -->
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="../../js/theming.js"></script>
+    <script src="../js/hiddenMenu.js"></script>
+    <!-- Begin Page -->
+    <div id="background"></div>
+
+    <div class="d-flex flex-column justify-content-center align-content-center" id="header"
+        style="height: fit-content; z-index: 1; overflow: hidden;">
+        <div id="stars" style="display: none;"></div>
+        <div id="starsMorn" style="display: none;"></div>
+        <div class="d-flex justify-content-center align-items-center w-100 rellax" style="padding-top: 35vh;"
+            id="titleContainer">
+            <div class="d-flex flex-column container align-items-center"
+                style="height: fit-content; width: fit-content;" id="headerText">
+                <p class="m-sm-auto" id="condition"><i class="fa fa-heart" aria-hidden="true"></i>
+                </p>
+                <h1 class="m-sm-auto title" id="title">Video Projects</h1>
+                <p class="m-sm-auto subtitle" id="subtitle">Videos I have produced, edited, or had a roll in.</p>
+                <a class="m-auto d-flex flex-column" id="scrollDown"
+                    onclick="javascript:document.getElementById('sectionOne').scrollIntoView({ behavior: 'smooth' });">
+                    <p class="scroll m-auto">
+                        Scroll Down</p>
+                    <i class="bi-chevron-down m-auto"></i>
+                </a>
+            </div>
+        </div>
+        <div id="cloudContainer" style="height: fit-content;">
+            <img id="cloud" width="100%" alt="A cloud that covers the entire width of the screen.">
+        </div>
+    </div>
+
+    <!-- Script for Main Page -->
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+        window.onunload = function () { window.scrollTo(0, 0); }
+    </script>
+    <!-- Mobile Detection -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
+    <script>
+        var md;
+        // Get Device
+        window.addEventListener("DOMContentLoaded", function () {
+            md = new MobileDetect(window.navigator.userAgent);
+            // console.log(md.mobile()); // null if not mobile device
+            // console.log(md.phone()); // null if not smartphone
+            // console.log(md.tablet()); // null if not tablet
+            // console.log(md.userAgent()); // Browser used
+            // console.log(md.os()); // Operating System
+            // console.log(md.version('Webkit')); // Webkit version
+            // console.log(md.versionStr('Build')); // Build
+
+            if (md.mobile() != null) {
+                document.getElementById('cloudContainer').style.width = '200%';
+                document.getElementById('cloudContainer').style.left = '-20%';
+                // Get orienation on Mobile devices (fixes offcenter padding for title)
+                if ((Math.abs(window.orientation) == 90) || (Math.abs(window.orientation) == -90)) {
+                    document.getElementById('titleContainer').style.paddingTop = "2rem";
+                }
+            }
+        });
+    </script>
+
+    <main class="container px-sm-5 mb-5 pt-5" id="sectionOne" style="z-index: 3;">
+        <div class="d-flex flex-column align-items-start">
+            <div class="d-flex flex-column">
+                <div class="mb-4 d-flex flex-column justify-content-center align-items-center">
+                    <h1>Showcase</h1>
+                    <div class="projectDeck mx-auto">
+                        <div class="d-flex row">
+                            <div class="projectTile" style="background-color: #70A389;">
+                                <img src="../../images/jpg/projects/lyndenTechTips.jpg"
+                                    alt="Lynden Tech Tips - A YouTube channel dedicated to helping students and staff learn how to navigate tech."
+                                    style="border-bottom: #45785E 1px dashed;">
+                                <a href="./lyndentechtips/" class="btn"
+                                    style="color: #45785E; border-color: #45785E;">Learn
+                                    More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="mb-4 d-flex flex-column justify-content-center align-items-center">
+                    <h1>Personal Favourites</h1>
+                    <div class="projectDeck mx-auto">
+                        <div class="d-flex row">
+                            <div class="projectTile" style="background-color: #C1E3FF;">
+                                <img src="../../images/jpg/projects/coffeeAddictsWebsite.jpg"
+                                    alt="The Coffee Addicts - A streaming group."
+                                    style="border-bottom: #289BFA 1px dashed;">
+                                <a href="./web/tca/" class="btn" style="color: #289BFA; border-color: #289BFA;">Learn
+                                    More</a>
+                            </div>
+                            <div class="projectTile" style="background-color: #432534;">
+                                <img src="../../images/jpg/projects/fblaProject22.jpg"
+                                    alt="Future Business Leaders of America 2020/21 Competition - Website Design."
+                                    style="border-bottom: #C44900 1px dashed;">
+                                <a href="./web/fbla/2021/" class="btn"
+                                    style="color: #C44900; border-color: #C44900;">Learn More</a>
+                            </div>
+                            <div class="projectTile" style="background-color: #FFE9C1;">
+                                <img src="../../images/jpg/projects/lyndenITWebsite.jpg"
+                                    alt="Lynden High School IT - Discover help, learn how to use, and develop your skills with technology."
+                                    style="border-bottom: #F8D1AE 1px dashed;">
+                                <a href="./web/lhs/it/" class="btn" style="color: #FFCA09; border-color: #FFCA09;">Learn
+                                    More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+    </main>
+    <!-- Scroll to Top button -->
+    <div class="p-2" style="position: sticky; bottom: env(safe-area-inset-bottom); overflow-y: hidden; opacity: 0;"
+        id="scrollToTop">
+        <a class="m-sm-auto d-flex flex-column justify-content-center align-content-center"
+            onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+            <i class="bi-chevron-bar-up m-auto"></i>
+            <p class="scroll m-auto" style="font-size: smaller;">Scroll to top
+            </p>
+        </a>
+    </div>
+    <!-- Footer -->
+    <nav class="d-flex flex-column p-3">
+        <h3 style="width: fit-content;" class="m-auto" id="help-ukraine"
+            onclick="window.open('https://help.rescue.org/donate/ukraine-web')">🇺🇦</h3>
+        <h3 style="width: fit-content;" class="m-auto">Jack Graddon</h3>
+        <p style="width: fit-content; font-size: small;" class="m-auto">Website &copy; Jack Graddon 2021</p>
+        <div style="width: fit-content;" class="m-auto">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="../../">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../about/">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../legal/">Legal</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    </script>
+    <!-- Pollyfill (for Smooth Scrolling on Unsupported Browsers) -->
+    <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
+    <script>smoothscroll.polyfill();</script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/CSSRulePlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.to("#headerText", {
+            scrollTrigger: {
+                trigger: "#headerText",
+                id: "header",
+                start: "top 35%",
+                end: "bottom 20%",
+                // pin: true,
+                scrub: true,
+            },
+            opacity: 0,
+            y: 170,
+            transform: "scale(0.9)",
+            filter: "blur(10px)",
+            ease: "none",
+            duration: 2,
+        });
+    </script>
+    <script src="../../js/hiddenMenu.js"></script>
+
+</body>
+
+</html>

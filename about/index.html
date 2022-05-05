@@ -5,8 +5,6 @@
     <title>About | Jack Graddon</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport"
-        content="width=device-width, viewport-fit=cover, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
     <meta name="theme-color">
     <meta name="og:title" content="Jack Graddon">
     <meta name="og:image" content="../images/jpg/ogImage.jpg">
@@ -26,8 +24,6 @@
 </head>
 
 <body>
-
-
     <!-- Script for Landing Page -->
     <script src="../js/theming.js"></script>
     <script src="../js/hiddenMenu.js"></script>
@@ -49,7 +45,7 @@
                 </p>
                 <a class="m-auto d-flex flex-column" id="scrollDown"
                     onclick="javascript:document.getElementById('sectionOne').scrollIntoView({ behavior: 'smooth' });">
-                    <p class="scroll m-auto" style="font-size: smaller;">
+                    <p class="scroll m-auto">
                         Scroll Down</p>
                     <i class="bi-chevron-down m-auto"></i>
                 </a>
@@ -61,12 +57,15 @@
     </div>
 
     <!-- Script for Main Page -->
+    <script src="../js/theming.js"></script>
+    <script src="../js/hiddenMenu.js"></script>
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <!-- Mobile Detection -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.4/mobile-detect.min.js"></script>
@@ -93,7 +92,59 @@
             }
         });
     </script>
-    About soon...
+    <main class="container px-sm-5 mb-5 pt-5" id="sectionOne" style="z-index: 3;">
+        <div class="d-flex flex-column align-items-start">
+            <div class="d-flex flex-column">
+                <div class="mb-4 d-flex flex-column justify-content-center align-items-center">
+                    <h1>About</h1>
+                    <p>I am a <span id="age"></span> year old self-tought HTML web developer, Honors Student, and
+                        Regents Scholar at Washington State University, and <span id="begintense"></span> studying Web
+                        Design and Development with a major in Digital Technology and Culture in August 2022.
+                    </p>
+                    <p>I've always desired to make technology more accessible by developing user interfaces that are
+                        simple to navigate and visually engaging. My studies at Washington State University in Web
+                        Design and Development and Computer Science will further my understanding of the concepts,
+                        methods, and best practices used in the industry. I approach challenges with an open mind and
+                        consistently challenge myself to learn new things, inside and outside the classroom environment.
+                        My growth mindset and desire to solve problems will enhance my studies and prepare me for a
+                        successful career in Web Design and Development. With that career, I plan to make using
+                        technology easier for people at all levels of access and comfort.
+                    </p>
+                </div>
+                <script src="../../js/moment.js"></script>
+                <script>
+                    function getAge() {
+                        let ageTarget = document.getElementById('age');
+                        let today = new Date; // Get today's date
+                        var a = moment([2004, 7]); // Set time a to my birth month
+                        var b = moment([today.getFullYear(), today.getMonth()]); // Set time b to the current month
+                        let currentAge = b.diff(a, 'years'); // Calculate difference in years using Moment
+                        ageTarget.innerHTML = currentAge;
+                    }
+
+                    function setTense() {
+                        let tenseTarget = document.getElementById('begintense');
+                        let today = new Date; // Get today's date
+                        if (today.getFullYear() == 2022) { // If the current year is 2022
+                            if (today.getMonth() < 8) { // Check if it is before August
+                                tenseTarget.textContent = "will begin"; // If so, set tense to "will begin"
+                            } else {
+                                tenseTarget.textContent = "began"; // If not, set tense to "began"
+                            }
+                        } else {
+                            tenseTarget.textContent = "began"; // If the current year is not 2022, set tense to "began"
+                        }
+                    }
+
+                    window.addEventListener("DOMContentLoaded", function () {
+                        getAge();
+                        setTense();
+                    });
+                </script>
+            </div>
+        </div>
+    </main>
+
     <!-- Scroll to Top button -->
     <div class="p-2" style="position: sticky; bottom: env(safe-area-inset-bottom); overflow-y: hidden; opacity: 0;"
         id="scrollToTop">

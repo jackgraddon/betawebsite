@@ -199,7 +199,7 @@
                 <p class="m-sm-auto subtitle" id="subtitle">Have a great day!</p>
                 <a onclick="document.querySelector('#sectionOne').scrollIntoView({behavior: 'smooth'});"
                     class="m-sm-auto d-flex flex-column" id="scrollDown">
-                    <p class="scroll m-auto" style="font-size: smaller;">
+                    <p class="scroll m-auto">
                         Scroll Down</p>
                     <i class="bi-chevron-down m-auto"></i>
                 </a>
@@ -245,37 +245,35 @@
             <button type="button" class="close text-primary" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <h3 style="font-size: medium;">🍪 This website does not use cookies!</h3>
-            <p style="font-size: x-small;">You are free to browse with the peace of mind that you are not being tracked.
+            <h3 style="font-size: medium;">🍪 Cookies</h3>
+            <p style="font-size: x-small;" class="mb-1">This website does not use cookies! You are free to browse with
+                the peace of mind that you are not being tracked.
             </p>
         </div>
         <!-- In Development Notice -->
-        <div class="alert alert-primary alert-dismissible fade show mb-5" role="alert">
+        <div class="alert alert-primary alert-dismissible fade show mb-5" id="alertDevelopment">
             <button type="button" class="close text-primary" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <h3 class="alert-heading">Website In Development</h3>
-            <p>
-                Hello, and welcome to my new website! This page is still in very early access and likely will not
-                work as intended 100% of the time. If you want to view a more stable page, please check out my
-                current, but liekly outdated, site on
-                <a class="alert-link" href="https://www.jackgraddon.com/" target="_blank">this page <i
-                        class="bi bi-box-arrow-up-right"></i></a>. If you wish to help me with this page,
-                please let me know of any bugs or issues on my <a
-                    href="https://github.com/jackgraddon/betawebsite/issues/new/choose" target="_blank"
-                    class="alert-link">GitHub
-                    page <i class="bi bi-box-arrow-up-right"></i></a>!
+            <h3 style="font-size: medium;">🛠 Beta Site</h3>
+            <p style="font-size: x-small;">
+                This page is still in early access. This site has the most up to date information, but might not work as
+                intended 100% of the time.
             </p>
+            <a class="btn btn-primary mb-1 mb-md-0" href="https://www.jackgraddon.com/" target="_blank"
+                style="font-size: small;">
+                Stable Site <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+            <a class="btn btn-primary mt-1 mt-md-0" href="https://github.com/jackgraddon/betawebsite/issues/new/choose"
+                target="_blank" style="font-size: small;">
+                Feedback <i class="bi bi-box-arrow-up-right"></i>
+            </a>
         </div>
         <!-- Main Page -->
         <div class="d-flex flex-column align-items-center">
-            <div class="d-flex flex-row" id="titleContainer">
-                <div>
-                    <h1 class="title">Hello!</h1>
-                    <p class="subtitle">I'm Jack, a freelance Web Developer and Graphic Designer.</p>
-                </div>
-            </div>
-            <div class="projectDeck mx-auto">
+            <h1 class="title">Hello!</h1>
+            <p class="subtitle">I'm Jack, a freelance Web Developer and Graphic Designer. I work on </p>
+            <div class="projectDeck mx-auto w-100">
                 <div class="d-flex row">
                     <div class="projectTile" style="background-color: #432534;">
                         <img src="./images/jpg/projects/fblaProject22.jpg"
@@ -284,13 +282,31 @@
                         <a href="./projects/web/fbla/2022/" class="btn"
                             style="color: #C44900; border-color: #C44900;">Learn More</a>
                     </div>
+                    <div class="projectTile" style="background-color: #70A389;">
+                        <img src="./images/jpg/projects/lyndenTechTips.jpg"
+                            alt="Lynden Tech Tips - A YouTube channel dedicated to helping students and staff learn how to navigate tech."
+                            style="border-bottom: #45785E 1px dashed;">
+                        <a href="./projects/video/lyndentechtips/" class="btn"
+                            style="color: #45785E; border-color: #45785E;">Learn
+                            More</a>
+                    </div>
                     <div class="projectTile" style="background-color: #2F3E46;">
                         <img src="./images/jpg/projects/alienPanels.jpg"
                             alt="AlienISLive - Twitch Streamer Panels and Brand."
                             style="border-bottom: #354F52 1px dashed;">
-                        <a href="./projects/brand/alienislive/" class="btn"
+                        <a href="./projects/design/alienislive/" class="btn"
                             style="color: #FF6978; border-color: #FF6978;">Learn More</a>
                     </div>
+                </div>
+            </div>
+            <p class="mt-1">Check out some of my favourite projects above!</p>
+            <div class="d-flex flex-md-row flex-column w-100">
+                <img src="./images/jpg/portraits/Jack-01.jpg" alt="Jack Graddon" class="portrait portrait-landing">
+                <div class="m-2">
+                    <h2>About</h2>
+                    <p>I'm a freelance Web Developer and Graphic Designer. I've worked on projects and designs for my
+                        local school, growing influencers, companies, and competitions.
+                    </p>
                 </div>
             </div>
     </main>
@@ -389,10 +405,10 @@
         //     opacity: 0,
         //     y: -100,
         // })
-        gsap.to("#alertUntracked", {
+        gsap.to("#alertUntracked, #alertDevelopment", {
             scrollTrigger: {
                 trigger: "#titleContainer",
-                id: "alertUntracked",
+                id: "alerts",
                 start: "140% top",
                 end: "150% top",
                 scrub: true
@@ -406,5 +422,3 @@
 </body>
 
 </html>
-
-<!-- Gonna redo this site tbh -->

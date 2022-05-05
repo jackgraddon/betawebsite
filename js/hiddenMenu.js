@@ -1,6 +1,6 @@
 window.addEventListener("load", () => {
   let nav = document.createElement("nav");
-  nav.id = "headerNavbar";
+  nav.id = "floatingNav";
   nav.style.opacity = "0";
   nav.style.display = "none";
   // nav.innerHTML =
@@ -74,9 +74,14 @@ window.addEventListener("load", () => {
     console.log(linkContainers[i]);
   }
   let headerNavBG = document.createElement("div");
-  headerNavBG.id = "headerNavBG";
+  headerNavBG.id = "floatingNavBG";
   nav.appendChild(headerNavBG);
-  document.querySelector("body").append(nav);
+  try {
+    document.querySelector("body").append(nav);
+    console.log("nav appended");
+  } catch (e) {
+    console.log("nav not appended");
+  }
   gsap.registerPlugin(ScrollTrigger);
 });
 
@@ -96,9 +101,9 @@ function handleMouseMove(e) {
 }
 
 function getmousePos() {
-  let elemWidth = document.getElementById("headerNavbar").clientWidth;
-  let elemHeight = document.getElementById("headerNavbar").clientHeight;
-  gsap.to("#headerNavbar", {
+  let elemWidth = document.getElementById("floatingNav").clientWidth;
+  let elemHeight = document.getElementById("floatingNav").clientHeight;
+  gsap.to("#floatingNav", {
     y: mousePos.y - elemHeight / 2,
     x: mousePos.x - elemWidth / 2,
     duration: 0,
@@ -107,11 +112,12 @@ function getmousePos() {
 let hidden,
   firstNavTrigger = true;
 
-window.addEventListener("keypress", (e) => {
+window.addEventListener("keydown", (e) => {
+  // console.log(e.key);
   if (e.key == "Escape") {
     console.log("yo");
     clearTimeout(hidden);
-    let nav = document.getElementById("headerNavbar");
+    let nav = document.querySelector("#floatingNav");
 
     nav.style.display = "block";
     if (firstNavTrigger) {
@@ -135,7 +141,7 @@ window.addEventListener("keypress", (e) => {
 });
 function onLongTouch() {
   clearTimeout(hidden);
-  let nav = document.getElementById("headerNavbar");
+  let nav = document.getElementById("floatingNav");
 
   nav.style.display = "block";
   if (firstNavTrigger) {
@@ -171,7 +177,7 @@ window.addEventListener("touchstart", (e) => {
     mousePos.x = touch.clientX;
     mousePos.y = touch.clientY;
   }
-  timer = setTimeout(onLongTouch, 300);
+  timer = setTimeout(onLongTouch, 600);
 });
 window.addEventListener("touchend", touchend);
 
@@ -182,6 +188,6 @@ function touchend() {
 }
 
 window.addEventListener("scroll", () => {
-  let nav = document.getElementById("headerNavbar");
+  let nav = document.getElementById("floatingNav");
   gsap.to(nav, { opacity: 0, duration: 0.3, ease: "power1" });
 });

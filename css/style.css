@@ -21,11 +21,34 @@
   transform: scale(1.1);
 }
 
-.alert-cookie {
+#alertUntracked,
+#alertDevelopment {
   position: fixed;
+  right: 2rem;
+  width: 20vw;
+  z-index: 5;
+  opacity: 0;
+  margin: 0 !important;
+}
+#alertUntracked {
   bottom: 2rem;
-  left: 2rem;
-  width: 25vw;
+}
+#alertDevelopment {
+  bottom: 11rem;
+}
+
+@media (max-width: 993px) {
+  #alertUntracked,
+  #alertDevelopment {
+    width: 45vw !important;
+    bottom: 2.5vw !important;
+  }
+  #alertUntracked {
+    left: 2.5vw;
+  }
+  #alertDevelopment {
+    right: 2.5vw;
+  }
 }
 
 /* Font */
@@ -148,9 +171,15 @@ a.nav-link.active {
   animation-fill-mode: forwards;
   -webkit-text-size-adjust: none;
   font-weight: 600;
-  font-size: 16px;
-  text-decoration: none;
+  font-size: smaller;
   white-space: nowrap;
+}
+#scrollDown,
+#scrollDown *,
+#scrollToTop,
+#scrollToTop * {
+  color: white;
+  text-decoration: none !important;
 }
 
 @keyframes shine {
@@ -158,27 +187,27 @@ a.nav-link.active {
     background-position: 0%;
   }
   to {
-    background-position: calc(77px);
+    background-position: 77px;
   }
 }
 /* Navbar */
-#headerNavbar {
+#floatingNav {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0 !important;
+  left: 0 !important;
   width: fit-content;
-  z-index: 5;
+  z-index: 10;
   border-radius: 1em;
   padding: 1em;
 }
-#headerNavbar .nav-link {
+#floatingNav .nav-link {
   transition: 300ms ease;
 }
-#headerNavbar .nav-link:hover {
+#floatingNav .nav-link:hover {
   transform: scale(1.1);
 }
 
-#headerNavBG {
+#floatingNavBG {
   position: fixed;
   top: -10%;
   left: 0%;
@@ -220,14 +249,10 @@ a.nav-link.active {
   border-color: var(--primary);
   color: var(--primary);
 }
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:active {
   background-color: var(--primary);
   border-color: var(--primary);
-  color: #faf9f9;
-}
-.btn-primary:active {
-  background-color: var(--primary) !important;
-  border-color: var(--primary) !important;
   color: #faf9f9;
 }
 .btn-secondary {
@@ -236,10 +261,16 @@ a.nav-link.active {
 }
 
 /* Images */
-/* img {} */
 #cloudContainer {
   overflow-x: hidden;
   overflow-y: visible;
+}
+
+img.portrait.portrait-landing {
+  min-width: 40vw;
+  width: 100%;
+  height: auto;
+  border-radius: 0.7rem;
 }
 
 /* Cards */
@@ -296,6 +327,7 @@ a.nav-link.active {
 
 /* Project Display */
 .projectDeck {
+  width: 100%;
   display: flex;
   flex-flow: column;
 }
