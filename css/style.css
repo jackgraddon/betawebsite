@@ -272,6 +272,12 @@ img.portrait.portrait-landing {
   height: auto;
   border-radius: 0.7rem;
 }
+img.portrait.portrait-about {
+  min-width: 25vw;
+  width: 100%;
+  height: auto;
+  border-radius: 0.7rem;
+}
 
 /* Cards */
 .card {
@@ -326,40 +332,46 @@ img.portrait.portrait-landing {
 }
 
 /* Project Display */
-.projectDeck {
+.project-deck {
   width: 100%;
   display: flex;
-  flex-flow: column;
-}
-.projectDeck .row {
   flex-flow: row;
-  width: fit-content;
-  justify-content: space-around;
+  justify-content: space-between;
 }
-.projectTile {
+.project-deck {
+  margin-left: none;
+}
+.project-tile {
   border: none;
   border-radius: 0.5rem;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-content: center;
-  width: 32%;
+  /* width: 90%; */
+  margin: 0.3rem;
+}
+.project-tile:first-child {
+  margin-left: 0;
+}
+.project-tile:last-child {
+  margin-right: 0;
 }
 @media screen and (max-width: 768px) {
-  .projectDeck .row {
+  .project-deck {
     flex-flow: column !important;
   }
-  .projectTile {
+  .project-tile {
     width: auto !important;
-    margin: 0.5rem 1rem;
+    margin: 0.5rem 0rem !important;
   }
 }
-.projectTile img {
+.project-tile img {
   border-radius: 0.5rem 0.5rem 0 0;
   width: 100%;
   aspect-ratio: 1.6;
 }
-.projectTile .btn {
+.project-tile .btn {
   margin: 1rem auto;
 }
 

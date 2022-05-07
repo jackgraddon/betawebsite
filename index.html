@@ -14,11 +14,11 @@
     <!-- Favicon -->
     <link rel="icon" href="./images/png/favicon/favicon.png">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <!-- FontAwesome CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!-- FontAwesome Icons -->
+    <script src="https://kit.fontawesome.com/c2793fb33f.js" crossorigin="anonymous"></script>
     <!-- Personal CSS -->
     <link rel="stylesheet" href="./css/style.css">
     <!-- Reset scroll to top -->
@@ -26,15 +26,6 @@
 </head>
 
 <body>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS, then Rellax.js -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
     <!-- Script for Root Landing Page -->
     <script>
         var dateFull = new Date();
@@ -49,61 +40,70 @@
         let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
         function colorSchemeSet() {
-            let title = document.getElementById('title');
-            let subtitle = document.getElementById('subtitle');
-            let body = document.getElementById('background');
-            let condition = document.getElementById('condition');
-            let cloud = document.getElementById('cloud');
-            let meta = document.querySelector('meta[name="theme-color"]')
-            let stylesheet = document.querySelector('link[href="./css/style.css"]');
+            let elems = {
+                "body": document.querySelector('body'),
+                "title": document.querySelector("#title"),
+                "subtitle": document.querySelector("#subtitle"),
+                "background": document.querySelector("#background"),
+                "condition": document.querySelector("#condition"),
+                "cloud": document.querySelector("#cloud"),
+                "stars": {
+                    "morning": document.querySelector("#stars-morning"),
+                    "night": document.querySelector("#stars-night"),
+                }
+            }
+            let metadata = {
+                "theme": document.querySelector('meta[name="theme-color"]'),
+                "styles": document.querySelector('link[href="./css/style.css"]'),
+            }
 
             // date.hour = 19;
             if ((date.hour >= 5) && (date.hour < 9)) {
-                title.innerHTML = "Good morning!";
-                subtitle.innerHTML = "It's going to be a great day.";
-                condition.innerHTML = "<img src=\"./images/svg/icon/sunrise.svg\" height=\"20pt\">";
-                $('body').css('background-color', '#33004f');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(51,0,79,1) 0%, rgba(177,72,38,1) 100%)');
-                meta.setAttribute('content', '#33004f');
-                $('#starsMorn').fadeIn(6000);
+                elems.title.innerHTML = "Good morning!";
+                elems.subtitle.innerHTML = "It's going to be a great day.";
+                elems.condition.innerHTML = "<img src=\"./images/svg/icon/sunrise.svg\" height=\"20pt\">";
+                elems.body.style.backgroundColor = '#33004f';
+                elems.background.style.backgroundImage = 'linear-gradient(180deg, rgba(51,0,79,1) 0%, rgba(177,72,38,1) 100%)';
+                metadata.theme.setAttribute('content', '#33004f');
+                elems.stars.morning.fadeIn(6000);
             } else if ((date.hour >= 9) && (date.hour < 12)) {
-                title.innerHTML = "Good morning!";
-                subtitle.innerHTML = "It's going to be a great day.";
-                condition.innerHTML = "<img src=\"./images/svg/icon/sunny.svg\" height=\"20pt\">";
-                $('body').css('background-color', '#067bbb');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)');
-                meta.setAttribute('content', '#067bbb')
+                elems.title.innerHTML = "Good morning!";
+                elems.subtitle.innerHTML = "It's going to be a great day.";
+                elems.condition.innerHTML = "<img src=\"./images/svg/icon/sunny.svg\" height=\"20pt\">";
+                elems.body.style.backgroundColor = '#067bbb';
+                elems.background.style.backgroundImage = 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)';
+                metadata.theme.setAttribute('content', '#067bbb')
             } else if ((date.hour >= 12) && (date.hour < 18)) {
-                title.innerHTML = "Good afternoon!";
-                subtitle.innerHTML = "What a beautiful day it is.";
-                condition.innerHTML = "<img src=\"./images/svg/icon/sunny.svg\" height=\"20pt\">";
-                $('body').css('background-color', '#067bbb');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)');
-                meta.setAttribute('content', '#067bbb')
+                elems.title.innerHTML = "Good afternoon!";
+                elems.subtitle.innerHTML = "What a beautiful day it is.";
+                elems.condition.innerHTML = "<img src=\"./images/svg/icon/sunny.svg\" height=\"20pt\">";
+                elems.body.style.backgroundColor = '#067bbb';
+                elems.background.style.backgroundImage = 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)';
+                metadata.theme.setAttribute('content', '#067bbb')
             } else if ((date.hour >= 18) && (date.hour < 22)) {
-                title.innerHTML = "Good evening!";
-                subtitle.innerHTML = "Don't miss the sunset.";
-                condition.innerHTML = "<img src=\"./images/svg/icon/sunset.svg\" height=\"20pt\">";
-                $('body').css('background-color', '#2a6ca1');
-                $('#background').css('background-image', 'linear-gradient(0deg, rgba(255,177,177,1) 0%, rgba(226,218,187,1) 25%, rgba(184,214,228,1) 40%, rgba(42,108,161,1) 100%)');
-                meta.setAttribute('content', '#2a6ca1')
+                elems.title.innerHTML = "Good evening!";
+                elems.subtitle.innerHTML = "Don't miss the sunset.";
+                elems.condition.innerHTML = "<img src=\"./images/svg/icon/sunset.svg\" height=\"20pt\">";
+                elems.body.style.backgroundColor = '#2a6ca1';
+                elems.background.style.backgroundImage = 'linear-gradient(0deg, rgba(255,177,177,1) 0%, rgba(226,218,187,1) 25%, rgba(184,214,228,1) 40%, rgba(42,108,161,1) 100%)';
+                metadata.theme.setAttribute('content', '#2a6ca1')
             } else if ((date.hour >= 22) || (date.hour < 5)) {
-                title.innerHTML = "Good night!";
-                subtitle.innerHTML = "The moon shines bright outside tonight.";
-                condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                $('#stars').fadeIn(6000);
-                meta.setAttribute('content', '#13001d');
+                elems.title.innerHTML = "Good night!";
+                elems.subtitle.innerHTML = "The moon shines bright outside tonight.";
+                elems.condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
+                elems.body.style.backgroundColor = '#13001d';
+                elems.background.style.backgroundImage = 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)';
+                elems.stars.night.fadeIn(6000);
+                metadata.theme.setAttribute('content', '#13001d');
             }
 
             if (matched && ((date.hour < 22) && (date.hour > 5))) {
-                title.innerHTML = "Good night!";
-                subtitle.innerHTML = "It isn't night yet, but your computer told me it is.";
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                meta.setAttribute('content', '#13001d');
-                $('#stars').fadeIn(6000);
+                elems.title.innerHTML = "Good night!";
+                elems.subtitle.innerHTML = "It isn't night yet, but your computer told me it is.";
+                elems.body.style.backgroundColor = '#13001d';
+                elems.background.style.backgroundImage = 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)';
+                metadata.theme.setAttribute('content', '#13001d');
+                elems.stars.night.fadeIn(6000);
                 console.log('Browser in dark mode, night color scheme applied.')
             } else if (matched) {
                 console.log('Browser in dark mode, but the default color scheme was applied.')
@@ -119,28 +119,28 @@
             let condition = document.getElementById('condition');
             let meta = document.querySelector('meta[name="theme-color"]')
             if ((date.hour < 22) && (date.hour > 5)) {
-                title.innerHTML = "Good night!";
-                subtitle.innerHTML = "It isn't night yet, but your computer told me it is.";
-                condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                meta.setAttribute('content', '#13001d');
-                $('#stars').fadeIn(400);
+                elems.title.innerHTML = "Good night!";
+                elems.subtitle.innerHTML = "It isn't night yet, but your computer told me it is.";
+                elems.condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
+                elems.body.style.backgroundColor = '#13001d';
+                elems.background.style.backgroundImage = 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)';
+                metadata.theme.setAttribute('content', '#13001d');
+                elems.stars.night.fadeIn(400);
                 console.log('Browser in dark mode during the day, so the night color scheme applied.')
             } else {
-                title.innerHTML = "Good night!";
-                subtitle.innerHTML = "The moon shines bright outside tonight.";
-                condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                meta.setAttribute('content', '#13001d');
-                $('#stars').fadeIn(400);
+                elems.title.innerHTML = "Good night!";
+                elems.subtitle.innerHTML = "The moon shines bright outside tonight.";
+                elems.condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
+                elems.body.style.backgroundColor = '#13001d';
+                elems.background.style.backgroundImage = 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)';
+                metadata.theme.setAttribute('content', '#13001d');
+                elems.stars.night.fadeIn(400);
                 console.log('Browser in light mode at night, so the night color scheme was applied.')
             }
         }
         function setLightMode() {
             colorSchemeSet();
-            $('#stars').fadeOut(400);
+            elems.stars.night.fadeOut(400);
         }
         window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => e.matches && setDarkMode());
         window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", e => e.matches && setLightMode());
@@ -153,13 +153,13 @@
 
             switch (rand) {
                 case 1:
-                    $('#cloud').attr("src", "./images/png/front/cloud1.png");
+                    document.querySelector('#cloud').src = "./images/png/front/cloud1.png";
                     break;
                 case 2:
-                    $('#cloud').attr("src", "./images/png/front/cloud2.png");
+                    document.querySelector('#cloud').src = "./images/png/front/cloud2.png";
                     break;
                 case 3:
-                    $('#cloud').attr("src", "./images/png/front/cloud3.png");
+                    document.querySelector('#cloud').src = "./images/png/front/cloud3.png";
                     break;
             }
         });
@@ -188,8 +188,8 @@
     <div id="background"></div>
     <div class="d-flex flex-column justify-content-center align-content-center" id="header"
         style="height: fit-content; z-index: 1; overflow: hidden;">
-        <div id="stars" style="display: none;"></div>
-        <div id="starsMorn" style="display: none;"></div>
+        <div id="stars-night" style="display: none;"></div>
+        <div id="stars-morning" style="display: none;"></div>
         <div class="d-flex justify-content-center align-items-center w-100 rellax" style="padding-top: 35vh;"
             id="titleContainer">
             <div class="d-flex flex-column container align-items-center"
@@ -242,8 +242,8 @@
         <!-- Cookie alert -->
         <div class="shadow alert alert-primary alert-dismissible fade show" id="alertUntracked"
             style="position: fixed; right: 2rem; bottom: 2rem; width: 20vw; z-index: 5; opacity: 0;">
-            <button type="button" class="close text-primary" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+            <button type="button" class="btn-close text-primary" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"></span>
             </button>
             <h3 style="font-size: medium;">🍪 Cookies</h3>
             <p style="font-size: x-small;" class="mb-1">This website does not use cookies! You are free to browse with
@@ -252,19 +252,19 @@
         </div>
         <!-- In Development Notice -->
         <div class="alert alert-primary alert-dismissible fade show mb-5" id="alertDevelopment">
-            <button type="button" class="close text-primary" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+            <button type="button" class="btn-close text-primary" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"></span>
             </button>
             <h3 style="font-size: medium;">🛠 Beta Site</h3>
             <p style="font-size: x-small;">
                 This page is still in early access. This site has the most up to date information, but might not work as
                 intended 100% of the time.
             </p>
-            <a class="btn btn-primary mb-1 mb-md-0" href="https://www.jackgraddon.com/" target="_blank"
+            <a class="btn btn-primary mb-1" href="https://www.jackgraddon.com/" target="_blank"
                 style="font-size: small;">
                 Stable Site <i class="bi bi-box-arrow-up-right"></i>
             </a>
-            <a class="btn btn-primary mt-1 mt-md-0" href="https://github.com/jackgraddon/betawebsite/issues/new/choose"
+            <a class="btn btn-primary mb-1" href="https://github.com/jackgraddon/betawebsite/issues/new/choose"
                 target="_blank" style="font-size: small;">
                 Feedback <i class="bi bi-box-arrow-up-right"></i>
             </a>
@@ -272,41 +272,42 @@
         <!-- Main Page -->
         <div class="d-flex flex-column align-items-center">
             <h1 class="title">Hello!</h1>
-            <p class="subtitle">I'm Jack, a freelance Web Developer and Graphic Designer. I work on </p>
-            <div class="projectDeck mx-auto w-100">
-                <div class="d-flex row">
-                    <div class="projectTile" style="background-color: #432534;">
-                        <img src="./images/jpg/projects/fblaProject22.jpg"
-                            alt="Future Business Leaders of America 2020/21 Competition - Website Design."
-                            style="border-bottom: #C44900 1px dashed;">
-                        <a href="./projects/web/fbla/2022/" class="btn"
-                            style="color: #C44900; border-color: #C44900;">Learn More</a>
-                    </div>
-                    <div class="projectTile" style="background-color: #70A389;">
-                        <img src="./images/jpg/projects/lyndenTechTips.jpg"
-                            alt="Lynden Tech Tips - A YouTube channel dedicated to helping students and staff learn how to navigate tech."
-                            style="border-bottom: #45785E 1px dashed;">
-                        <a href="./projects/video/lyndentechtips/" class="btn"
-                            style="color: #45785E; border-color: #45785E;">Learn
-                            More</a>
-                    </div>
-                    <div class="projectTile" style="background-color: #2F3E46;">
-                        <img src="./images/jpg/projects/alienPanels.jpg"
-                            alt="AlienISLive - Twitch Streamer Panels and Brand."
-                            style="border-bottom: #354F52 1px dashed;">
-                        <a href="./projects/design/alienislive/" class="btn"
-                            style="color: #FF6978; border-color: #FF6978;">Learn More</a>
-                    </div>
+            <p class="subtitle">I'm Jack, a freelance Web Developer and Graphic Designer.</p>
+            <div class="project-deck">
+                <div class="project-tile" style="background-color: #432534;">
+                    <img src="./images/jpg/projects/fblaProject22.jpg"
+                        alt="Future Business Leaders of America 2020/21 Competition - Website Design."
+                        style="border-bottom: #C44900 1px dashed;">
+                    <a href="./projects/web/fbla/2022/" class="btn" style="color: #C44900; border-color: #C44900;">Learn
+                        More</a>
+                </div>
+                <div class="project-tile" style="background-color: #70A389;">
+                    <img src="./images/jpg/projects/lyndenTechTips.jpg"
+                        alt="Lynden Tech Tips - A YouTube channel dedicated to helping students and staff learn how to navigate tech."
+                        style="border-bottom: #45785E 1px dashed;">
+                    <a href="./projects/video/lyndentechtips/" class="btn"
+                        style="color: #45785E; border-color: #45785E;">Learn
+                        More</a>
+                </div>
+                <div class="project-tile" style="background-color: #2F3E46;">
+                    <img src="./images/jpg/projects/alienPanels.jpg"
+                        alt="AlienISLive - Twitch Streamer Panels and Brand."
+                        style="border-bottom: #354F52 1px dashed;">
+                    <a href="./projects/design/alienislive/" class="btn"
+                        style="color: #FF6978; border-color: #FF6978;">Learn More</a>
                 </div>
             </div>
             <p class="mt-1">Check out some of my favourite projects above!</p>
             <div class="d-flex flex-md-row flex-column w-100">
                 <img src="./images/jpg/portraits/Jack-01.jpg" alt="Jack Graddon" class="portrait portrait-landing">
-                <div class="m-2">
+                <div class="m-3">
                     <h2>About</h2>
                     <p>I'm a freelance Web Developer and Graphic Designer. I've worked on projects and designs for my
-                        local school, growing influencers, companies, and competitions.
-                    </p>
+                        local school, growing influencers, companies, and competitions.</p>
+                    <p>I’ve always desired to make technology more accessible by developing user interfaces that are
+                        simple to navigate and visually engaging.</p>
+                    <p>Want to learn more about me?</p>
+                    <a href="./about/" class="btn btn-primary">Click Here</a>
                 </div>
             </div>
     </main>
@@ -344,7 +345,22 @@
             </ul>
         </div>
     </nav>
+    <!-- Bootstrap 5 Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script>
+        // Alerts
+        var alertList = document.querySelectorAll('.alert')
+        var alerts = [].slice.call(alertList).map(function (element) {
+            return new bootstrap.Alert(element)
+        })
 
+    </script>
+    <!-- Bootstrap 5 Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
     <!-- Pollyfill (for Smooth Scrolling on Unsupported Browsers) -->
     <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
     <script>smoothscroll.polyfill();</script>
