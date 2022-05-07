@@ -242,7 +242,7 @@
         <!-- Cookie alert -->
         <div class="shadow alert alert-primary alert-dismissible fade show" id="alertUntracked"
             style="position: fixed; right: 2rem; bottom: 2rem; width: 20vw; z-index: 5; opacity: 0;">
-            <button type="button" class="btn-close text-primary" data-dismiss="alert" aria-label="Close">
+            <button type="button" class="btn-close text-primary" data-bs-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true"></span>
             </button>
             <h3 style="font-size: medium;">🍪 Cookies</h3>
@@ -252,7 +252,7 @@
         </div>
         <!-- In Development Notice -->
         <div class="alert alert-primary alert-dismissible fade show mb-5" id="alertDevelopment">
-            <button type="button" class="btn-close text-primary" data-dismiss="alert" aria-label="Close">
+            <button type="button" class="btn-close text-primary" data-bs-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true"></span>
             </button>
             <h3 style="font-size: medium;">🛠 Beta Site</h3>
@@ -299,7 +299,10 @@
             </div>
             <p class="mt-1">Check out some of my favourite projects above!</p>
             <div class="d-flex flex-md-row flex-column w-100">
-                <img src="./images/jpg/portraits/Jack-01.jpg" alt="Jack Graddon" class="portrait portrait-landing">
+                <div class="portrait portrait-landing">
+                    <img src="./images/jpg/portraits/Jack-01.jpg" height="100%"
+                        alt="Jack Graddon sitting infront of the camera">
+                </div>
                 <div class="m-3">
                     <h2>About</h2>
                     <p>I'm a freelance Web Developer and Graphic Designer. I've worked on projects and designs for my

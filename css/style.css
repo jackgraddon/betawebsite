@@ -265,18 +265,18 @@ a.nav-link.active {
   overflow-x: hidden;
   overflow-y: visible;
 }
-
-img.portrait.portrait-landing {
-  min-width: 40vw;
+div.portrait {
   width: 100%;
-  height: auto;
+  overflow: hidden;
   border-radius: 0.7rem;
+}
+div.portrait.portrait-landing {
+  min-width: 40vw;
+  aspect-ratio: 1.5 !important;
 }
 img.portrait.portrait-about {
   min-width: 25vw;
-  width: 100%;
-  height: auto;
-  border-radius: 0.7rem;
+  aspect-ratio: 5464 / 8192;
 }
 
 /* Cards */

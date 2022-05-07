@@ -112,9 +112,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
   // console.log(rand);
 
   let mainURL = window.location.protocol + "//" + window.location.hostname;
-  if (mainURL.includes("localhost")) {
-    let port = window.location.port;
-    mainURL = mainURL + ":" + port;
+  if (window.location.port) {
+    mainURL = mainURL + ":" + window.location.port;
   }
   switch (rand) {
     case 1:
