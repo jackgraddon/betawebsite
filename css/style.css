@@ -338,7 +338,7 @@ div.portrait.portrait-about {
   width: 100%;
   display: flex;
   flex-flow: row;
-  justify-content: space-between;
+  justify-content: center;
 }
 .project-deck {
   margin-left: none;
@@ -350,7 +350,8 @@ div.portrait.portrait-about {
   flex-flow: column;
   justify-content: center;
   align-content: center;
-  /* width: 90%; */
+  max-height: 45vh;
+  max-width: 32%;
   margin: 0.3rem;
 }
 .project-tile:first-child {
@@ -365,6 +366,8 @@ div.portrait.portrait-about {
   }
   .project-tile {
     width: auto !important;
+    max-width: none !important;
+    max-height: none !important;
     margin: 0.5rem 0rem !important;
   }
 }
