@@ -87,76 +87,44 @@
     </script>
 
     <main class="container mb-5" id="sectionOne" style="z-index: 3;">
-        <div class="d-flex flex-column align-items-start">
-            <div class="d-flex flex-column">
-                <div class="mb-4 d-flex flex-column justify-content-center align-items-center">
-                    <h1>About</h1>
-                    <p>I am a <span id="age"></span> year old self-tought HTML web developer, and will be stufying
-                        Web Development and Design furhter in my university career. </p>
-                </div>
-                <script src="../../js/moment.js"></script>
-                <script>
-                    function getAge() {
-                        let ageTarget = document.getElementById('age');
-                        let today = new Date; // Get today's date
-                        var a = moment([2004, 7]); // Set time a to my birth month
-                        var b = moment([today.getFullYear(), today.getMonth()]); // Set time b to the current month
-                        let currentAge = b.diff(a, 'years'); // Calculate difference in years using Moment
-                        // alert(currentAge);
-                        ageTarget.innerHTML = currentAge;
-                    }
-                    getAge();
-                </script>
-                <div class="mb-4 d-flex flex-column justify-content-center align-items-center">
+        <!-- <div class="mb-4 d-flex flex-column justify-content-center align-items-center">
                     <h1>Showcase</h1>
-                    <div class="project-deck mx-auto">
-                        <div class="d-flex row">
-                            <div class="project-tile" style="background-color: #C1E3FF;">
-                                <img src="../../images/jpg/projects/coffeeAddictsWebsite.jpg"
-                                    alt="The Coffee Addicts - A streaming group."
-                                    style="border-bottom: #289BFA 1px dashed;">
-                                <a href="./web/tca/" class="btn" style="color: #289BFA; border-color: #289BFA;">Learn
-                                    More</a>
-                            </div>
-                            <div class="project-tile" style="background-color: #432534;">
-                                <img src="../../images/jpg/projects/fblaProject22.jpg"
-                                    alt="Future Business Leaders of America 2020/21 Competition - Website Design."
-                                    style="border-bottom: #C44900 1px dashed;">
-                                <a href="./web/fbla2021/" class="btn"
-                                    style="color: #C44900; border-color: #C44900;">Learn More</a>
-                            </div>
+                    <div class="project-deck">
+                        <div class="project-tile" style="background-color: #FFE9C1;">
+                            <img src="../../images/jpg/projects/lyndenITWebsite.jpg"
+                                alt="Lynden High School IT - Discover help, learn how to use, and develop your skills with technology."
+                                style="border-bottom: #F8D1AE 1px dashed;">
+                            <a href="./web/lhs/it/" class="btn" style="color: #FFCA09; border-color: #FFCA09;">Learn
+                                More</a>
+                        </div>
+                        <div class="project-tile" style="background-color: #432534;">
+                            <img src="../../images/jpg/projects/fblaProject22.jpg"
+                                alt="Future Business Leaders of America 2020/21 Competition - Website Design."
+                                style="border-bottom: #C44900 1px dashed;">
+                            <a href="./web/fbla2022/" class="btn" style="color: #C44900; border-color: #C44900;">Learn
+                                More</a>
                         </div>
                     </div>
+                </div> -->
+        <div class="mb-4 d-flex flex-column justify-content-center align-items-center">
+            <h1>Personal Favourites</h1>
+            <div class="project-deck">
+                <div class="project-tile" style="background-color: #432534;">
+                    <img src="../../images/jpg/projects/fblaProject22.jpg"
+                        alt="Future Business Leaders of America 2020/21 Competition - Website Design."
+                        style="border-bottom: #C44900 1px dashed;">
+                    <a href="../web/fbla/2022/" class="btn" style="color: #C44900; border-color: #C44900;">Learn
+                        More</a>
                 </div>
-                <div class="mb-4 d-flex flex-column justify-content-center align-items-center">
-                    <h1>Personal Favourites</h1>
-                    <div class="project-deck mx-auto">
-                        <div class="d-flex row">
-                            <div class="project-tile" style="background-color: #C1E3FF;">
-                                <img src="../../images/jpg/projects/coffeeAddictsWebsite.jpg"
-                                    alt="The Coffee Addicts - A streaming group."
-                                    style="border-bottom: #289BFA 1px dashed;">
-                                <a href="./web/tca/" class="btn" style="color: #289BFA; border-color: #289BFA;">Learn
-                                    More</a>
-                            </div>
-                            <div class="project-tile" style="background-color: #432534;">
-                                <img src="../../images/jpg/projects/fblaProject22.jpg"
-                                    alt="Future Business Leaders of America 2020/21 Competition - Website Design."
-                                    style="border-bottom: #C44900 1px dashed;">
-                                <a href="./web/fbla/2021/" class="btn"
-                                    style="color: #C44900; border-color: #C44900;">Learn More</a>
-                            </div>
-                            <div class="project-tile" style="background-color: #FFE9C1;">
-                                <img src="../../images/jpg/projects/lyndenITWebsite.jpg"
-                                    alt="Lynden High School IT - Discover help, learn how to use, and develop your skills with technology."
-                                    style="border-bottom: #F8D1AE 1px dashed;">
-                                <a href="./web/lhs/it/" class="btn" style="color: #FFCA09; border-color: #FFCA09;">Learn
-                                    More</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="project-tile" style="background-color: #FFE9C1;">
+                    <img src="../../images/jpg/projects/lyndenITWebsite.jpg"
+                        alt="Lynden High School IT - Discover help, learn how to use, and develop your skills with technology."
+                        style="border-bottom: #F8D1AE 1px dashed;">
+                    <a href="../web/lhs/it/" class="btn" style="color: #FFCA09; border-color: #FFCA09;">Learn
+                        More</a>
                 </div>
             </div>
+        </div>
     </main>
     <!-- Scroll to Top button -->
     <div class="p-2" style="position: sticky; bottom: env(safe-area-inset-bottom); overflow-y: hidden; opacity: 0;"
@@ -194,8 +162,8 @@
 
     </script>
     <!-- Script for Landing Page -->
-    <script src="../js/theming.js"></script>
-    <script src="../js/hiddenMenu.js"></script>
+    <script src="../../js/theming.js"></script>
+    <script src="../../js/hiddenMenu.js"></script>
     <!-- Bootstrap 5 Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -226,7 +194,6 @@
             duration: 2,
         });
     </script>
-    <script src="../js/hiddenMenu.js"></script>
 
 </body>
 
