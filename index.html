@@ -299,7 +299,7 @@
                 </p>
             </div>
             <!-- In Development Notice -->
-            <div class="shadow alert alert-primary alert-dismissible fade show mb-5" id="alertDevelopment" role="alert">
+            <div class="shadow alert alert-primary alert-dismissible fade show" id="alertDevelopment" role="alert">
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true"></span>
                 </button>
@@ -467,10 +467,6 @@
             opacity: 1,
             duration: 1
         })
-        gsap.set("#alertUntracked", {
-            opacity: 0,
-            y: -100,
-        })
         setTimeout(function () {
             gsap.to("#alerts", {
                 scrollTrigger: {
@@ -479,7 +475,7 @@
                     start: "center center",
                     end: "bottom center",
                     // markers: true,
-                    scrub: true
+                    // scrub: true
                 },
                 opacity: 1,
                 ease: "ease",
