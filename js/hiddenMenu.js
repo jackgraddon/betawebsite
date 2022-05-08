@@ -3,9 +3,6 @@ window.addEventListener("load", () => {
   nav.id = "floatingNav";
   nav.style.opacity = "0";
   nav.style.display = "none";
-  // nav.innerHTML =
-  //   '<div style="width: fit-content; z-index: 5;"> <ul class="nav justify-content-center"> <li class="nav-item"> <a class="nav-link" href="https://beta.jackgraddon.page/">Home</a> </li> <li class="nav-item"> <a class="nav-link" href="https://beta.jackgraddon.page/about">About</a></li> </ul> <h3 style="width: fit-content;" class="mx-auto my-2">Go To</h3> <ul class="nav justify-content-center"> <li class="nav-item"> <a class="nav-link" href="https://beta.jackgraddon.page/projects/">Projects</a> </li> <li class="nav-item"> <a class="nav-link" href="https://beta.jackgraddon.page/legals/">Legal</a> </li> </ul> </ul> </div> <div id="headerNavBG"></div>';
-
   let mainURL = window.location.protocol + "//" + window.location.hostname;
   if (window.location.port) {
     mainURL = mainURL + ":" + window.location.port;

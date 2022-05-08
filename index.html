@@ -25,7 +25,7 @@
     <script>history.scrollRestoration = "manual"</script>
 </head>
 
-<body>
+<body style="opacity: 0;">
     <!-- Script for Root Landing Page -->
     <script>
         var dateFull = new Date();
@@ -37,10 +37,11 @@
             hour: dateFull.getHours(),
         }
         console.log(date.year, date.month, date.calDay, date.day, date.hour);
-        let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        function colorSchemeSet() {
-            let elems = {
+        let elems, metadata, matched;
+
+        window.addEventListener("DOMContentLoaded", function () {
+            elems = {
                 "body": document.querySelector('body'),
                 "title": document.querySelector("#title"),
                 "subtitle": document.querySelector("#subtitle"),
@@ -52,11 +53,24 @@
                     "night": document.querySelector("#stars-night"),
                 }
             }
-            let metadata = {
-                "theme": document.querySelector('meta[name="theme-color"]'),
+
+            metadata = {
                 "styles": document.querySelector('link[href="./css/style.css"]'),
+                "theme": document.querySelector('meta[name="theme-color"]'),
             }
 
+            matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            gsap.to(elems.body, {
+                opacity: 1,
+                duration: 0.5,
+                ease: "power3.out",
+                delay: 0.5
+            });
+        });
+
+
+        function colorSchemeSet() {
             // date.hour = 19;
             if ((date.hour >= 5) && (date.hour < 9)) {
                 elems.title.innerHTML = "Good morning!";
@@ -65,7 +79,15 @@
                 elems.body.style.backgroundColor = '#33004f';
                 elems.background.style.backgroundImage = 'linear-gradient(180deg, rgba(51,0,79,1) 0%, rgba(177,72,38,1) 100%)';
                 metadata.theme.setAttribute('content', '#33004f');
-                elems.stars.morning.fadeIn(6000);
+                gsap.fromTo(elems.stars.morning, {
+                    display: 'none',
+                    opacity: 0,
+                }, {
+                    display: 'block',
+                    opacity: 1,
+                    duration: 6,
+                    ease: "power3.out"
+                });
             } else if ((date.hour >= 9) && (date.hour < 12)) {
                 elems.title.innerHTML = "Good morning!";
                 elems.subtitle.innerHTML = "It's going to be a great day.";
@@ -93,7 +115,15 @@
                 elems.condition.innerHTML = "<img src=\"./images/svg/icon/moon.svg\" height=\"20pt\">";
                 elems.body.style.backgroundColor = '#13001d';
                 elems.background.style.backgroundImage = 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)';
-                elems.stars.night.fadeIn(6000);
+                gsap.fromTo(elems.stars.night, {
+                    display: 'none',
+                    opacity: 0,
+                }, {
+                    display: 'block',
+                    opacity: 1,
+                    duration: 6,
+                    ease: "power3.out"
+                });
                 metadata.theme.setAttribute('content', '#13001d');
             }
 
@@ -103,7 +133,15 @@
                 elems.body.style.backgroundColor = '#13001d';
                 elems.background.style.backgroundImage = 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)';
                 metadata.theme.setAttribute('content', '#13001d');
-                elems.stars.night.fadeIn(6000);
+                gsap.fromTo(elems.stars.night, {
+                    display: 'none',
+                    opacity: 0,
+                }, {
+                    display: 'block',
+                    opacity: 1,
+                    duration: 6,
+                    ease: "power3.out"
+                });
                 console.log('Browser in dark mode, night color scheme applied.')
             } else if (matched) {
                 console.log('Browser in dark mode, but the default color scheme was applied.')
@@ -125,7 +163,15 @@
                 elems.body.style.backgroundColor = '#13001d';
                 elems.background.style.backgroundImage = 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)';
                 metadata.theme.setAttribute('content', '#13001d');
-                elems.stars.night.fadeIn(400);
+                gsap.fromTo(elems.stars.night, {
+                    display: 'none',
+                    opacity: 0,
+                }, {
+                    display: 'block',
+                    opacity: 1,
+                    duration: 0.4,
+                    ease: "power3.out"
+                });
                 console.log('Browser in dark mode during the day, so the night color scheme applied.')
             } else {
                 elems.title.innerHTML = "Good night!";
@@ -134,7 +180,15 @@
                 elems.body.style.backgroundColor = '#13001d';
                 elems.background.style.backgroundImage = 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)';
                 metadata.theme.setAttribute('content', '#13001d');
-                elems.stars.night.fadeIn(400);
+                gsap.fromTo(elems.stars.night, {
+                    display: 'none',
+                    opacity: 0,
+                }, {
+                    display: 'block',
+                    opacity: 1,
+                    duration: 0.4,
+                    ease: "power3.out"
+                });
                 console.log('Browser in light mode at night, so the night color scheme was applied.')
             }
         }
@@ -142,31 +196,26 @@
             colorSchemeSet();
             elems.stars.night.fadeOut(400);
         }
+
         window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => e.matches && setDarkMode());
         window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", e => e.matches && setLightMode());
 
-        window.addEventListener('DOMContentLoaded', (event) => {
+        window.addEventListener('load', (event) => {
             colorSchemeSet()
 
-            let rand = Math.floor(Math.random() * 3) + 1;
-            // console.log(rand);
-
-            switch (rand) {
-                case 1:
-                    document.querySelector('#cloud').src = "./images/png/front/cloud1.png";
-                    break;
-                case 2:
-                    document.querySelector('#cloud').src = "./images/png/front/cloud2.png";
-                    break;
-                case 3:
-                    document.querySelector('#cloud').src = "./images/png/front/cloud3.png";
-                    break;
+            let mainURL = window.location.protocol + "//" + window.location.hostname;
+            if (window.location.port) {
+                mainURL = mainURL + ":" + window.location.port;
             }
+            try {
+                elems.cloud.src = `${mainURL}/images/png/front/cloud${Math.floor(Math.random() * 3) + 1}.png`;
+            } catch (e) {
+                console.log(e);
+            }
+
+            let i = 0;
+            let j = 0;
         });
-
-        let i = 0;
-        let j = 0;
-
         window.addEventListener("DOMContentLoaded", () => {
             window.scrollTo(0, 0
             );
@@ -182,7 +231,7 @@
                 console.log("Finishing animation...");
                 window.removeEventListener("scroll", finishAnimation, false);
             }
-        })
+        });
     </script>
     <!-- Begin Page -->
     <div id="background"></div>
@@ -206,7 +255,8 @@
             </div>
         </div>
         <div id="cloudContainer" style="height: fit-content;">
-            <img id="cloud" width="100%" alt="A cloud that covers the entire width of the screen.">
+            <img id="cloud" width="100%" alt="A cloud that covers the entire width of the screen."
+                src="./images/png/front/cloud1.png">
         </div>
     </div>
 
@@ -271,7 +321,7 @@
         </div>
         <!-- Main Page -->
         <div class="d-flex flex-column align-items-center">
-            <h1 class="title">Hello!</h1>
+            <h1 class="title" id="pageTitle">Hello!</h1>
             <p class="subtitle">I'm Jack, a freelance Web Developer and Graphic Designer.</p>
             <div class="project-deck">
                 <div class="project-tile" style="background-color: #432534;">
@@ -424,18 +474,21 @@
         //     opacity: 0,
         //     y: -100,
         // })
-        gsap.to("#alertUntracked, #alertDevelopment", {
-            scrollTrigger: {
-                trigger: "#titleContainer",
-                id: "alerts",
-                start: "140% top",
-                end: "150% top",
-                scrub: true
-            },
-            opacity: 1,
-            ease: "ease",
-            duration: 1
-        })
+        setTimeout(function () {
+            gsap.to("#alertUntracked, #alertDevelopment", {
+                scrollTrigger: {
+                    trigger: "#pageTitle",
+                    id: "alerts",
+                    start: "center center",
+                    end: "bottom center",
+                    markers: true,
+                    scrub: true
+                },
+                opacity: 1,
+                ease: "ease",
+                duration: 1
+            })
+        }, 1000);
     </script>
     <script src="./js/hiddenMenu.js"></script>
 </body>
