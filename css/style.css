@@ -90,7 +90,7 @@ body {
   height: 100vh;
   z-index: -10;
 }
-#stars {
+#stars-night {
   position: fixed;
   top: 0;
   left: 0;
@@ -100,14 +100,14 @@ body {
   background: url(./images/stars.png) no-repeat top center;
   background-size: cover;
 }
-#starsMorn {
+#stars-morn {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   z-index: -9;
-  background: url(./images/starsMorning.png) no-repeat top center;
+  background: url(./images/stars-morning.png) no-repeat top center;
   background-size: 100vw 100vh;
 }
 #header {
@@ -274,9 +274,11 @@ div.portrait.portrait-landing {
   min-width: 40vw;
   aspect-ratio: 1.5 !important;
 }
-img.portrait.portrait-about {
+div.portrait.portrait-about {
   min-width: 25vw;
-  aspect-ratio: 5464 / 8192;
+  aspect-ratio: 0.667 !important;
+  display: flex;
+  justify-content: center;
 }
 
 /* Cards */

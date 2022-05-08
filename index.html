@@ -200,7 +200,7 @@
         window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => e.matches && setDarkMode());
         window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", e => e.matches && setLightMode());
 
-        window.addEventListener('load', (event) => {
+        window.addEventListener('DOMContentLoaded', (event) => {
             colorSchemeSet()
 
             let mainURL = window.location.protocol + "//" + window.location.hostname;
@@ -209,16 +209,13 @@
             }
             try {
                 elems.cloud.src = `${mainURL}/images/png/front/cloud${Math.floor(Math.random() * 3) + 1}.png`;
+                console.log(elems.cloud.src)
             } catch (e) {
                 console.log(e);
             }
-
-            let i = 0;
-            let j = 0;
         });
         window.addEventListener("DOMContentLoaded", () => {
-            window.scrollTo(0, 0
-            );
+            window.scrollTo(0, 0);
             let loadtl = gsap.timeline({ delay: 0.5 });
             loadtl.fromTo("#background", { opacity: 0 }, { opacity: 1, duration: 4 });
             // loadtl.fromTo("#scrollDown", { opacity: 0 }, { opacity: 1, duration: 2 }, "<");
@@ -288,7 +285,7 @@
     </script>
 
 
-    <main class="container px-sm-5 mb-5" id="sectionOne" style="z-index: 3;">
+    <main class="container mb-5" id="sectionOne" style="z-index: 3;">
         <!-- Cookie alert -->
         <div class="shadow alert alert-primary alert-dismissible fade show" id="alertUntracked"
             style="position: fixed; right: 2rem; bottom: 2rem; width: 20vw; z-index: 5; opacity: 0;">
@@ -335,7 +332,7 @@
                     <img src="./images/jpg/projects/lyndenTechTips.jpg"
                         alt="Lynden Tech Tips - A YouTube channel dedicated to helping students and staff learn how to navigate tech."
                         style="border-bottom: #45785E 1px dashed;">
-                    <a href="./projects/video/lyndentechtips/" class="btn"
+                    <a href="./projects/video/lyndentechtips/" class="btn disabled"
                         style="color: #45785E; border-color: #45785E;">Learn
                         More</a>
                 </div>
@@ -343,7 +340,7 @@
                     <img src="./images/jpg/projects/alienPanels.jpg"
                         alt="AlienISLive - Twitch Streamer Panels and Brand."
                         style="border-bottom: #354F52 1px dashed;">
-                    <a href="./projects/design/alienislive/" class="btn"
+                    <a href="./projects/design/alienislive/" class="btn disabled"
                         style="color: #FF6978; border-color: #FF6978;">Learn More</a>
                 </div>
             </div>
@@ -353,7 +350,7 @@
                     <img src="./images/jpg/portraits/Jack-01.jpg" height="100%"
                         alt="Jack Graddon sitting infront of the camera">
                 </div>
-                <div class="m-3">
+                <div class="m-md-3">
                     <h2>About</h2>
                     <p>I'm a freelance Web Developer and Graphic Designer. I've worked on projects and designs for my
                         local school, growing influencers, companies, and competitions.</p>
@@ -398,6 +395,7 @@
             </ul>
         </div>
     </nav>
+
     <!-- Bootstrap 5 Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -410,10 +408,6 @@
         })
 
     </script>
-    <!-- Bootstrap 5 Script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
     <!-- Pollyfill (for Smooth Scrolling on Unsupported Browsers) -->
     <script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
     <script>smoothscroll.polyfill();</script>

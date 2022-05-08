@@ -8,7 +8,9 @@ var date = {
 };
 console.log(date.year, date.month, date.calDay, date.day, date.hour);
 
-let elems, metadata, matched;
+let elems = {},
+  metadata = {},
+  matched;
 
 window.addEventListener("DOMContentLoaded", function () {
   elems = {
@@ -46,7 +48,19 @@ function colorSchemeSet() {
     elems.background.style.backgroundImage =
       "linear-gradient(180deg, rgba(51,0,79,1) 0%, rgba(177,72,38,1) 100%)";
     metadata.theme.setAttribute("content", "#33004f");
-    elems.stars.morning.fadeIn(6000);
+    gsap.fromTo(
+      elems.stars.morning,
+      {
+        display: "none",
+        opacity: 0,
+      },
+      {
+        display: "block",
+        opacity: 1,
+        duration: 6,
+        ease: "power3.out",
+      }
+    );
   } else if (date.hour >= 9 && date.hour < 12) {
     elems.body.style.backgroundColor = "#067bbb";
     elems.background.style.backgroundImage =
@@ -66,7 +80,19 @@ function colorSchemeSet() {
     elems.body.style.backgroundColor = "#13001d";
     elems.background.style.backgroundImage =
       "linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)";
-    elems.stars.night.fadeIn(6000);
+    gsap.fromTo(
+      elems.stars.night,
+      {
+        display: "none",
+        opacity: 0,
+      },
+      {
+        display: "block",
+        opacity: 1,
+        duration: 6,
+        ease: "power3.out",
+      }
+    );
     metadata.theme.setAttribute("content", "#13001d");
   }
 
@@ -75,7 +101,19 @@ function colorSchemeSet() {
     elems.background.style.backgroundImage =
       "linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)";
     metadata.theme.setAttribute("content", "#13001d");
-    elems.stars.night.fadeIn(6000);
+    gsap.fromTo(
+      elems.stars.night,
+      {
+        display: "none",
+        opacity: 0,
+      },
+      {
+        display: "block",
+        opacity: 1,
+        duration: 6,
+        ease: "power3.out",
+      }
+    );
     console.log("Browser in dark mode, night color scheme applied.");
   } else if (matched) {
     console.log(
@@ -92,7 +130,19 @@ function setDarkMode() {
     elems.background.style.backgroundImage =
       "linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)";
     metadata.theme.setAttribute("content", "#13001d");
-    elems.stars.night.fadeIn(400);
+    gsap.fromTo(
+      elems.stars.night,
+      {
+        display: "none",
+        opacity: 0,
+      },
+      {
+        display: "block",
+        opacity: 1,
+        duration: 0.4,
+        ease: "power3.out",
+      }
+    );
     console.log(
       "Browser in dark mode during the day, so the night color scheme applied."
     );
@@ -101,7 +151,19 @@ function setDarkMode() {
     elems.background.style.backgroundImage =
       "linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)";
     metadata.theme.setAttribute("content", "#13001d");
-    elems.stars.night.fadeIn(400);
+    gsap.fromTo(
+      elems.stars.night,
+      {
+        display: "none",
+        opacity: 0,
+      },
+      {
+        display: "block",
+        opacity: 1,
+        duration: 0.4,
+        ease: "power3.out",
+      }
+    );
     console.log(
       "Browser in light mode at night, so the night color scheme was applied."
     );

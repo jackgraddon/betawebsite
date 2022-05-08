@@ -68,16 +68,16 @@ window.addEventListener("load", () => {
     } else {
       navbarbottom.appendChild(linkContainers[i]);
     }
-    console.log(linkContainers[i]);
+    // console.log(linkContainers[i]);
   }
   let headerNavBG = document.createElement("div");
   headerNavBG.id = "floatingNavBG";
   nav.appendChild(headerNavBG);
   try {
     document.querySelector("body").append(nav);
-    console.log("nav appended");
+    console.log("hidden nav appended");
   } catch (e) {
-    console.log("nav not appended");
+    console.log("hidden nav not appended");
   }
   gsap.registerPlugin(ScrollTrigger);
 });
