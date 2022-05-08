@@ -286,35 +286,38 @@
 
 
     <main class="container mb-5" id="sectionOne" style="z-index: 3;">
-        <!-- Cookie alert -->
-        <div class="shadow alert alert-primary alert-dismissible fade show" id="alertUntracked"
-            style="position: fixed; right: 2rem; bottom: 2rem; width: 20vw; z-index: 5; opacity: 0;">
-            <button type="button" class="btn-close text-primary" data-bs-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true"></span>
-            </button>
-            <h3 style="font-size: medium;">🍪 Cookies</h3>
-            <p style="font-size: x-small;" class="mb-1">This website does not use cookies! You are free to browse with
-                the peace of mind that you are not being tracked.
-            </p>
-        </div>
-        <!-- In Development Notice -->
-        <div class="alert alert-primary alert-dismissible fade show mb-5" id="alertDevelopment">
-            <button type="button" class="btn-close text-primary" data-bs-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true"></span>
-            </button>
-            <h3 style="font-size: medium;">🛠 Beta Site</h3>
-            <p style="font-size: x-small;">
-                This page is still in early access. This site has the most up to date information, but might not work as
-                intended 100% of the time.
-            </p>
-            <a class="btn btn-primary mb-1" href="https://www.jackgraddon.com/" target="_blank"
-                style="font-size: small;">
-                Stable Site <i class="bi bi-box-arrow-up-right"></i>
-            </a>
-            <a class="btn btn-primary mb-1" href="https://github.com/jackgraddon/betawebsite/issues/new/choose"
-                target="_blank" style="font-size: small;">
-                Feedback <i class="bi bi-box-arrow-up-right"></i>
-            </a>
+        <div id="alerts" style="opacity: 0;">
+            <!-- Cookie alert -->
+            <div class="shadow alert alert-primary alert-dismissible fade show" id="alertUntracked" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+                <h3 style="font-size: medium;">🍪 Cookies</h3>
+                <p style="font-size: x-small;" class="mb-1">This website does not use cookies! You are free to browse
+                    with
+                    the peace of mind that you are not being tracked.
+                </p>
+            </div>
+            <!-- In Development Notice -->
+            <div class="shadow alert alert-primary alert-dismissible fade show mb-5" id="alertDevelopment" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+                <h3 style="font-size: medium;">🛠 Beta Site</h3>
+                <p style="font-size: x-small;">
+                    This page is still in early access. This site has the most up to date information, but might not
+                    work as
+                    intended 100% of the time.
+                </p>
+                <a class="btn btn-primary mb-1" href="https://www.jackgraddon.com/" target="_blank"
+                    style="font-size: small;">
+                    Stable Site <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+                <a class="btn btn-primary mb-1" href="https://github.com/jackgraddon/betawebsite/issues/new/choose"
+                    target="_blank" style="font-size: small;">
+                    Feedback <i class="bi bi-box-arrow-up-right"></i>
+                </a>
+            </div>
         </div>
         <!-- Main Page -->
         <div class="d-flex flex-column align-items-center">
@@ -354,7 +357,7 @@
                     <h2>About</h2>
                     <p>I'm a freelance Web Developer and Graphic Designer. I've worked on projects and designs for my
                         local school, growing influencers, companies, and competitions.</p>
-                    <p>I’ve always desired to make technology more accessible by developing user interfaces that are
+                    <p>I've always desired to make technology more accessible by developing user interfaces that are
                         simple to navigate and visually engaging.</p>
                     <p>Want to learn more about me?</p>
                     <a href="./about/" class="btn btn-primary">Click Here</a>
@@ -464,12 +467,12 @@
             opacity: 1,
             duration: 1
         })
-        // gsap.set("#alertUntracked", {
-        //     opacity: 0,
-        //     y: -100,
-        // })
+        gsap.set("#alertUntracked", {
+            opacity: 0,
+            y: -100,
+        })
         setTimeout(function () {
-            gsap.to("#alertUntracked, #alertDevelopment", {
+            gsap.to("#alerts", {
                 scrollTrigger: {
                     trigger: "#pageTitle",
                     id: "alerts",

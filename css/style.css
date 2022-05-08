@@ -21,33 +21,31 @@
   transform: scale(1.1);
 }
 
-#alertUntracked,
-#alertDevelopment {
+#alerts {
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+  bottom: 0rem;
   right: 2rem;
-  width: 20vw;
+  width: 22vw;
+  height: fit-content;
   z-index: 5;
-  opacity: 0;
-  margin: 0 !important;
 }
-#alertUntracked {
-  bottom: 2rem;
-}
-#alertDevelopment {
-  bottom: 11rem;
+#alerts * {
+  margin: 1rem 0rem;
 }
 
 @media (max-width: 993px) {
-  #alertUntracked,
-  #alertDevelopment {
-    width: 45vw !important;
-    bottom: 2.5vw !important;
+  #alerts {
+    width: 100vw;
+    right: 0;
+    bottom: 2rem;
+    flex-direction: row;
   }
-  #alertUntracked {
-    left: 2.5vw;
-  }
-  #alertDevelopment {
-    right: 2.5vw;
+  #alerts * {
+    margin: 0 1rem;
   }
 }
 
