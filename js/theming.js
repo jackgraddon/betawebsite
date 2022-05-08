@@ -7,10 +7,11 @@ var date = {
   hour: dateFull.getHours(),
 };
 console.log(date.year, date.month, date.calDay, date.day, date.hour);
-let matched = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-function colorSchemeSet() {
-  let elems = {
+let elems, metadata, matched;
+
+window.addEventListener("DOMContentLoaded", function () {
+  elems = {
     body: document.querySelector("body"),
     title: document.querySelector("#title"),
     subtitle: document.querySelector("#subtitle"),
@@ -22,11 +23,23 @@ function colorSchemeSet() {
       night: document.querySelector("#stars-night"),
     },
   };
-  let metadata = {
-    theme: document.querySelector('meta[name="theme-color"]'),
+
+  metadata = {
     styles: document.querySelector('link[href="./css/style.css"]'),
+    theme: document.querySelector('meta[name="theme-color"]'),
   };
 
+  matched = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  gsap.to(elems.body, {
+    opacity: 1,
+    duration: 0.5,
+    ease: "power3.out",
+    delay: 0.5,
+  });
+});
+
+function colorSchemeSet() {
   // date.hour = 19;
   if (date.hour >= 5 && date.hour < 9) {
     elems.body.style.backgroundColor = "#33004f";
@@ -107,27 +120,18 @@ window
 
 window.addEventListener("DOMContentLoaded", (event) => {
   colorSchemeSet();
-
-  let rand = Math.floor(Math.random() * 3) + 1;
   // console.log(rand);
 
   let mainURL = window.location.protocol + "//" + window.location.hostname;
   if (window.location.port) {
     mainURL = mainURL + ":" + window.location.port;
   }
-  switch (rand) {
-    case 1:
-      document.querySelector("#cloud").src =
-        mainURL + "/images/png/front/cloud1.png";
-      break;
-    case 2:
-      document.querySelector("#cloud").src =
-        mainURL + "/images/png/front/cloud2.png";
-      break;
-    case 3:
-      document.querySelector("#cloud").src =
-        mainURL + "/images/png/front/cloud3.png";
-      break;
+  try {
+    elems.cloud.src = `${mainURL}/images/png/front/cloud${
+      Math.floor(Math.random() * 3) + 1
+    }.png`;
+  } catch (e) {
+    console.log(e);
   }
 });
 
