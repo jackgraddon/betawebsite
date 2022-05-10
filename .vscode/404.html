@@ -8,8 +8,7 @@
     <meta name="viewport"
         content="width=device-width, viewport-fit=cover, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
     <meta name="theme-color">
-    <meta name="og:title" content="Legal Info">
-    <meta name="og:image" content="./img/ogImage.jpg">
+    <meta name="og:title" content="Error">
 
     <!-- Favicon -->
     <link rel="icon" href="../images/png/favicon/favicon.png">
@@ -26,146 +25,6 @@
 </head>
 
 <body style="opacity: 0;">
-
-
-    <!-- Script for Landing Page -->
-    <script>
-        var dateFull = new Date();
-        var date = {
-            year: dateFull.getFullYear(),
-            month: dateFull.getMonth() + 1,
-            calDay: dateFull.getDate(),
-            day: dateFull.getUTCDay(),
-            hour: dateFull.getHours(),
-        }
-        console.log(date.year, date.month, date.calDay, date.day, date.hour);
-        let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-        function colorSchemeSet() {
-            let title = document.getElementById('title');
-            let subtitle = document.getElementById('subtitle');
-            let body = document.getElementById('background');
-            let condition = document.getElementById('condition');
-            let cloud = document.getElementById('cloud');
-            let meta = document.querySelector('meta[name="theme-color"]')
-            let stylesheet = document.querySelector('link[href="./css/style.css"]');
-
-            // date.hour = 3;
-            if ((date.hour >= 5) && (date.hour < 9)) {
-                $('body').css('background-color', '#33004f');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(51,0,79,1) 0%, rgba(177,72,38,1) 100%)');
-                meta.setAttribute('content', '#33004f');
-                $('#stars-morn').fadeIn(6000);
-            } else if ((date.hour >= 9) && (date.hour < 12)) {
-                $('body').css('background-color', '#067bbb');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)');
-                meta.setAttribute('content', '#067bbb')
-            } else if ((date.hour >= 12) && (date.hour < 18)) {
-                $('body').css('background-color', '#067bbb');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(6,123,187,1) 0%, rgba(174,207,219,1) 100%)');
-                meta.setAttribute('content', '#067bbb')
-            } else if ((date.hour >= 18) && (date.hour < 22)) {
-                $('body').css('background-color', '#2a6ca1');
-                $('#background').css('background-image', 'linear-gradient(0deg, rgba(255,177,177,1) 0%, rgba(226,218,187,1) 25%, rgba(184,214,228,1) 40%, rgba(42,108,161,1) 100%)');
-                meta.setAttribute('content', '#2a6ca1')
-            } else if ((date.hour >= 22) || (date.hour < 5)) {
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                $('#stars').fadeIn(6000);
-                meta.setAttribute('content', '#13001d');
-            }
-
-            if (matched && ((date.hour < 22) && (date.hour > 5))) {
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                meta.setAttribute('content', '#13001d');
-                $('#stars').fadeIn(6000);
-                console.log('Browser in dark mode, night color scheme applied.')
-            } else if (matched) {
-                console.log('Browser in dark mode, but the default color scheme was applied.')
-            } else {
-                console.log('Browser in light mode, default color scheme applied.');
-            }
-        }
-
-        function setDarkMode() {
-            let title = document.getElementById('title');
-            let subtitle = document.getElementById('subtitle');
-            let body = document.getElementById('background');
-            let condition = document.getElementById('condition');
-            let meta = document.querySelector('meta[name="theme-color"]')
-            if ((date.hour < 22) && (date.hour > 5)) {
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                meta.setAttribute('content', '#13001d');
-                $('#stars').fadeIn(400);
-                console.log('Browser in dark mode during the day, so the night color scheme applied.')
-            } else {
-                $('body').css('background-color', '#13001d');
-                $('#background').css('background-image', 'linear-gradient(180deg, rgba(19,0,29,1) 0%, rgba(51,0,79,1) 100%)');
-                meta.setAttribute('content', '#13001d');
-                $('#stars').fadeIn(400);
-                console.log('Browser in light mode at night, so the night color scheme was applied.')
-            }
-        }
-        function setLightMode() {
-            colorSchemeSet();
-            $('#stars').fadeOut(400);
-        }
-        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => e.matches && setDarkMode());
-        window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", e => e.matches && setLightMode());
-
-        window.addEventListener('DOMContentLoaded', (event) => {
-            colorSchemeSet()
-            $('#background').fadeIn(4000);
-            // $('#header').fadeIn(1000);
-            $('#scrollDown').fadeIn(2000);
-            $('#title').fadeIn(1500);
-            $('#subtitle').fadeIn(1500);
-            $('#condition').fadeIn(2000);
-
-            let rand = Math.floor(Math.random() * 3) + 1;
-            console.log(rand);
-
-            switch (rand) {
-                case 1:
-                    $('#cloud').attr("src", "../images/png/front/cloud1.png");
-                    break;
-                case 2:
-                    $('#cloud').attr("src", "../images/png/front/cloud2.png");
-                    break;
-                case 3:
-                    $('#cloud').attr("src", "../images/png/front/cloud3.png");
-                    break;
-            }
-            $('#cloudContainer').fadeIn(1500);
-        });
-
-        let i = 0;
-        let j = 0;
-        window.onscroll = function () { scrollFunction() };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-                while (i < 1) {
-                    $('#scrollDown').attr('opacity', '1').animate({ opacity: '0' }, 400);
-                    $('#downArrow').attr('opacity', '1').animate({ opacity: '0' }, 400);
-                    $('#scrollToTop').attr('opacity', '0').animate({ opacity: '1' }, 400);
-                    i++;
-                    j = 0;
-                }
-            }
-            else if (document.body.scrollTop == 0 || document.documentElement.scrollTop == 0) {
-                while (j < 1) {
-                    $('#scrollToTop').attr('opacity', '1').animate({ opacity: '0' }, 400);
-                    $('#scrollDown').attr('opacity', '0').animate({ opacity: '1' }, 400);
-                    $('#downArrow').attr('opacity', '0').animate({ opacity: '1' }, 400);
-                    j++;
-                    i = 0;
-                }
-            }
-        };
-    </script>
     <!-- Begin Page -->
     <div id="background"></div>
 
@@ -177,16 +36,15 @@
             id="titleContainer">
             <div class="d-flex flex-column container align-items-center"
                 style="height: fit-content; width: fit-content;" id="headerText">
-                <h3 class="m-sm-auto" id="condition"><i class="bi bi-exclamation-square"></i>
+                <h3 class="m-sm-auto" id="condition"><i class="bi bi-exclamation-triangle-fill"></i></i>
                 </h3>
                 <h1 class="m-sm-auto title" id="title">Error</h1>
-                <p class="m-sm-auto subtitle" id="subtitle">It appears there has been an error...
-                </p>
+                <p class="m-sm-auto subtitle" id="subtitle">It appears there has been an error...</p>
             </div>
         </div>
     </div>
     <!-- Footer -->
-    <nav class="d-flex flex-column p-3">
+    <nav class="d-flex flex-column p-3" id="footer">
         <div style="width: fit-content;" class="m-auto">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
@@ -199,7 +57,7 @@
                     <a class="nav-link" href="../projects/">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../legal">Legal</a>
+                    <a class="nav-link" href="../legal/">Legal</a>
                 </li>
             </ul>
             <p style="width: fit-content; font-size: small;" class="m-auto">Website &copy; Jack Graddon 2022</p>
@@ -222,21 +80,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/TextPlugin.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
     <script>
-        gsap.to("#headerText", {
-            scrollTrigger: {
-                trigger: "#headerText",
-                id: "header",
-                start: "top 35%",
-                end: "bottom 20%",
-                // pin: true,
-                scrub: true,
-            },
+        gsap.fromTo("#footer", {
             opacity: 0,
-            y: 170,
             transform: "scale(0.9)",
             filter: "blur(10px)",
-            ease: "none",
-            duration: 2,
+        }, {
+            opacity: 1,
+            transform: "scale(1)",
+            filter: "blur(0px)",
+            ease: "power2.inOut",
+            duration: 1.5,
+            delay: 2
         });
     </script>
 
