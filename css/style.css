@@ -253,6 +253,12 @@ a.nav-link.active {
   border-color: var(--primary);
   color: #faf9f9;
 }
+.btn-primary.disabled {
+  opacity: 0.8;
+  background-color: #faf9f9;
+  border-color: var(--primary);
+  color: var(--primary);
+}
 .btn-secondary {
   background-color: var(--secondary);
   color: var(--secondary);
