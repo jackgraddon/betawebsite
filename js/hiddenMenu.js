@@ -24,6 +24,9 @@ window.addEventListener("load", () => {
   title.classList.add("my-2");
   title.style.width = "fit-content";
   title.innerHTML = "Go To";
+  title.onclick = () => {
+    window.location = mainURL;
+  };
   navDiv.appendChild(title);
 
   let navbarbottom = document.createElement("ul");
@@ -37,10 +40,10 @@ window.addEventListener("load", () => {
     linkContainers[i].classList.add("nav-item");
   }
 
-  let homeLink = document.createElement("a");
-  homeLink.classList.add("nav-link");
-  homeLink.href = mainURL;
-  homeLink.innerHTML = "Home";
+  let contactLink = document.createElement("a");
+  contactLink.classList.add("nav-link");
+  contactLink.href = mainURL + "/contact/";
+  contactLink.innerHTML = "Contact";
 
   let aboutLink = document.createElement("a");
   aboutLink.classList.add("nav-link");
@@ -57,7 +60,7 @@ window.addEventListener("load", () => {
   legalsLink.href = mainURL + "/legal/";
   legalsLink.innerHTML = "Legals";
 
-  linkContainers[0].appendChild(homeLink);
+  linkContainers[0].appendChild(contactLink);
   linkContainers[1].appendChild(aboutLink);
   linkContainers[2].appendChild(projectsLink);
   linkContainers[3].appendChild(legalsLink);
