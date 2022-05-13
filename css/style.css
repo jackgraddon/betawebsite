@@ -108,6 +108,9 @@ body {
   background: url(./images/stars-morning.png) no-repeat top center;
   background-size: 100vw 100vh;
 }
+.container {
+  padding-top: 2rem;
+}
 #header {
   width: 100%;
   transition: 200ms;
@@ -205,6 +208,12 @@ a.nav-link.active {
 #floatingNav .nav-link:hover {
   transform: scale(1.1);
 }
+.nav-link {
+  cursor: pointer !important;
+}
+.nav-link.active:hover {
+  text-decoration: none !important;
+}
 
 #floatingNavBG {
   position: fixed;
@@ -248,9 +257,10 @@ a.nav-link.active {
   color: var(--primary);
 }
 .btn-primary:hover,
-.btn-primary:active {
-  background-color: var(--primary);
-  border-color: var(--primary);
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
   color: #faf9f9;
 }
 .btn-primary.disabled {
