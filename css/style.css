@@ -265,10 +265,24 @@ a.nav-link.active {
 }
 
 /* Images */
+/* img {
+  border-radius: 0.7rem;
+} */
 #cloudContainer {
   overflow-x: hidden;
   overflow-y: visible;
 }
+
+div.image-container {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  border-radius: 0.7rem;
+}
+div.image-center {
+  justify-content: center;
+}
+
 div.portrait {
   width: 100%;
   overflow: hidden;
